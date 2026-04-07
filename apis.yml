@@ -8,11 +8,11 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
+  - AWS
   - Healthcare
-  - Medical Imaging
   - HIPAA
   - Machine Learning
-  - AWS
+  - Medical Imaging
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -29,8 +29,8 @@ apis:
     baseURL: https://medical-imaging.us-east-1.amazonaws.com
     tags:
       - Healthcare
-      - Medical Imaging
       - HIPAA
+      - Medical Imaging
     properties:
       - type: Documentation
         url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
