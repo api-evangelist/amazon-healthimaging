@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-list-datastores-response-schema.json",
+  "name": "ListDatastoresResponse",
+  "type": "object",
+  "properties": {
+    "datastoreSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreSummaries"
+        },
+        {
+          "description": "The list of summaries of data stores."
+        }
+      ]
+    },
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "The pagination token used to retrieve the list of data stores on the next page."
+        }
+      ]
+    }
+  }
+}

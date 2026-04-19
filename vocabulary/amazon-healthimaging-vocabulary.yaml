@@ -1,0 +1,45 @@
+name: Amazon HealthImaging Vocabulary
+version: 1.0.0
+description: Unified taxonomy mapping resources, actions, workflows, and personas for Amazon HealthImaging.
+resources:
+  - name: Datastore
+    description: Storage container for medical imaging data
+  - name: ImageSet
+    description: Collection of medical images with associated metadata
+  - name: ImageFrame
+    description: Individual frame within a medical image set
+  - name: DICOMImportJob
+    description: Batch job for importing DICOM medical imaging data
+  - name: Tag
+    description: Key-value pair metadata attached to resources
+actions:
+  - name: Create
+    description: Create a new resource
+  - name: Get
+    description: Retrieve a resource by identifier
+  - name: List
+    description: List multiple resources
+  - name: Delete
+    description: Delete a resource
+  - name: Search
+    description: Search for resources based on criteria
+  - name: Copy
+    description: Copy a resource to another location
+  - name: Update
+    description: Update resource metadata
+  - name: Start
+    description: Start an asynchronous job
+  - name: Tag
+    description: Apply tags to a resource
+  - name: Untag
+    description: Remove tags from a resource
+workflows:
+  - name: DICOM Import
+    description: Import medical imaging data from S3 using DICOM format
+personas:
+  - name: Healthcare Developer
+    description: Developer building healthcare applications using medical imaging APIs
+  - name: Medical Imaging Engineer
+    description: Engineer specializing in medical image processing and storage
+  - name: HIPAA Compliance Officer
+    description: Officer responsible for ensuring HIPAA compliance in healthcare data handling

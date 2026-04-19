@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-get-datastore-response-schema.json",
+  "title": "GetDatastoreResponse",
+  "type": "object",
+  "required": [
+    "datastoreProperties"
+  ],
+  "properties": {
+    "datastoreProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreProperties"
+        },
+        {
+          "description": "The data store properties."
+        }
+      ]
+    }
+  }
+}

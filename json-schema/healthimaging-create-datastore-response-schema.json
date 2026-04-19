@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-create-datastore-response-schema.json",
+  "title": "CreateDatastoreResponse",
+  "type": "object",
+  "required": [
+    "datastoreId",
+    "datastoreStatus"
+  ],
+  "properties": {
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "datastoreStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreStatus"
+        },
+        {
+          "description": "The data store status."
+        }
+      ]
+    }
+  }
+}

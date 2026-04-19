@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-copy-destination-image-set-schema.json",
+  "name": "CopyDestinationImageSet",
+  "type": "object",
+  "required": [
+    "imageSetId",
+    "latestVersionId"
+  ],
+  "properties": {
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier for the destination image set."
+        }
+      ]
+    },
+    "latestVersionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetExternalVersionId"
+        },
+        {
+          "description": "The latest version identifier for the destination image set."
+        }
+      ]
+    }
+  },
+  "description": "Copy the destination image set."
+}

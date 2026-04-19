@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-list-dicom-import-jobs-response-schema.json",
+  "name": "ListDICOMImportJobsResponse",
+  "type": "object",
+  "required": [
+    "jobSummaries"
+  ],
+  "properties": {
+    "jobSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMImportJobSummaries"
+        },
+        {
+          "description": "A list of job summaries."
+        }
+      ]
+    },
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "The pagination token used to retrieve the list of import jobs on the next page."
+        }
+      ]
+    }
+  }
+}

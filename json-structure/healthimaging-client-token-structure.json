@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-client-token-schema.json",
+  "name": "ClientToken",
+  "type": "string",
+  "pattern": "[A-Za-z0-9._-]+",
+  "minLength": 1,
+  "maxLength": 64
+}

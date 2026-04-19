@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-search-filter-schema.json",
+  "name": "SearchFilter",
+  "type": "object",
+  "required": [
+    "values",
+    "operator"
+  ],
+  "properties": {
+    "values": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SearchFilterValuesList"
+        },
+        {
+          "description": "The search filter values."
+        }
+      ]
+    },
+    "operator": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Operator"
+        },
+        {
+          "description": "The search filter operator for <code>imageSetDateTime</code>."
+        }
+      ]
+    }
+  },
+  "description": "The search filter."
+}

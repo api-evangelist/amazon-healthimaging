@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-search-by-attribute-value-schema.json",
+  "name": "SearchByAttributeValue",
+  "type": "object",
+  "properties": {
+    "DICOMPatientId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMPatientId"
+        },
+        {
+          "description": "The patient ID input for search."
+        }
+      ]
+    },
+    "DICOMAccessionNumber": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMAccessionNumber"
+        },
+        {
+          "description": "The DICOM accession number for search."
+        }
+      ]
+    },
+    "DICOMStudyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyId"
+        },
+        {
+          "description": "The DICOM study ID for search."
+        }
+      ]
+    },
+    "DICOMStudyInstanceUID": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyInstanceUID"
+        },
+        {
+          "description": "The DICOM study instance UID for search."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The created at time of the image set provided for search."
+        }
+      ]
+    },
+    "DICOMStudyDateAndTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyDateAndTime"
+        },
+        {
+          "description": "The aggregated structure containing DICOM study date and study time for search."
+        }
+      ]
+    }
+  },
+  "description": "The search input attribute value."
+}

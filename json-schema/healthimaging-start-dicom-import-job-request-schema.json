@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-start-dicom-import-job-request-schema.json",
+  "title": "StartDICOMImportJobRequest",
+  "type": "object",
+  "required": [
+    "dataAccessRoleArn",
+    "clientToken",
+    "inputS3Uri",
+    "outputS3Uri"
+  ],
+  "properties": {
+    "jobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The import job name."
+        }
+      ]
+    },
+    "dataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) of the IAM role that grants permission to access medical imaging resources."
+        }
+      ]
+    },
+    "clientToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientToken"
+        },
+        {
+          "description": "A unique identifier for API idempotency."
+        }
+      ]
+    },
+    "inputS3Uri": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3Uri"
+        },
+        {
+          "description": "The input prefix path for the S3 bucket that contains the DICOM files to be imported."
+        }
+      ]
+    },
+    "outputS3Uri": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3Uri"
+        },
+        {
+          "description": "The output prefix of the S3 bucket to upload the results of the DICOM import job."
+        }
+      ]
+    }
+  }
+}

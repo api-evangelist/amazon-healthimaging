@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-copy-source-image-set-properties-schema.json",
+  "name": "CopySourceImageSetProperties",
+  "type": "object",
+  "required": [
+    "imageSetId",
+    "latestVersionId"
+  ],
+  "properties": {
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier for the copied source image set."
+        }
+      ]
+    },
+    "latestVersionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetExternalVersionId"
+        },
+        {
+          "description": "The latest version identifier for the copied source image set."
+        }
+      ]
+    },
+    "imageSetState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetState"
+        },
+        {
+          "description": "The image set state of the copied source image set."
+        }
+      ]
+    },
+    "imageSetWorkflowStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetWorkflowStatus"
+        },
+        {
+          "description": "The workflow status of the copied source image set."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the source image set properties were created."
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the source image set properties were updated."
+        }
+      ]
+    },
+    "imageSetArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Arn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) assigned to the source image set."
+        }
+      ]
+    }
+  },
+  "description": "Copy source image set properties."
+}

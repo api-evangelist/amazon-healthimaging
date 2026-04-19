@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-list-datastores-request-max-results-integer-schema.json",
+  "name": "ListDatastoresRequestMaxResultsInteger",
+  "type": "int32",
+  "minimum": 1,
+  "maximum": 50
+}

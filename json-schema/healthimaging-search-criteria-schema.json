@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-search-criteria-schema.json",
+  "title": "SearchCriteria",
+  "type": "object",
+  "properties": {
+    "filters": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SearchCriteriaFiltersList"
+        },
+        {
+          "description": "The filters for the search criteria."
+        }
+      ]
+    }
+  },
+  "description": "The search criteria."
+}

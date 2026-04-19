@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-s3-uri-schema.json",
+  "name": "S3Uri",
+  "type": "string",
+  "pattern": "s3://[a-z0-9][\\.\\-a-z0-9]{1,61}[a-z0-9](/.*)?",
+  "minLength": 1,
+  "maxLength": 1024
+}

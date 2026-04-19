@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-search-filter-values-list-schema.json",
+  "name": "SearchFilterValuesList",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/SearchByAttributeValue"
+  },
+  "minItems": 1,
+  "maxItems": 2
+}

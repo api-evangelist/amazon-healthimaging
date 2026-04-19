@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-import-job-summaries-schema.json",
+  "name": "DICOMImportJobSummaries",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/DICOMImportJobSummary"
+  }
+}

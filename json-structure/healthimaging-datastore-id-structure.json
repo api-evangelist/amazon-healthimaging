@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-datastore-id-schema.json",
+  "name": "DatastoreId",
+  "type": "string",
+  "pattern": "[0-9a-z]{32}"
+}

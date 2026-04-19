@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-import-job-summary-schema.json",
+  "title": "DICOMImportJobSummary",
+  "type": "object",
+  "required": [
+    "jobId",
+    "jobName",
+    "jobStatus",
+    "datastoreId"
+  ],
+  "properties": {
+    "jobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The import job identifier."
+        }
+      ]
+    },
+    "jobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The import job name."
+        }
+      ]
+    },
+    "jobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The filters for listing import jobs based on status."
+        }
+      ]
+    },
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "dataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) that grants permissions to access medical imaging resources."
+        }
+      ]
+    },
+    "endedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when an import job ended."
+        }
+      ]
+    },
+    "submittedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when an import job was submitted."
+        }
+      ]
+    },
+    "message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The error message thrown if an import job fails."
+        }
+      ]
+    }
+  },
+  "description": "Summary of import job."
+}

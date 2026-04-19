@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-tag-key-schema.json",
+  "title": "TagKey",
+  "type": "string",
+  "pattern": "(?!aws:)[a-zA-Z+-=._:/]+",
+  "minLength": 1,
+  "maxLength": 128
+}

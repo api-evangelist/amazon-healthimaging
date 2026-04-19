@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-job-id-schema.json",
+  "title": "JobId",
+  "type": "string",
+  "pattern": "[0-9a-z]+",
+  "minLength": 1,
+  "maxLength": 32
+}

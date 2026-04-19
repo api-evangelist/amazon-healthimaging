@@ -1,0 +1,80 @@
+name: Amazon HealthImaging
+version: 1.0.0-alpha1
+description: Shared per-API capability definitions for Amazon HealthImaging — HIPAA-eligible medical imaging storage and retrieval service.
+operations:
+  datastores:
+    - operationId: ListDatastores
+      summary: Amazon HealthImaging List Datastores
+      method: GET
+      path: /datastore
+    - operationId: CreateDatastore
+      summary: Amazon HealthImaging Create Datastore
+      method: POST
+      path: /datastore
+    - operationId: GetDatastore
+      summary: Amazon HealthImaging Get Datastore
+      method: GET
+      path: /datastore/{datastoreId}
+    - operationId: DeleteDatastore
+      summary: Amazon HealthImaging Delete Datastore
+      method: DELETE
+      path: /datastore/{datastoreId}
+  imageSets:
+    - operationId: CopyImageSet
+      summary: Amazon HealthImaging Copy Image Set
+      method: POST
+      path: /datastore/{datastoreId}/imageSet/{sourceImageSetId}/copyImageSet
+    - operationId: DeleteImageSet
+      summary: Amazon HealthImaging Delete Image Set
+      method: DELETE
+      path: /datastore/{datastoreId}/imageSet/{imageSetId}/deleteImageSet
+    - operationId: GetImageSet
+      summary: Amazon HealthImaging Get Image Set
+      method: GET
+      path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSet
+    - operationId: GetImageSetMetadata
+      summary: Amazon HealthImaging Get Image Set Metadata
+      method: GET
+      path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSetMetadata
+    - operationId: ListImageSetVersions
+      summary: Amazon HealthImaging List Image Set Versions
+      method: POST
+      path: /datastore/{datastoreId}/imageSet/{imageSetId}/listImageSetVersions
+    - operationId: SearchImageSets
+      summary: Amazon HealthImaging Search Image Sets
+      method: POST
+      path: /datastore/{datastoreId}/searchImageSets
+    - operationId: UpdateImageSetMetadata
+      summary: Amazon HealthImaging Update Image Set Metadata
+      method: POST
+      path: /datastore/{datastoreId}/imageSet/{imageSetId}/updateImageSetMetadata
+    - operationId: GetImageFrame
+      summary: Amazon HealthImaging Get Image Frame
+      method: POST
+      path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageFrame
+  importJobs:
+    - operationId: StartDICOMImportJob
+      summary: Amazon HealthImaging Start DICOM Import Job
+      method: POST
+      path: /datastore/{datastoreId}/dicomImportJob
+    - operationId: GetDICOMImportJob
+      summary: Amazon HealthImaging Get DICOM Import Job
+      method: GET
+      path: /datastore/{datastoreId}/dicomImportJob/{jobId}
+    - operationId: ListDICOMImportJobs
+      summary: Amazon HealthImaging List DICOM Import Jobs
+      method: GET
+      path: /datastore/{datastoreId}/dicomImportJobs
+  tags:
+    - operationId: ListTagsForResource
+      summary: Amazon HealthImaging List Tags for Resource
+      method: GET
+      path: /tags/{resourceArn}
+    - operationId: TagResource
+      summary: Amazon HealthImaging Tag Resource
+      method: POST
+      path: /tags/{resourceArn}
+    - operationId: UntagResource
+      summary: Amazon HealthImaging Untag Resource
+      method: DELETE
+      path: /tags/{resourceArn}

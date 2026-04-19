@@ -1,0 +1,70 @@
+name: Amazon HealthImaging Medical Imaging Operations
+version: 1.0.0-alpha1
+description: Workflow capability for managing HIPAA-eligible medical imaging data including datastores, image sets, and DICOM import jobs.
+persona:
+  - Healthcare Developer
+  - Medical Imaging Engineer
+  - HIPAA Compliance Officer
+apis:
+  - Amazon HealthImaging
+tools:
+  - name: list_datastores
+    description: List all HealthImaging datastores in the account
+    operationId: ListDatastores
+    method: GET
+    path: /datastore
+  - name: create_datastore
+    description: Create a new datastore for storing medical imaging data
+    operationId: CreateDatastore
+    method: POST
+    path: /datastore
+  - name: get_datastore
+    description: Get details of a specific datastore
+    operationId: GetDatastore
+    method: GET
+    path: /datastore/{datastoreId}
+  - name: delete_datastore
+    description: Delete a datastore and all its contents
+    operationId: DeleteDatastore
+    method: DELETE
+    path: /datastore/{datastoreId}
+  - name: search_image_sets
+    description: Search for image sets within a datastore
+    operationId: SearchImageSets
+    method: POST
+    path: /datastore/{datastoreId}/searchImageSets
+  - name: get_image_set
+    description: Get metadata about a specific image set
+    operationId: GetImageSet
+    method: GET
+    path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSet
+  - name: get_image_set_metadata
+    description: Retrieve the metadata of an image set
+    operationId: GetImageSetMetadata
+    method: GET
+    path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSetMetadata
+  - name: copy_image_set
+    description: Copy an image set to another datastore or location
+    operationId: CopyImageSet
+    method: POST
+    path: /datastore/{datastoreId}/imageSet/{sourceImageSetId}/copyImageSet
+  - name: start_dicom_import_job
+    description: Start a DICOM import job to ingest medical imaging data
+    operationId: StartDICOMImportJob
+    method: POST
+    path: /datastore/{datastoreId}/dicomImportJob
+  - name: get_dicom_import_job
+    description: Get the status of a DICOM import job
+    operationId: GetDICOMImportJob
+    method: GET
+    path: /datastore/{datastoreId}/dicomImportJob/{jobId}
+  - name: list_dicom_import_jobs
+    description: List all DICOM import jobs for a datastore
+    operationId: ListDICOMImportJobs
+    method: GET
+    path: /datastore/{datastoreId}/dicomImportJobs
+  - name: get_image_frame
+    description: Retrieve an image frame from an image set
+    operationId: GetImageFrame
+    method: POST
+    path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageFrame

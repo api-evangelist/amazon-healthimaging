@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-message-schema.json",
+  "name": "Message",
+  "type": "string",
+  "pattern": "[\\w -:]+",
+  "minLength": 1,
+  "maxLength": 2048
+}

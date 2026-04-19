@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-operator-schema.json",
+  "name": "Operator",
+  "type": "string",
+  "enum": [
+    "EQUAL",
+    "BETWEEN"
+  ]
+}

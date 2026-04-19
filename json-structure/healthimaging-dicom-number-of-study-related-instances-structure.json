@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-number-of-study-related-instances-schema.json",
+  "name": "DICOMNumberOfStudyRelatedInstances",
+  "type": "int32",
+  "minimum": 0,
+  "maximum": 10000
+}

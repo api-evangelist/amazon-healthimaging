@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-image-set-workflow-status-schema.json",
+  "title": "ImageSetWorkflowStatus",
+  "type": "string",
+  "enum": [
+    "CREATED",
+    "COPIED",
+    "COPYING",
+    "COPYING_WITH_READ_ONLY_ACCESS",
+    "COPY_FAILED",
+    "UPDATING",
+    "UPDATED",
+    "UPDATE_FAILED",
+    "DELETING",
+    "DELETED"
+  ]
+}

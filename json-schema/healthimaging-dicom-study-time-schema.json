@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-study-time-schema.json",
+  "title": "DICOMStudyTime",
+  "type": "string",
+  "minLength": 0,
+  "maxLength": 28,
+  "format": "password"
+}

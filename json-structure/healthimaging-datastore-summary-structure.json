@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-datastore-summary-schema.json",
+  "name": "DatastoreSummary",
+  "type": "object",
+  "required": [
+    "datastoreId",
+    "datastoreName",
+    "datastoreStatus"
+  ],
+  "properties": {
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "datastoreName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreName"
+        },
+        {
+          "description": "The data store name."
+        }
+      ]
+    },
+    "datastoreStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreStatus"
+        },
+        {
+          "description": "The data store status."
+        }
+      ]
+    },
+    "datastoreArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Arn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) for the data store."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the data store was created."
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the data store was last updated."
+        }
+      ]
+    }
+  },
+  "description": "List of summaries of data stores."
+}

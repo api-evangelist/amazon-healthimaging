@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-start-dicom-import-job-response-schema.json",
+  "title": "StartDICOMImportJobResponse",
+  "type": "object",
+  "required": [
+    "datastoreId",
+    "jobId",
+    "jobStatus",
+    "submittedAt"
+  ],
+  "properties": {
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "jobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The import job identifier."
+        }
+      ]
+    },
+    "jobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The import job status."
+        }
+      ]
+    },
+    "submittedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the import job was submitted."
+        }
+      ]
+    }
+  }
+}

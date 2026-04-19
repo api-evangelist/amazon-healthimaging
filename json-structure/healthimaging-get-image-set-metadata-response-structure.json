@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-get-image-set-metadata-response-schema.json",
+  "name": "GetImageSetMetadataResponse",
+  "type": "object",
+  "required": [
+    "imageSetMetadataBlob"
+  ],
+  "properties": {
+    "imageSetMetadataBlob": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetMetadataBlob"
+        },
+        {
+          "description": "The blob containing the aggregated metadata information for the image set."
+        }
+      ]
+    }
+  }
+}

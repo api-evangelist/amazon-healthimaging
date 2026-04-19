@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-image-sets-metadata-summary-schema.json",
+  "name": "ImageSetsMetadataSummary",
+  "type": "object",
+  "required": [
+    "imageSetId"
+  ],
+  "properties": {
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier."
+        }
+      ]
+    },
+    "version": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Integer"
+        },
+        {
+          "description": "The image set version."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The time an image set is created in AWS HealthImaging. Sample creation date is provided in <code>1985-04-12T23:20:50.52Z</code> format."
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The time when an image was last updated in AWS HealthImaging."
+        }
+      ]
+    },
+    "DICOMTags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMTags"
+        },
+        {
+          "description": "The DICOM tags associated with the image set."
+        }
+      ]
+    }
+  },
+  "description": "Summary of the image set metadata."
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-update-image-set-metadata-request-schema.json",
+  "name": "UpdateImageSetMetadataRequest",
+  "type": "object",
+  "required": [
+    "updateImageSetMetadataUpdates"
+  ],
+  "properties": {
+    "updateImageSetMetadataUpdates": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/MetadataUpdates"
+        },
+        {
+          "description": "Update image set metadata updates."
+        }
+      ]
+    }
+  }
+}

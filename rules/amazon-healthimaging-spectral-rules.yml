@@ -1,0 +1,55 @@
+rules:
+  healthimaging-operation-summary:
+    description: All operations must have a summary
+    severity: error
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+  healthimaging-operation-id:
+    description: All operations must have an operationId
+    severity: error
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+  healthimaging-operation-tags:
+    description: All operations should have tags
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+  healthimaging-response-200:
+    description: All operations should have a 200 response
+    severity: warn
+    given: "$.paths.*[get,post,put,patch,delete].responses"
+    then:
+      field: "200"
+      function: truthy
+  healthimaging-schema-description:
+    description: Schema components should have descriptions
+    severity: info
+    given: "$.components.schemas.*"
+    then:
+      field: description
+      function: truthy
+  healthimaging-datastore-naming:
+    description: Datastore operations should have consistent naming
+    severity: info
+    given: "$.paths.*[get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+  healthimaging-hipaa-security:
+    description: HIPAA-eligible service must document security requirements
+    severity: error
+    given: "$.components.securitySchemes"
+    then:
+      function: truthy
+  healthimaging-tag-management:
+    description: Tag operations should follow consistent patterns
+    severity: info
+    given: "$.paths.*[get,post,put,patch,delete][?(@property == 'tags')]"
+    then:
+      function: truthy

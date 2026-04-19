@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-image-set-state-schema.json",
+  "name": "ImageSetState",
+  "type": "string",
+  "enum": [
+    "ACTIVE",
+    "LOCKED",
+    "DELETED"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-role-arn-schema.json",
+  "name": "RoleArn",
+  "type": "string",
+  "pattern": "arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+",
+  "minLength": 20,
+  "maxLength": 2048
+}

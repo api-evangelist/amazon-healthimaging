@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-get-image-frame-request-schema.json",
+  "title": "GetImageFrameRequest",
+  "type": "object",
+  "required": [
+    "imageFrameInformation"
+  ],
+  "properties": {
+    "imageFrameInformation": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageFrameInformation"
+        },
+        {
+          "description": "Information about the image frame (pixel data) identifier."
+        }
+      ]
+    }
+  }
+}

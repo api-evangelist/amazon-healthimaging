@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-delete-image-set-response-schema.json",
+  "name": "DeleteImageSetResponse",
+  "type": "object",
+  "required": [
+    "datastoreId",
+    "imageSetId",
+    "imageSetState",
+    "imageSetWorkflowStatus"
+  ],
+  "properties": {
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier."
+        }
+      ]
+    },
+    "imageSetState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetState"
+        },
+        {
+          "description": "The image set state."
+        }
+      ]
+    },
+    "imageSetWorkflowStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetWorkflowStatus"
+        },
+        {
+          "description": "The image set workflow status."
+        }
+      ]
+    }
+  }
+}

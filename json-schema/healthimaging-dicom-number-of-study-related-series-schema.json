@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-number-of-study-related-series-schema.json",
+  "title": "DICOMNumberOfStudyRelatedSeries",
+  "type": "integer",
+  "minimum": 0,
+  "maximum": 10000
+}

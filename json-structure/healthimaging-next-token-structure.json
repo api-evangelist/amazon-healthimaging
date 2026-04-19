@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-next-token-schema.json",
+  "name": "NextToken",
+  "type": "string",
+  "pattern": "\\p{ASCII}{0,8192}",
+  "minLength": 1,
+  "maxLength": 8192
+}

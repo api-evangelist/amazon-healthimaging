@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-copy-source-image-set-information-schema.json",
+  "name": "CopySourceImageSetInformation",
+  "type": "object",
+  "required": [
+    "latestVersionId"
+  ],
+  "properties": {
+    "latestVersionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetExternalVersionId"
+        },
+        {
+          "description": "The latest version identifier for the source image set."
+        }
+      ]
+    }
+  },
+  "description": "Copy source image set information."
+}

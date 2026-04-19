@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-copy-destination-image-set-properties-schema.json",
+  "title": "CopyDestinationImageSetProperties",
+  "type": "object",
+  "required": [
+    "imageSetId",
+    "latestVersionId"
+  ],
+  "properties": {
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier of the copied image set properties."
+        }
+      ]
+    },
+    "latestVersionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetExternalVersionId"
+        },
+        {
+          "description": "The latest version identifier for the destination image set properties."
+        }
+      ]
+    },
+    "imageSetState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetState"
+        },
+        {
+          "description": "The image set state of the destination image set properties."
+        }
+      ]
+    },
+    "imageSetWorkflowStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetWorkflowStatus"
+        },
+        {
+          "description": "The image set workflow status of the destination image set properties."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the destination image set properties were created."
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the destination image set properties were last updated."
+        }
+      ]
+    },
+    "imageSetArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Arn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) assigned to the destination image set."
+        }
+      ]
+    }
+  },
+  "description": "Copy the image set properties of the destination image set."
+}

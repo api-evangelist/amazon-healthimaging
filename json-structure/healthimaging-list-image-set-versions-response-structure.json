@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-list-image-set-versions-response-schema.json",
+  "name": "ListImageSetVersionsResponse",
+  "type": "object",
+  "required": [
+    "imageSetPropertiesList"
+  ],
+  "properties": {
+    "imageSetPropertiesList": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetPropertiesList"
+        },
+        {
+          "description": "Lists all properties associated with an image set."
+        }
+      ]
+    },
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "The pagination token used to retrieve the list of image set versions on the next page."
+        }
+      ]
+    }
+  }
+}

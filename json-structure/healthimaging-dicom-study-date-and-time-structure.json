@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-study-date-and-time-schema.json",
+  "name": "DICOMStudyDateAndTime",
+  "type": "object",
+  "required": [
+    "DICOMStudyDate"
+  ],
+  "properties": {
+    "DICOMStudyDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyDate"
+        },
+        {
+          "description": "The DICOM study date provided in <code>yyMMdd</code> format."
+        }
+      ]
+    },
+    "DICOMStudyTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyTime"
+        },
+        {
+          "description": "The DICOM study time provided in <code>HHmmss.FFFFFF</code> format."
+        }
+      ]
+    }
+  },
+  "description": "The aggregated structure to store DICOM study date and study time for search capabilities."
+}

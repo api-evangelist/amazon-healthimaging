@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-tag-key-list-schema.json",
+  "title": "TagKeyList",
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/TagKey"
+  },
+  "minItems": 0,
+  "maxItems": 200
+}

@@ -1,0 +1,9 @@
+{
+  "datastoreId": null,
+  "datastoreName": null,
+  "datastoreStatus": null,
+  "kmsKeyArn": null,
+  "datastoreArn": null,
+  "createdAt": null,
+  "updatedAt": null
+}

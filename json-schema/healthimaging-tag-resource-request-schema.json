@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-tag-resource-request-schema.json",
+  "title": "TagResourceRequest",
+  "type": "object",
+  "required": [
+    "tags"
+  ],
+  "properties": {
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagMap"
+        },
+        {
+          "description": "The user-specified key and value tag pairs added to a medical imaging resource."
+        }
+      ]
+    }
+  }
+}

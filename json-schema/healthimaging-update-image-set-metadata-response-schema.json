@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-update-image-set-metadata-response-schema.json",
+  "title": "UpdateImageSetMetadataResponse",
+  "type": "object",
+  "required": [
+    "datastoreId",
+    "imageSetId",
+    "latestVersionId",
+    "imageSetState"
+  ],
+  "properties": {
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier."
+        }
+      ]
+    },
+    "latestVersionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetExternalVersionId"
+        },
+        {
+          "description": "The latest image set version identifier."
+        }
+      ]
+    },
+    "imageSetState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetState"
+        },
+        {
+          "description": "The image set state."
+        }
+      ]
+    },
+    "imageSetWorkflowStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetWorkflowStatus"
+        },
+        {
+          "description": "The image set workflow status."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when image set metadata was created."
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when image set metadata was updated."
+        }
+      ]
+    },
+    "message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The error message thrown if an update image set metadata action fails."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-create-datastore-request-schema.json",
+  "name": "CreateDatastoreRequest",
+  "type": "object",
+  "required": [
+    "clientToken"
+  ],
+  "properties": {
+    "datastoreName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreName"
+        },
+        {
+          "description": "The data store name."
+        }
+      ]
+    },
+    "clientToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ClientToken"
+        },
+        {
+          "description": "A unique identifier for API idempotency."
+        }
+      ]
+    },
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagMap"
+        },
+        {
+          "description": "The tags provided when creating a data store."
+        }
+      ]
+    },
+    "kmsKeyArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/KmsKeyArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) assigned to the AWS Key Management Service (AWS KMS) key for accessing encrypted data."
+        }
+      ]
+    }
+  }
+}

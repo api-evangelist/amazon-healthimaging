@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-tag-map-schema.json",
+  "name": "TagMap",
+  "type": "object",
+  "additionalProperties": {
+    "$ref": "#/components/schemas/TagValue"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-copy-image-set-request-schema.json",
+  "name": "CopyImageSetRequest",
+  "type": "object",
+  "required": [
+    "copyImageSetInformation"
+  ],
+  "properties": {
+    "copyImageSetInformation": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/CopyImageSetInformation"
+        },
+        {
+          "description": "Copy image set information."
+        }
+      ]
+    }
+  }
+}

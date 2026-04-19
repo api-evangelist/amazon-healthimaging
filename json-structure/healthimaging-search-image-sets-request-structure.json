@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-search-image-sets-request-schema.json",
+  "name": "SearchImageSetsRequest",
+  "type": "object",
+  "properties": {
+    "searchCriteria": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/SearchCriteria"
+        },
+        {
+          "description": "The search criteria that filters by applying a maximum of 1 item to <code>SearchByAttribute</code>."
+        }
+      ]
+    }
+  }
+}

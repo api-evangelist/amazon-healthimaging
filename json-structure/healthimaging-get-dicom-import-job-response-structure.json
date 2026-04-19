@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-get-dicom-import-job-response-schema.json",
+  "name": "GetDICOMImportJobResponse",
+  "type": "object",
+  "required": [
+    "jobProperties"
+  ],
+  "properties": {
+    "jobProperties": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMImportJobProperties"
+        },
+        {
+          "description": "The properties of the import job."
+        }
+      ]
+    }
+  }
+}

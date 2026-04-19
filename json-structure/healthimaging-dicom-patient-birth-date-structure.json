@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-patient-birth-date-schema.json",
+  "name": "DICOMPatientBirthDate",
+  "type": "string",
+  "minLength": 0,
+  "maxLength": 18,
+  "format": "password"
+}

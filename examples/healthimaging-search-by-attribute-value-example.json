@@ -1,0 +1,8 @@
+{
+  "DICOMPatientId": null,
+  "DICOMAccessionNumber": null,
+  "DICOMStudyId": null,
+  "DICOMStudyInstanceUID": null,
+  "createdAt": null,
+  "DICOMStudyDateAndTime": null
+}

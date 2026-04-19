@@ -1,0 +1,14 @@
+{
+  "DICOMPatientId": null,
+  "DICOMPatientName": null,
+  "DICOMPatientBirthDate": null,
+  "DICOMPatientSex": null,
+  "DICOMStudyInstanceUID": null,
+  "DICOMStudyId": null,
+  "DICOMStudyDescription": null,
+  "DICOMNumberOfStudyRelatedSeries": null,
+  "DICOMNumberOfStudyRelatedInstances": null,
+  "DICOMAccessionNumber": null,
+  "DICOMStudyDate": null,
+  "DICOMStudyTime": null
+}

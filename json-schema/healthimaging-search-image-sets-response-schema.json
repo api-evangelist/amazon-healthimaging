@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-search-image-sets-response-schema.json",
+  "title": "SearchImageSetsResponse",
+  "type": "object",
+  "required": [
+    "imageSetsMetadataSummaries"
+  ],
+  "properties": {
+    "imageSetsMetadataSummaries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetsMetadataSummaries"
+        },
+        {
+          "description": "The model containing the image set results."
+        }
+      ]
+    },
+    "nextToken": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/NextToken"
+        },
+        {
+          "description": "The token for pagination results."
+        }
+      ]
+    }
+  }
+}

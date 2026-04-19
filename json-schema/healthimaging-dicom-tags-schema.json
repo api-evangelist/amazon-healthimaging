@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-tags-schema.json",
+  "title": "DICOMTags",
+  "type": "object",
+  "properties": {
+    "DICOMPatientId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMPatientId"
+        },
+        {
+          "description": "The unique identifier for a patient in a DICOM Study."
+        }
+      ]
+    },
+    "DICOMPatientName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMPatientName"
+        },
+        {
+          "description": "The patient name."
+        }
+      ]
+    },
+    "DICOMPatientBirthDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMPatientBirthDate"
+        },
+        {
+          "description": "The patient birth date."
+        }
+      ]
+    },
+    "DICOMPatientSex": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMPatientSex"
+        },
+        {
+          "description": "The patient sex."
+        }
+      ]
+    },
+    "DICOMStudyInstanceUID": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyInstanceUID"
+        },
+        {
+          "description": "The DICOM provided identifier for studyInstanceUid.&gt;"
+        }
+      ]
+    },
+    "DICOMStudyId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyId"
+        },
+        {
+          "description": "The DICOM provided studyId."
+        }
+      ]
+    },
+    "DICOMStudyDescription": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyDescription"
+        },
+        {
+          "description": "The description of the study."
+        }
+      ]
+    },
+    "DICOMNumberOfStudyRelatedSeries": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMNumberOfStudyRelatedSeries"
+        },
+        {
+          "description": "The total number of series in the DICOM study."
+        }
+      ]
+    },
+    "DICOMNumberOfStudyRelatedInstances": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMNumberOfStudyRelatedInstances"
+        },
+        {
+          "description": "The total number of instances in the DICOM study."
+        }
+      ]
+    },
+    "DICOMAccessionNumber": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMAccessionNumber"
+        },
+        {
+          "description": "The accession number for the DICOM study."
+        }
+      ]
+    },
+    "DICOMStudyDate": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyDate"
+        },
+        {
+          "description": "The study date."
+        }
+      ]
+    },
+    "DICOMStudyTime": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMStudyTime"
+        },
+        {
+          "description": "The study time."
+        }
+      ]
+    }
+  },
+  "description": "The DICOM attributes returned as a part of a response. Each image set has these properties as part of a search result."
+}

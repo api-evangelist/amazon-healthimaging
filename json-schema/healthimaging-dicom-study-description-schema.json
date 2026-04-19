@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-study-description-schema.json",
+  "title": "DICOMStudyDescription",
+  "type": "string",
+  "minLength": 0,
+  "maxLength": 64,
+  "format": "password"
+}

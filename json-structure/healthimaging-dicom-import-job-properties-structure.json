@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-import-job-properties-schema.json",
+  "name": "DICOMImportJobProperties",
+  "type": "object",
+  "required": [
+    "jobId",
+    "jobName",
+    "jobStatus",
+    "datastoreId",
+    "dataAccessRoleArn",
+    "inputS3Uri",
+    "outputS3Uri"
+  ],
+  "properties": {
+    "jobId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobId"
+        },
+        {
+          "description": "The import job identifier."
+        }
+      ]
+    },
+    "jobName": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobName"
+        },
+        {
+          "description": "The import job name."
+        }
+      ]
+    },
+    "jobStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/JobStatus"
+        },
+        {
+          "description": "The filters for listing import jobs based on status."
+        }
+      ]
+    },
+    "datastoreId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DatastoreId"
+        },
+        {
+          "description": "The data store identifier."
+        }
+      ]
+    },
+    "dataAccessRoleArn": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/RoleArn"
+        },
+        {
+          "description": "The Amazon Resource Name (ARN) that grants permissions to access medical imaging resources."
+        }
+      ]
+    },
+    "endedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp for when the import job was ended."
+        }
+      ]
+    },
+    "submittedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp for when the import job was submitted."
+        }
+      ]
+    },
+    "inputS3Uri": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3Uri"
+        },
+        {
+          "description": "The input prefix path for the S3 bucket that contains the DICOM P10 files to be imported."
+        }
+      ]
+    },
+    "outputS3Uri": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/S3Uri"
+        },
+        {
+          "description": "The output prefix of the S3 bucket to upload the results of the DICOM import job."
+        }
+      ]
+    },
+    "message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The error message thrown if an import job fails."
+        }
+      ]
+    }
+  },
+  "description": "Properties of the import job."
+}

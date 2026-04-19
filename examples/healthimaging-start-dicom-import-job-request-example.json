@@ -1,0 +1,7 @@
+{
+  "jobName": null,
+  "dataAccessRoleArn": null,
+  "clientToken": null,
+  "inputS3Uri": null,
+  "outputS3Uri": null
+}

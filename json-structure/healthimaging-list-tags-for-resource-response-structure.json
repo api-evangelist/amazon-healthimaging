@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-list-tags-for-resource-response-schema.json",
+  "name": "ListTagsForResourceResponse",
+  "type": "object",
+  "required": [
+    "tags"
+  ],
+  "properties": {
+    "tags": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/TagMap"
+        },
+        {
+          "description": "A list of all tags associated with a medical imaging resource."
+        }
+      ]
+    }
+  }
+}

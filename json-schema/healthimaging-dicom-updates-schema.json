@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-dicom-updates-schema.json",
+  "title": "DICOMUpdates",
+  "type": "object",
+  "properties": {
+    "removableAttributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMAttribute"
+        },
+        {
+          "description": "The DICOM tags to be removed from <code>ImageSetMetadata</code>."
+        }
+      ]
+    },
+    "updatableAttributes": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMAttribute"
+        },
+        {
+          "description": "The DICOM tags that need to be updated in <code>ImageSetMetadata</code>."
+        }
+      ]
+    }
+  },
+  "description": "The object containing <code>removableAttributes</code> and <code>updatableAttributes</code>."
+}

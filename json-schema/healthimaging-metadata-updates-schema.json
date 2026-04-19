@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-metadata-updates-schema.json",
+  "title": "MetadataUpdates",
+  "type": "object",
+  "properties": {
+    "DICOMUpdates": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/DICOMUpdates"
+        },
+        {
+          "description": "The object containing <code>removableAttributes</code> and <code>updatableAttributes</code>."
+        }
+      ]
+    }
+  },
+  "description": "Contains DICOMUpdates."
+}

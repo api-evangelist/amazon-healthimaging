@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-datastore-status-schema.json",
+  "name": "DatastoreStatus",
+  "type": "string",
+  "enum": [
+    "CREATING",
+    "CREATE_FAILED",
+    "ACTIVE",
+    "DELETING",
+    "DELETED"
+  ]
+}

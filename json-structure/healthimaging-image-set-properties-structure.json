@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/json-schema/healthimaging-image-set-properties-schema.json",
+  "name": "ImageSetProperties",
+  "type": "object",
+  "required": [
+    "imageSetId",
+    "versionId",
+    "imageSetState"
+  ],
+  "properties": {
+    "imageSetId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetId"
+        },
+        {
+          "description": "The image set identifier."
+        }
+      ]
+    },
+    "versionId": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetExternalVersionId"
+        },
+        {
+          "description": "The image set version identifier."
+        }
+      ]
+    },
+    "imageSetState": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetState"
+        },
+        {
+          "description": "The image set state."
+        }
+      ]
+    },
+    "ImageSetWorkflowStatus": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/ImageSetWorkflowStatus"
+        },
+        {
+          "description": "The image set workflow status."
+        }
+      ]
+    },
+    "createdAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the image set properties were created."
+        }
+      ]
+    },
+    "updatedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the image set properties were updated."
+        }
+      ]
+    },
+    "deletedAt": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Date"
+        },
+        {
+          "description": "The timestamp when the image set properties were deleted."
+        }
+      ]
+    },
+    "message": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Message"
+        },
+        {
+          "description": "The error message thrown if an image set action fails."
+        }
+      ]
+    }
+  },
+  "description": "The image set properties."
+}
