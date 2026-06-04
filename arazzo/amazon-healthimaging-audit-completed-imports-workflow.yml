@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Audit Completed Imports
+  summary: List completed import jobs, read the most recent job's detail, then search the imported image sets.
+  description: >-
+    Audits what was recently ingested into a data store. The workflow lists the
+    import jobs filtered to COMPLETED, reads the full properties of the most
+    recent completed job, and then searches the data store for image sets so the
+    auditor can correlate the job with its resulting image sets. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: audit-completed-imports
+  summary: Inspect the most recent completed import job and the data store's image sets.
+  description: >-
+    Lists completed import jobs for a data store, branches on whether any exist,
+    reads the detail of the first completed job, and searches the data store's
+    image sets.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the data store to audit.
+  steps:
+  - stepId: listCompletedJobs
+    description: >-
+      List import jobs for the data store filtered to the COMPLETED status,
+      returning the first page of jobs.
+    operationId: ListDICOMImportJobs
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: jobStatus
+      in: query
+      value: COMPLETED
+    - name: maxResults
+      in: query
+      value: 50
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstJobId: $response.body#/jobSummaries/0/jobId
+      jobSummaries: $response.body#/jobSummaries
+    onSuccess:
+    - name: jobsFound
+      type: goto
+      stepId: getJobDetail
+      criteria:
+      - context: $response.body
+        condition: $.jobSummaries.length > 0
+        type: jsonpath
+    - name: noJobs
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.jobSummaries.length == 0
+        type: jsonpath
+  - stepId: getJobDetail
+    description: >-
+      Read the full properties of the most recent completed import job to
+      surface its input and output S3 locations.
+    operationId: GetDICOMImportJob
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: jobId
+      in: path
+      value: $steps.listCompletedJobs.outputs.firstJobId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.jobProperties.jobStatus == "COMPLETED"
+      type: jsonpath
+    outputs:
+      inputS3Uri: $response.body#/jobProperties/inputS3Uri
+      outputS3Uri: $response.body#/jobProperties/outputS3Uri
+      endedAt: $response.body#/jobProperties/endedAt
+  - stepId: searchImageSets
+    description: >-
+      Search the data store for image sets so the completed import can be
+      correlated with the image sets it produced.
+    operationId: SearchImageSets
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: maxResults
+      in: query
+      value: 50
+    requestBody:
+      contentType: application/json
+      payload:
+        searchCriteria: {}
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetsMetadataSummaries: $response.body#/imageSetsMetadataSummaries
+      nextToken: $response.body#/nextToken
+  outputs:
+    firstJobId: $steps.listCompletedJobs.outputs.firstJobId
+    inputS3Uri: $steps.getJobDetail.outputs.inputS3Uri
+    outputS3Uri: $steps.getJobDetail.outputs.outputS3Uri
+    imageSetsMetadataSummaries: $steps.searchImageSets.outputs.imageSetsMetadataSummaries

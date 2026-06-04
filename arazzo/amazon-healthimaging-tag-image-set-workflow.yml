@@ -1,0 +1,88 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Tag Image Set
+  summary: Resolve an image set's ARN, attach tags to it, then list the tags back.
+  description: >-
+    Applies governance tags to an image set and confirms them. The workflow
+    reads the image set to capture its Amazon Resource Name, adds the supplied
+    key/value tags to that resource, and then lists the tags on the resource to
+    verify they were applied. Every step spells out its request inline so the
+    flow can be read and executed without opening the underlying OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: tag-image-set
+  summary: Tag an image set resource by its ARN and verify the tags.
+  description: >-
+    Captures the image set ARN, attaches the supplied tags to the resource, and
+    lists the resource tags to confirm the result.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    - imageSetId
+    - tags
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the data store holding the image set.
+      imageSetId:
+        type: string
+        description: The image set identifier to tag.
+      tags:
+        type: object
+        description: The map of tag key/value pairs to apply to the image set.
+  steps:
+  - stepId: getImageSet
+    description: >-
+      Read the image set properties to capture the Amazon Resource Name (ARN)
+      used by the tagging operations.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetArn: $response.body#/imageSetArn
+  - stepId: tagResource
+    description: >-
+      Attach the supplied key/value tags to the image set resource identified by
+      its ARN.
+    operationId: TagResource
+    parameters:
+    - name: resourceArn
+      in: path
+      value: $steps.getImageSet.outputs.imageSetArn
+    requestBody:
+      contentType: application/json
+      payload:
+        tags: $inputs.tags
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      statusCode: $statusCode
+  - stepId: listTags
+    description: >-
+      List all tags on the image set resource to confirm the new tags were
+      applied.
+    operationId: ListTagsForResource
+    parameters:
+    - name: resourceArn
+      in: path
+      value: $steps.getImageSet.outputs.imageSetArn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      tags: $response.body#/tags
+  outputs:
+    imageSetArn: $steps.getImageSet.outputs.imageSetArn
+    tags: $steps.listTags.outputs.tags

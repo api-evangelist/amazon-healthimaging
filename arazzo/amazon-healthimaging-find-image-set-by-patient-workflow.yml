@@ -1,0 +1,113 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Find Image Set by Patient
+  summary: Search image sets by DICOM patient ID, then read the top match's properties and metadata.
+  description: >-
+    Locates a patient's imaging data and drills into the first match. The
+    workflow searches the data store using an EQUAL filter on the DICOM patient
+    ID, branches on whether any image set was found, and when a match exists
+    reads its properties and downloads its metadata blob. Every step spells out
+    its request inline so the flow can be read and executed without opening the
+    underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: find-image-set-by-patient
+  summary: Search for a patient's image set and inspect the first result.
+  description: >-
+    Runs a patient-ID search against the data store, and when at least one image
+    set is returned, reads the first match's properties and fetches its metadata
+    blob.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    - dicomPatientId
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the data store to search.
+      dicomPatientId:
+        type: string
+        description: The DICOM patient ID to match on.
+  steps:
+  - stepId: searchByPatient
+    description: >-
+      Search the data store for image sets whose DICOM patient ID equals the
+      supplied value, returning at most one result.
+    operationId: SearchImageSets
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: maxResults
+      in: query
+      value: 1
+    requestBody:
+      contentType: application/json
+      payload:
+        searchCriteria:
+          filters:
+          - operator: EQUAL
+            values:
+            - DICOMPatientId: $inputs.dicomPatientId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      matchedImageSetId: $response.body#/imageSetsMetadataSummaries/0/imageSetId
+    onSuccess:
+    - name: patientFound
+      type: goto
+      stepId: getMatchedImageSet
+      criteria:
+      - context: $response.body
+        condition: $.imageSetsMetadataSummaries.length > 0
+        type: jsonpath
+    - name: patientMissing
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.imageSetsMetadataSummaries.length == 0
+        type: jsonpath
+  - stepId: getMatchedImageSet
+    description: >-
+      Read the properties of the matched image set to confirm its state and
+      capture its latest version identifier.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $steps.searchByPatient.outputs.matchedImageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      versionId: $response.body#/versionId
+      imageSetState: $response.body#/imageSetState
+  - stepId: getMatchedMetadata
+    description: >-
+      Download the aggregated metadata blob for the matched image set version.
+    operationId: GetImageSetMetadata
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $steps.searchByPatient.outputs.matchedImageSetId
+    - name: version
+      in: query
+      value: $steps.getMatchedImageSet.outputs.versionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetMetadataBlob: $response.body#/imageSetMetadataBlob
+  outputs:
+    matchedImageSetId: $steps.searchByPatient.outputs.matchedImageSetId
+    versionId: $steps.getMatchedImageSet.outputs.versionId
+    imageSetMetadataBlob: $steps.getMatchedMetadata.outputs.imageSetMetadataBlob

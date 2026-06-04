@@ -1,0 +1,132 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Copy Image Set
+  summary: Resolve a source image set version, copy it to a destination, then poll until ACTIVE.
+  description: >-
+    Duplicates an image set within a data store. The workflow reads the source
+    image set to capture its latest version, issues a copy into a destination
+    image set, and then polls the destination image set until it settles into
+    the ACTIVE state. Every step spells out its request inline so the flow can be
+    read and executed without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: copy-image-set
+  summary: Copy a source image set into a destination and wait until it is ACTIVE.
+  description: >-
+    Captures the source image set's latest version, copies it onto the
+    destination image set, and polls the destination until copy processing
+    finishes and the image set becomes ACTIVE.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    - sourceImageSetId
+    - destinationImageSetId
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the data store containing both image sets.
+      sourceImageSetId:
+        type: string
+        description: The source image set identifier to copy from.
+      destinationImageSetId:
+        type: string
+        description: The destination image set identifier to copy into.
+  steps:
+  - stepId: getSourceImageSet
+    description: >-
+      Read the source image set to capture its latest version identifier, which
+      the copy request must reference.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.sourceImageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      sourceVersionId: $response.body#/versionId
+  - stepId: getDestinationImageSet
+    description: >-
+      Read the destination image set to capture its latest version identifier,
+      required to authorize the copy onto an existing image set.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.destinationImageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      destinationVersionId: $response.body#/versionId
+  - stepId: copyImageSet
+    description: >-
+      Copy the source image set version onto the destination image set, using
+      the captured latest version identifiers for both ends of the copy.
+    operationId: CopyImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: sourceImageSetId
+      in: path
+      value: $inputs.sourceImageSetId
+    requestBody:
+      contentType: application/json
+      payload:
+        copyImageSetInformation:
+          sourceImageSet:
+            latestVersionId: $steps.getSourceImageSet.outputs.sourceVersionId
+          destinationImageSet:
+            imageSetId: $inputs.destinationImageSetId
+            latestVersionId: $steps.getDestinationImageSet.outputs.destinationVersionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      destinationImageSetId: $response.body#/destinationImageSetProperties/imageSetId
+      destinationLatestVersionId: $response.body#/destinationImageSetProperties/latestVersionId
+  - stepId: pollDestination
+    description: >-
+      Read the destination image set and check whether copy processing has
+      finished. Repeats while the image set is still LOCKED.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $steps.copyImageSet.outputs.destinationImageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetState: $response.body#/imageSetState
+      imageSetWorkflowStatus: $response.body#/imageSetWorkflowStatus
+    onSuccess:
+    - name: copyActive
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.imageSetState == "ACTIVE"
+        type: jsonpath
+    - name: copyLocked
+      type: goto
+      stepId: pollDestination
+      criteria:
+      - context: $response.body
+        condition: $.imageSetState == "LOCKED"
+        type: jsonpath
+  outputs:
+    destinationImageSetId: $steps.copyImageSet.outputs.destinationImageSetId
+    destinationLatestVersionId: $steps.copyImageSet.outputs.destinationLatestVersionId
+    imageSetState: $steps.pollDestination.outputs.imageSetState

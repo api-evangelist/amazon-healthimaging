@@ -1,0 +1,145 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Import DICOM and Search
+  summary: Start a DICOM import job, poll until COMPLETED, then search the imported image sets.
+  description: >-
+    Imports a batch of DICOM P10 files from S3 into an active data store and
+    surfaces the resulting image sets. The workflow starts the import job, polls
+    the job properties until it reaches COMPLETED or FAILED, and on success
+    searches the data store for the image sets that the import produced. Every
+    step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: import-dicom-and-search
+  summary: Run a DICOM import job to completion and search the resulting image sets.
+  description: >-
+    Starts a DICOM import job from an S3 input prefix, waits for the job to
+    finish, and then searches the data store for image sets so the caller can
+    locate what was imported.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    - dataAccessRoleArn
+    - clientToken
+    - inputS3Uri
+    - outputS3Uri
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the ACTIVE data store to import into.
+      jobName:
+        type: string
+        description: An optional name for the import job.
+      dataAccessRoleArn:
+        type: string
+        description: ARN of the IAM role granting access to the medical imaging resources.
+      clientToken:
+        type: string
+        description: A unique idempotency token for the import request.
+      inputS3Uri:
+        type: string
+        description: The S3 prefix containing the DICOM P10 files to import.
+      outputS3Uri:
+        type: string
+        description: The S3 prefix where import results are written.
+  steps:
+  - stepId: startImportJob
+    description: >-
+      Start the DICOM import job. The response returns the job identifier and an
+      initial job status (typically SUBMITTED).
+    operationId: StartDICOMImportJob
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    requestBody:
+      contentType: application/json
+      payload:
+        jobName: $inputs.jobName
+        dataAccessRoleArn: $inputs.dataAccessRoleArn
+        clientToken: $inputs.clientToken
+        inputS3Uri: $inputs.inputS3Uri
+        outputS3Uri: $inputs.outputS3Uri
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+      jobStatus: $response.body#/jobStatus
+  - stepId: pollImportJob
+    description: >-
+      Read the import job properties and check progress. Repeats while the job
+      is still SUBMITTED or IN_PROGRESS.
+    operationId: GetDICOMImportJob
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: jobId
+      in: path
+      value: $steps.startImportJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobStatus: $response.body#/jobProperties/jobStatus
+      endedAt: $response.body#/jobProperties/endedAt
+    onSuccess:
+    - name: jobCompleted
+      type: goto
+      stepId: searchImageSets
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "COMPLETED"
+        type: jsonpath
+    - name: jobFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "FAILED"
+        type: jsonpath
+    - name: jobRunning
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "IN_PROGRESS"
+        type: jsonpath
+    - name: jobSubmitted
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "SUBMITTED"
+        type: jsonpath
+  - stepId: searchImageSets
+    description: >-
+      Search the data store for image sets after the import completed, returning
+      the first page of metadata summaries.
+    operationId: SearchImageSets
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: maxResults
+      in: query
+      value: 50
+    requestBody:
+      contentType: application/json
+      payload:
+        searchCriteria: {}
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetsMetadataSummaries: $response.body#/imageSetsMetadataSummaries
+      firstImageSetId: $response.body#/imageSetsMetadataSummaries/0/imageSetId
+      nextToken: $response.body#/nextToken
+  outputs:
+    jobId: $steps.startImportJob.outputs.jobId
+    jobStatus: $steps.pollImportJob.outputs.jobStatus
+    firstImageSetId: $steps.searchImageSets.outputs.firstImageSetId
+    imageSetsMetadataSummaries: $steps.searchImageSets.outputs.imageSetsMetadataSummaries

@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Inspect Image Set
+  summary: Read image set properties, fetch its metadata, then retrieve an image frame.
+  description: >-
+    Drills into a single image set from properties down to pixel data. The
+    workflow reads the image set properties to confirm it is ACTIVE, fetches the
+    aggregated DICOM metadata blob, and then retrieves a specific image frame
+    (pixel data) by its frame identifier. Every step spells out its request
+    inline so the flow can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: inspect-image-set
+  summary: Fetch image set properties, metadata, and a single image frame.
+  description: >-
+    Confirms an image set is ACTIVE, downloads its metadata blob, and retrieves
+    the pixel data for a given image frame identifier.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    - imageSetId
+    - imageFrameId
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the data store holding the image set.
+      imageSetId:
+        type: string
+        description: The image set identifier to inspect.
+      imageFrameId:
+        type: string
+        description: The image frame (pixel data) identifier to retrieve.
+  steps:
+  - stepId: getImageSet
+    description: >-
+      Read the image set properties to confirm the set exists and is in the
+      ACTIVE state before fetching its data.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.imageSetState == "ACTIVE"
+      type: jsonpath
+    outputs:
+      versionId: $response.body#/versionId
+      imageSetState: $response.body#/imageSetState
+  - stepId: getImageSetMetadata
+    description: >-
+      Fetch the aggregated metadata blob for the image set, which contains the
+      DICOM attribute hierarchy.
+    operationId: GetImageSetMetadata
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    - name: version
+      in: query
+      value: $steps.getImageSet.outputs.versionId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetMetadataBlob: $response.body#/imageSetMetadataBlob
+  - stepId: getImageFrame
+    description: >-
+      Retrieve the pixel data for the requested image frame identifier within
+      the image set.
+    operationId: GetImageFrame
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    requestBody:
+      contentType: application/json
+      payload:
+        imageFrameInformation:
+          imageFrameId: $inputs.imageFrameId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageFrameBlob: $response.body#/imageFrameBlob
+  outputs:
+    versionId: $steps.getImageSet.outputs.versionId
+    imageSetMetadataBlob: $steps.getImageSetMetadata.outputs.imageSetMetadataBlob
+    imageFrameBlob: $steps.getImageFrame.outputs.imageFrameBlob

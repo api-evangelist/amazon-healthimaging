@@ -1,0 +1,167 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Onboard Data Store and Import
+  summary: Create a data store, wait until ACTIVE, then start a DICOM import and poll to completion.
+  description: >-
+    End-to-end onboarding of a new imaging data store and its first batch of
+    DICOM data. The workflow creates a data store, polls until it becomes
+    ACTIVE, starts a DICOM import job into the freshly provisioned data store,
+    and polls the import job until it reaches COMPLETED or FAILED. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: onboard-datastore-and-import
+  summary: Provision a data store and run its first DICOM import to completion.
+  description: >-
+    Creates a data store and waits for ACTIVE, then starts a DICOM import job
+    into it and waits for the job to finish, chaining provisioning and ingestion
+    into a single onboarding flow.
+  inputs:
+    type: object
+    required:
+    - datastoreName
+    - datastoreClientToken
+    - dataAccessRoleArn
+    - importClientToken
+    - inputS3Uri
+    - outputS3Uri
+    properties:
+      datastoreName:
+        type: string
+        description: The name for the new data store.
+      datastoreClientToken:
+        type: string
+        description: Idempotency token for the create data store request.
+      dataAccessRoleArn:
+        type: string
+        description: ARN of the IAM role granting access to medical imaging resources.
+      importClientToken:
+        type: string
+        description: Idempotency token for the import job request.
+      inputS3Uri:
+        type: string
+        description: The S3 prefix containing the DICOM P10 files to import.
+      outputS3Uri:
+        type: string
+        description: The S3 prefix where import results are written.
+  steps:
+  - stepId: createDatastore
+    description: >-
+      Create the data store that will receive the imported DICOM data.
+    operationId: CreateDatastore
+    requestBody:
+      contentType: application/json
+      payload:
+        datastoreName: $inputs.datastoreName
+        clientToken: $inputs.datastoreClientToken
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreId: $response.body#/datastoreId
+  - stepId: pollDatastore
+    description: >-
+      Read the data store properties and check whether provisioning finished.
+      Repeats while the data store is still CREATING.
+    operationId: GetDatastore
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $steps.createDatastore.outputs.datastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreStatus: $response.body#/datastoreProperties/datastoreStatus
+    onSuccess:
+    - name: datastoreActive
+      type: goto
+      stepId: startImportJob
+      criteria:
+      - context: $response.body
+        condition: $.datastoreProperties.datastoreStatus == "ACTIVE"
+        type: jsonpath
+    - name: datastoreFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.datastoreProperties.datastoreStatus == "CREATE_FAILED"
+        type: jsonpath
+    - name: stillCreating
+      type: goto
+      stepId: pollDatastore
+      criteria:
+      - context: $response.body
+        condition: $.datastoreProperties.datastoreStatus == "CREATING"
+        type: jsonpath
+  - stepId: startImportJob
+    description: >-
+      Start the DICOM import job into the newly active data store.
+    operationId: StartDICOMImportJob
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $steps.createDatastore.outputs.datastoreId
+    requestBody:
+      contentType: application/json
+      payload:
+        dataAccessRoleArn: $inputs.dataAccessRoleArn
+        clientToken: $inputs.importClientToken
+        inputS3Uri: $inputs.inputS3Uri
+        outputS3Uri: $inputs.outputS3Uri
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobId: $response.body#/jobId
+      jobStatus: $response.body#/jobStatus
+  - stepId: pollImportJob
+    description: >-
+      Read the import job properties and check progress. Repeats while the job
+      is still SUBMITTED or IN_PROGRESS.
+    operationId: GetDICOMImportJob
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $steps.createDatastore.outputs.datastoreId
+    - name: jobId
+      in: path
+      value: $steps.startImportJob.outputs.jobId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      jobStatus: $response.body#/jobProperties/jobStatus
+      endedAt: $response.body#/jobProperties/endedAt
+    onSuccess:
+    - name: jobCompleted
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "COMPLETED"
+        type: jsonpath
+    - name: jobFailed
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "FAILED"
+        type: jsonpath
+    - name: jobRunning
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "IN_PROGRESS"
+        type: jsonpath
+    - name: jobSubmitted
+      type: goto
+      stepId: pollImportJob
+      criteria:
+      - context: $response.body
+        condition: $.jobProperties.jobStatus == "SUBMITTED"
+        type: jsonpath
+  outputs:
+    datastoreId: $steps.createDatastore.outputs.datastoreId
+    jobId: $steps.startImportJob.outputs.jobId
+    jobStatus: $steps.pollImportJob.outputs.jobStatus

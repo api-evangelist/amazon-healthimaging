@@ -52,6 +52,36 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-healthimaging.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/amazon-healthimaging-audit-completed-imports-workflow.yml
+    name: Amazon HealthImaging Audit Completed Imports
+    summary: List completed import jobs, read the most recent job's detail, then search the imported image sets.
+  - url: arazzo/amazon-healthimaging-copy-image-set-workflow.yml
+    name: Amazon HealthImaging Copy Image Set
+    summary: Resolve a source image set version, copy it to a destination, then poll until ACTIVE.
+  - url: arazzo/amazon-healthimaging-find-image-set-by-patient-workflow.yml
+    name: Amazon HealthImaging Find Image Set by Patient
+    summary: Search image sets by DICOM patient ID, then read the top match's properties and metadata.
+  - url: arazzo/amazon-healthimaging-import-dicom-and-search-workflow.yml
+    name: Amazon HealthImaging Import DICOM and Search
+    summary: Start a DICOM import job, poll until COMPLETED, then search the imported image sets.
+  - url: arazzo/amazon-healthimaging-inspect-image-set-workflow.yml
+    name: Amazon HealthImaging Inspect Image Set
+    summary: Read image set properties, fetch its metadata, then retrieve an image frame.
+  - url: arazzo/amazon-healthimaging-onboard-datastore-and-import-workflow.yml
+    name: Amazon HealthImaging Onboard Data Store and Import
+    summary: Create a data store, wait until ACTIVE, then start a DICOM import and poll to completion.
+  - url: arazzo/amazon-healthimaging-provision-datastore-workflow.yml
+    name: Amazon HealthImaging Provision Data Store
+    summary: Create a data store and poll until it becomes ACTIVE before use.
+  - url: arazzo/amazon-healthimaging-tag-image-set-workflow.yml
+    name: Amazon HealthImaging Tag Image Set
+    summary: Resolve an image set's ARN, attach tags to it, then list the tags back.
+  - url: arazzo/amazon-healthimaging-update-image-set-metadata-workflow.yml
+    name: Amazon HealthImaging Update Image Set Metadata
+    summary: Read an image set's latest version, apply DICOM metadata updates, then list its versions.
 - type: Portal
   url: https://aws.amazon.com/healthimaging/
 - type: Documentation

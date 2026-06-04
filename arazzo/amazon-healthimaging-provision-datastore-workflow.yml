@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Provision Data Store
+  summary: Create a data store and poll until it becomes ACTIVE before use.
+  description: >-
+    Provisions a new AWS HealthImaging data store and waits for it to finish
+    provisioning. The workflow creates the data store, then repeatedly reads the
+    data store properties until the status transitions from CREATING to ACTIVE.
+    If provisioning fails the flow branches to a terminal failure. Every step
+    spells out its request inline so the flow can be read and executed without
+    opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: provision-datastore
+  summary: Create a HealthImaging data store and wait until it is ACTIVE.
+  description: >-
+    Creates a data store with the supplied name and idempotency token, then
+    polls the data store properties until the data store reaches the ACTIVE
+    state or fails provisioning.
+  inputs:
+    type: object
+    required:
+    - datastoreName
+    - clientToken
+    properties:
+      datastoreName:
+        type: string
+        description: The human readable name for the new data store.
+      clientToken:
+        type: string
+        description: A unique idempotency token for the create request.
+      kmsKeyArn:
+        type: string
+        description: Optional ARN of a KMS key used to encrypt the data store.
+  steps:
+  - stepId: createDatastore
+    description: >-
+      Create the data store. The response returns the new data store identifier
+      and its initial status (typically CREATING).
+    operationId: CreateDatastore
+    requestBody:
+      contentType: application/json
+      payload:
+        datastoreName: $inputs.datastoreName
+        clientToken: $inputs.clientToken
+        kmsKeyArn: $inputs.kmsKeyArn
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreId: $response.body#/datastoreId
+      datastoreStatus: $response.body#/datastoreStatus
+  - stepId: pollDatastore
+    description: >-
+      Read the data store properties and check whether provisioning has
+      completed. Repeats while the data store is still CREATING.
+    operationId: GetDatastore
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $steps.createDatastore.outputs.datastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreStatus: $response.body#/datastoreProperties/datastoreStatus
+      datastoreArn: $response.body#/datastoreProperties/datastoreArn
+    onSuccess:
+    - name: datastoreActive
+      type: end
+      criteria:
+      - context: $response.body
+        condition: $.datastoreProperties.datastoreStatus == "ACTIVE"
+        type: jsonpath
+    - name: datastoreFailed
+      type: goto
+      stepId: provisioningFailed
+      criteria:
+      - context: $response.body
+        condition: $.datastoreProperties.datastoreStatus == "CREATE_FAILED"
+        type: jsonpath
+    - name: stillCreating
+      type: goto
+      stepId: pollDatastore
+      criteria:
+      - context: $response.body
+        condition: $.datastoreProperties.datastoreStatus == "CREATING"
+        type: jsonpath
+  - stepId: provisioningFailed
+    description: >-
+      Terminal step reached when the data store reported CREATE_FAILED. Reads
+      the properties one final time to surface the failed status.
+    operationId: GetDatastore
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $steps.createDatastore.outputs.datastoreId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      datastoreStatus: $response.body#/datastoreProperties/datastoreStatus
+  outputs:
+    datastoreId: $steps.createDatastore.outputs.datastoreId
+    datastoreStatus: $steps.pollDatastore.outputs.datastoreStatus
+    datastoreArn: $steps.pollDatastore.outputs.datastoreArn

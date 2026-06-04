@@ -1,0 +1,111 @@
+arazzo: 1.0.1
+info:
+  title: Amazon HealthImaging Update Image Set Metadata
+  summary: Read an image set's latest version, apply DICOM metadata updates, then list its versions.
+  description: >-
+    Safely edits the DICOM metadata of an image set. The workflow reads the
+    image set to capture its current latest version, submits removable and
+    updatable DICOM attribute changes against that version, and then lists the
+    image set versions so the new version produced by the update is visible.
+    Every step spells out its request inline so the flow can be read and executed
+    without opening the underlying OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: healthImagingApi
+  url: ../openapi/amazon-healthimaging-openapi.yaml
+  type: openapi
+workflows:
+- workflowId: update-image-set-metadata
+  summary: Apply DICOM metadata updates to an image set's latest version and list versions.
+  description: >-
+    Captures the latest version of an image set, applies the supplied DICOM
+    attribute updates, and lists all versions of the image set to confirm the
+    new version was created.
+  inputs:
+    type: object
+    required:
+    - datastoreId
+    - imageSetId
+    - updatableAttributes
+    properties:
+      datastoreId:
+        type: string
+        description: The identifier of the data store holding the image set.
+      imageSetId:
+        type: string
+        description: The image set identifier to update.
+      updatableAttributes:
+        type: string
+        description: The DICOM attributes payload to update on the image set.
+      removableAttributes:
+        type: string
+        description: The DICOM attributes payload to remove from the image set.
+  steps:
+  - stepId: getImageSet
+    description: >-
+      Read the image set to capture the latest version identifier, which the
+      update must target.
+    operationId: GetImageSet
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.imageSetState == "ACTIVE"
+      type: jsonpath
+    outputs:
+      versionId: $response.body#/versionId
+  - stepId: updateMetadata
+    description: >-
+      Apply the DICOM metadata updates against the captured latest version. The
+      response returns the new latest version identifier.
+    operationId: UpdateImageSetMetadata
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    - name: latestVersion
+      in: query
+      value: $steps.getImageSet.outputs.versionId
+    requestBody:
+      contentType: application/json
+      payload:
+        updateImageSetMetadataUpdates:
+          DICOMUpdates:
+            updatableAttributes: $inputs.updatableAttributes
+            removableAttributes: $inputs.removableAttributes
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latestVersionId: $response.body#/latestVersionId
+      imageSetState: $response.body#/imageSetState
+  - stepId: listVersions
+    description: >-
+      List the image set versions to confirm the update produced a new version.
+    operationId: ListImageSetVersions
+    parameters:
+    - name: datastoreId
+      in: path
+      value: $inputs.datastoreId
+    - name: imageSetId
+      in: path
+      value: $inputs.imageSetId
+    - name: maxResults
+      in: query
+      value: 50
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      imageSetPropertiesList: $response.body#/imageSetPropertiesList
+  outputs:
+    latestVersionId: $steps.updateMetadata.outputs.latestVersionId
+    imageSetState: $steps.updateMetadata.outputs.imageSetState
+    imageSetPropertiesList: $steps.listVersions.outputs.imageSetPropertiesList
