@@ -52,6 +52,8 @@ apis:
   - type: NaftikoCapability
     url: capabilities/amazon-healthimaging.yaml
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/amazon-healthimaging/overview
 - type: ArazzoWorkflows
   url: arazzo/
   workflows:
