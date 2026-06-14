@@ -51,6 +51,8 @@ apis:
     url: json-ld/amazon-healthimaging-context.jsonld
   - type: NaftikoCapability
     url: capabilities/amazon-healthimaging.yaml
+  - type: GraphQL
+    url: graphql/amazon-healthimaging-graphql.md
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-healthimaging/overview

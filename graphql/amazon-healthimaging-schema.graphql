@@ -1,0 +1,818 @@
+"""
+AWS HealthImaging GraphQL Schema
+Conceptual GraphQL representation of the AWS HealthImaging data model.
+AWS HealthImaging is a HIPAA-eligible service for storing, accessing,
+and analyzing medical images (DICOM) at scale.
+"""
+
+# -----------------------------------------------------------------------
+# Scalars
+# -----------------------------------------------------------------------
+
+scalar AWSDateTime
+scalar AWSJSON
+scalar Long
+
+# -----------------------------------------------------------------------
+# Enums
+# -----------------------------------------------------------------------
+
+enum DatastoreStatus {
+  CREATING
+  CREATE_FAILED
+  ACTIVE
+  DELETING
+  DELETED
+}
+
+enum ImageSetState {
+  ACTIVE
+  LOCKED
+  DELETED
+}
+
+enum ImageSetWorkflow {
+  COPY
+  UPDATE
+  DELETE
+}
+
+enum ImportJobStatus {
+  SUBMITTED
+  IN_PROGRESS
+  COMPLETED
+  FAILED
+}
+
+enum SortOrder {
+  ASC
+  DESC
+}
+
+enum ImageFrameType {
+  ORIGINAL
+  OVERLAY
+  ICON
+  THUMBNAIL
+}
+
+enum Modality {
+  CT
+  MR
+  US
+  PT
+  NM
+  XA
+  DX
+  CR
+  MG
+  RF
+  SC
+  OT
+  SR
+  PR
+  KO
+  AU
+  DOC
+  ECG
+  HD
+  BI
+  OP
+  OPT
+  OPTENF
+  OPTR
+  OPV
+  SM
+  SRF
+  TG
+  VA
+}
+
+enum UpdateMetadataAction {
+  INSERT
+  REMOVE
+  FORCE_REMOVE
+}
+
+enum SearchFilterOperator {
+  EQUAL
+  BETWEEN
+  LESS_THAN
+  GREATER_THAN
+  LESS_THAN_OR_EQUAL
+  GREATER_THAN_OR_EQUAL
+}
+
+# -----------------------------------------------------------------------
+# Core Types
+# -----------------------------------------------------------------------
+
+"""
+A HealthImaging datastore — a repository for image sets.
+"""
+type Datastore {
+  datastoreId: ID!
+  datastoreName: String!
+  datastoreStatus: DatastoreStatus!
+  datastoreArn: String
+  kmsKeyArn: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  imageSetCount: Int
+  imageSets: [ImageSet!]
+  tags: [Tag!]
+}
+
+"""
+Summary view of a datastore returned in list operations.
+"""
+type DatastoreProperties {
+  datastoreId: ID!
+  datastoreName: String!
+  datastoreStatus: DatastoreStatus!
+  datastoreArn: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+"""
+An image set — a logical grouping of DICOM images associated
+with a study or series within a datastore.
+"""
+type ImageSet {
+  imageSetId: ID!
+  datastoreId: ID!
+  imageSetState: ImageSetState!
+  imageSetArn: String
+  versionId: String
+  latestVersionId: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  deletedAt: AWSDateTime
+  patient: Patient
+  study: DICOMStudy
+  versions: [ImageSetVersion!]
+  tags: [Tag!]
+}
+
+"""
+A specific version of an image set produced by a copy, update,
+or import operation.
+"""
+type ImageSetVersion {
+  versionId: String!
+  imageSetId: ID!
+  datastoreId: ID!
+  imageSetState: ImageSetState!
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  message: String
+}
+
+"""
+BLOB metadata document attached to an image set encoded as
+DICOMMetadata.
+"""
+type ImageSetMetadata {
+  imageSetId: ID!
+  datastoreId: ID!
+  versionId: String
+  DICOMStudy: DICOMStudy
+  patient: Patient
+}
+
+"""
+A single image frame within an image set.
+"""
+type ImageFrame {
+  imageFrameId: ID!
+  imageSetId: ID!
+  datastoreId: ID!
+  imageFrameType: ImageFrameType
+  rowsInPixelData: Int
+  columnsInPixelData: Int
+  bitsAllocated: Int
+  bitsStored: Int
+  highBit: Int
+  pixelRepresentation: Int
+  frameOfReferenceUID: String
+  sopInstanceUID: String
+  checksum: Long
+  minPixelValue: Int
+  maxPixelValue: Int
+  pixelData: PixelData
+}
+
+"""
+Raw pixel data descriptor for an image frame.
+"""
+type PixelData {
+  imageFrameId: ID!
+  uri: String
+  contentType: String
+  contentLength: Long
+  checksum: Long
+}
+
+# -----------------------------------------------------------------------
+# DICOM Types
+# -----------------------------------------------------------------------
+
+"""
+DICOM Study — top-level grouping for images taken during one encounter.
+"""
+type DICOMStudy {
+  studyInstanceUID: String!
+  studyID: String
+  studyDate: String
+  studyTime: String
+  studyDescription: String
+  accessionNumber: String
+  referringPhysicianName: String
+  numberOfStudyRelatedSeries: Int
+  numberOfStudyRelatedInstances: Int
+  series: [DICOMSeries!]
+  patient: Patient
+}
+
+"""
+DICOM Series — a set of images acquired together under the same
+protocol/modality within a study.
+"""
+type DICOMSeries {
+  seriesInstanceUID: String!
+  studyInstanceUID: String
+  seriesNumber: Int
+  modality: Modality
+  seriesDate: String
+  seriesTime: String
+  seriesDescription: String
+  bodyPart: String
+  laterality: String
+  numberOfSeriesRelatedInstances: Int
+  instances: [DICOMInstance!]
+  equipment: Equipment
+  acquisition: Acquisition
+}
+
+"""
+DICOM SOP Instance — an individual image or file within a series.
+"""
+type DICOMInstance {
+  sopInstanceUID: String!
+  sopClassUID: String
+  seriesInstanceUID: String
+  instanceNumber: Int
+  imageType: [String!]
+  imageComments: String
+  acquisitionDateTime: AWSDateTime
+  contentDateTime: AWSDateTime
+  rows: Int
+  columns: Int
+  bitsAllocated: Int
+  bitsStored: Int
+  pixelSpacing: String
+  sliceThickness: Float
+  sliceLocation: Float
+  imagePosition: [Float!]
+  imageOrientation: [Float!]
+  frameOfReferenceUID: String
+  imageFrame: ImageFrame
+  metadata: InstanceMetadata
+  attributes: [DICOMAttribute!]
+}
+
+"""
+Raw DICOM metadata container.
+"""
+type DICOMMetadata {
+  imageSetId: ID!
+  datastoreId: ID!
+  versionId: String
+  DICOMStudy: DICOMStudy
+  schemaVersion: Float
+}
+
+"""
+A single DICOM attribute (tag + value).
+"""
+type DICOMAttribute {
+  tag: DICOMTag!
+  vr: String
+  value: AWSJSON
+}
+
+"""
+A DICOM data element tag.
+"""
+type DICOMTag {
+  group: String!
+  element: String!
+  keyword: String
+  name: String
+}
+
+"""
+Instance-level metadata summary.
+"""
+type InstanceMetadata {
+  sopInstanceUID: String!
+  sopClassUID: String
+  imageFrameId: String
+  echoNumber: Int
+  imagePositionPatient: [Float!]
+  imageOrientationPatient: [Float!]
+  samplesPerPixel: Int
+  photometricInterpretation: String
+  pixelSpacing: [Float!]
+  bitsAllocated: Int
+  bitsStored: Int
+  highBit: Int
+  pixelRepresentation: Int
+}
+
+# -----------------------------------------------------------------------
+# Patient and Clinical Types
+# -----------------------------------------------------------------------
+
+"""
+Patient demographic information extracted from DICOM metadata.
+"""
+type Patient {
+  patientID: String!
+  patientName: String
+  patientBirthDate: String
+  patientSex: String
+  patientAge: String
+  patientWeight: Float
+  patientComments: String
+}
+
+"""
+Imaging equipment that produced the image set.
+"""
+type Equipment {
+  manufacturer: String
+  manufacturerModelName: String
+  softwareVersions: [String!]
+  stationName: String
+  institutionName: String
+  institutionAddress: String
+  deviceSerialNumber: String
+}
+
+"""
+Imaging acquisition parameters.
+"""
+type Acquisition {
+  acquisitionDate: String
+  acquisitionTime: String
+  acquisitionDateTime: AWSDateTime
+  acquisitionNumber: Int
+  acquisitionDuration: Float
+  kvp: Float
+  exposureTime: Float
+  xRayTubeCurrent: Float
+  exposure: Float
+  contrastBolusAgent: String
+  scanningSequence: [String!]
+  sequenceVariant: [String!]
+  magneticFieldStrength: Float
+  repetitionTime: Float
+  echoTime: Float
+  inversionTime: Float
+  flipAngle: Float
+  sliceThickness: Float
+}
+
+# -----------------------------------------------------------------------
+# Import Job Types
+# -----------------------------------------------------------------------
+
+"""
+A DICOM import job that ingests images from an Amazon S3 location.
+"""
+type ImportJob {
+  jobId: ID!
+  jobName: String!
+  datastoreId: ID!
+  jobStatus: ImportJobStatus!
+  jobCreatedAt: AWSDateTime
+  jobUpdatedAt: AWSDateTime
+  inputS3Uri: String!
+  outputS3Uri: String
+  dataAccessRoleArn: String!
+  endedAt: AWSDateTime
+  message: String
+  errors: [ImportJobError!]
+}
+
+"""
+An error recorded for a failed import job.
+"""
+type ImportJobError {
+  errorCode: String
+  errorMessage: String
+  inputFile: String
+}
+
+"""
+Import job summary for list operations.
+"""
+type ImportJobSummary {
+  jobId: ID!
+  jobName: String!
+  datastoreId: ID!
+  jobStatus: ImportJobStatus!
+  jobCreatedAt: AWSDateTime
+  jobUpdatedAt: AWSDateTime
+  dataAccessRoleArn: String
+}
+
+# -----------------------------------------------------------------------
+# Search Types
+# -----------------------------------------------------------------------
+
+"""
+Criteria used to filter image sets in a search operation.
+"""
+type SearchCriteria {
+  filters: [SearchFilter!]
+  sort: SearchSort
+}
+
+"""
+A single search filter condition.
+"""
+type SearchFilter {
+  values: [SearchFilterValue!]!
+  operator: SearchFilterOperator!
+}
+
+"""
+A value used in a search filter; one of the scalar fields.
+"""
+type SearchFilterValue {
+  DICOMPatientID: String
+  DICOMAccessionNumber: String
+  DICOMStudyID: String
+  DICOMStudyInstanceUID: String
+  DICOMSeriesInstanceUID: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+"""
+Sort configuration for search results.
+"""
+type SearchSort {
+  sortOrder: SortOrder!
+  sortField: String!
+}
+
+"""
+Result entry returned from a search operation.
+"""
+type SearchResult {
+  imageSetsMetadataSummaries: [ImageSetSummary!]
+  nextToken: String
+}
+
+"""
+Summary of a single image set returned in search results.
+"""
+type ImageSetSummary {
+  imageSetId: ID!
+  versionId: String
+  imageSetState: ImageSetState!
+  imageSetWorkflowStatus: ImageSetWorkflow
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  deletedAt: AWSDateTime
+  patientName: String
+  DICOMStudyInstanceUID: String
+  DICOMStudyDate: String
+  DICOMStudyDescription: String
+  DICOMSeriesInstanceUID: String
+  DICOMSeriesModality: String
+  DICOMSeriesBodyPart: String
+  DICOMAccessionNumber: String
+}
+
+"""
+DICOM-specific search parameters.
+"""
+type DICOMSearch {
+  DICOMPatientID: String
+  DICOMAccessionNumber: String
+  DICOMStudyID: String
+  DICOMStudyInstanceUID: String
+  DICOMSeriesInstanceUID: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+# -----------------------------------------------------------------------
+# Copy / Update / Delete Operations
+# -----------------------------------------------------------------------
+
+"""
+Input and result for a copy image set operation.
+"""
+type CopyImageSet {
+  sourceImageSetId: ID!
+  sourceImageSetProperties: ImageSetCopyProperties
+  destinationImageSetId: ID
+  destinationImageSetProperties: ImageSetCopyProperties
+  copyImageSetInformation: CopyImageSetInformation
+}
+
+"""
+Copy source or destination properties.
+"""
+type ImageSetCopyProperties {
+  imageSetId: ID!
+  latestVersionId: String!
+  imageSetState: ImageSetState
+  imageSetWorkflowStatus: ImageSetWorkflow
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+  message: String
+}
+
+"""
+Information bundle for a copy image set request.
+"""
+type CopyImageSetInformation {
+  sourceImageSet: CopySourceImageSetInformation!
+  destinationImageSet: CopyDestinationImageSetInformation
+}
+
+"""
+Source reference for copy operation.
+"""
+type CopySourceImageSetInformation {
+  imageSetId: ID!
+  latestVersionId: String!
+  DICOMCopies: DICOMCopies
+}
+
+"""
+Destination reference for copy operation.
+"""
+type CopyDestinationImageSetInformation {
+  imageSetId: ID
+}
+
+"""
+DICOM SOP instances to copy.
+"""
+type DICOMCopies {
+  copiableAttributes: String
+}
+
+"""
+Represents an update image set metadata request or result.
+"""
+type UpdateImageSet {
+  imageSetId: ID!
+  datastoreId: ID!
+  latestVersionId: String!
+  updateImageSetMetadataUpdates: MetadataUpdate
+  imageSetState: ImageSetState
+  message: String
+}
+
+"""
+Metadata updates to apply to an image set.
+"""
+type MetadataUpdate {
+  DICOMUpdates: DICOMMetadataUpdates
+  revertToVersionId: String
+}
+
+"""
+DICOM attribute inserts/removals within a metadata update.
+"""
+type DICOMMetadataUpdates {
+  removableAttributes: String
+  updatableAttributes: String
+}
+
+"""
+Result of a delete image set operation.
+"""
+type DeleteImageSet {
+  imageSetId: ID!
+  datastoreId: ID!
+  imageSetState: ImageSetState!
+  message: String
+}
+
+# -----------------------------------------------------------------------
+# Manifest
+# -----------------------------------------------------------------------
+
+"""
+Manifest describing the contents of a DICOM import job.
+"""
+type Manifest {
+  schemaVersion: Float
+  datastoreId: ID!
+  patientID: String
+  collections: [ManifestCollection!]
+}
+
+"""
+A collection of DICOM files referenced in a manifest.
+"""
+type ManifestCollection {
+  DICOM: [ManifestDICOMItem!]
+}
+
+"""
+A single DICOM file entry in an import manifest.
+"""
+type ManifestDICOMItem {
+  s3Uri: String!
+  studyInstanceUID: String
+  seriesInstanceUID: String
+  sopInstanceUID: String
+}
+
+# -----------------------------------------------------------------------
+# Tagging
+# -----------------------------------------------------------------------
+
+"""
+A key-value tag attached to a HealthImaging resource.
+"""
+type Tag {
+  key: String!
+  value: String!
+}
+
+"""
+Result of tagging a resource.
+"""
+type TagResource {
+  resourceArn: String!
+  tags: [Tag!]!
+}
+
+# -----------------------------------------------------------------------
+# Queries
+# -----------------------------------------------------------------------
+
+type Query {
+  """List all datastores in the account."""
+  listDatastores(
+    datastoreStatus: DatastoreStatus
+    nextToken: String
+    maxResults: Int
+  ): [DatastoreProperties!]
+
+  """Get properties of a specific datastore."""
+  getDatastore(datastoreId: ID!): Datastore
+
+  """Get properties of a specific image set."""
+  getImageSet(datastoreId: ID!, imageSetId: ID!, versionId: String): ImageSet
+
+  """Get metadata for a specific image set."""
+  getImageSetMetadata(
+    datastoreId: ID!
+    imageSetId: ID!
+    versionId: String
+  ): ImageSetMetadata
+
+  """List all versions of an image set."""
+  listImageSetVersions(
+    datastoreId: ID!
+    imageSetId: ID!
+    nextToken: String
+    maxResults: Int
+  ): [ImageSetVersion!]
+
+  """Retrieve an individual image frame."""
+  getImageFrame(
+    datastoreId: ID!
+    imageSetId: ID!
+    imageFrameId: ID!
+  ): ImageFrame
+
+  """Search for image sets within a datastore."""
+  searchImageSets(
+    datastoreId: ID!
+    searchCriteria: SearchCriteriaInput
+    nextToken: String
+    maxResults: Int
+  ): SearchResult
+
+  """Get the status and details of a DICOM import job."""
+  getDICOMImportJob(datastoreId: ID!, jobId: ID!): ImportJob
+
+  """List DICOM import jobs for a datastore."""
+  listDICOMImportJobs(
+    datastoreId: ID!
+    jobStatus: ImportJobStatus
+    nextToken: String
+    maxResults: Int
+  ): [ImportJobSummary!]
+
+  """List tags on a HealthImaging resource."""
+  listTagsForResource(resourceArn: String!): TagResource
+}
+
+# -----------------------------------------------------------------------
+# Mutations
+# -----------------------------------------------------------------------
+
+type Mutation {
+  """Create a new datastore."""
+  createDatastore(datastoreName: String!, kmsKeyArn: String, tags: [TagInput!]): Datastore
+
+  """Delete a datastore."""
+  deleteDatastore(datastoreId: ID!): Datastore
+
+  """Start a DICOM import job from an S3 source."""
+  startDICOMImportJob(
+    datastoreId: ID!
+    jobName: String!
+    inputS3Uri: String!
+    outputS3Uri: String!
+    dataAccessRoleArn: String!
+    clientToken: String
+  ): ImportJob
+
+  """Copy an image set within or between datastores."""
+  copyImageSet(
+    datastoreId: ID!
+    sourceImageSetId: ID!
+    sourceVersionId: String!
+    destinationImageSetId: ID
+    destinationVersionId: String
+    force: Boolean
+  ): CopyImageSet
+
+  """Update metadata on an existing image set."""
+  updateImageSetMetadata(
+    datastoreId: ID!
+    imageSetId: ID!
+    latestVersionId: String!
+    updateImageSetMetadataUpdates: MetadataUpdateInput!
+    force: Boolean
+  ): UpdateImageSet
+
+  """Delete an image set."""
+  deleteImageSet(datastoreId: ID!, imageSetId: ID!): DeleteImageSet
+
+  """Add or overwrite tags on a resource."""
+  tagResource(resourceArn: String!, tags: [TagInput!]!): TagResource
+
+  """Remove tags from a resource."""
+  untagResource(resourceArn: String!, tagKeys: [String!]!): TagResource
+}
+
+# -----------------------------------------------------------------------
+# Input Types
+# -----------------------------------------------------------------------
+
+input SearchCriteriaInput {
+  filters: [SearchFilterInput!]
+  sort: SearchSortInput
+}
+
+input SearchFilterInput {
+  values: [SearchFilterValueInput!]!
+  operator: SearchFilterOperator!
+}
+
+input SearchFilterValueInput {
+  DICOMPatientID: String
+  DICOMAccessionNumber: String
+  DICOMStudyID: String
+  DICOMStudyInstanceUID: String
+  DICOMSeriesInstanceUID: String
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}
+
+input SearchSortInput {
+  sortOrder: SortOrder!
+  sortField: String!
+}
+
+input MetadataUpdateInput {
+  DICOMUpdates: DICOMMetadataUpdatesInput
+  revertToVersionId: String
+}
+
+input DICOMMetadataUpdatesInput {
+  removableAttributes: String
+  updatableAttributes: String
+}
+
+input TagInput {
+  key: String!
+  value: String!
+}
