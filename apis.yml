@@ -4,7 +4,7 @@ description: AWS HealthImaging is a HIPAA-eligible service that helps healthcare
   transform, and apply machine learning to medical images. It provides sub-second image retrieval and enables scaling from
   hundreds to millions of medical images.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - AWS
 - Healthcare
