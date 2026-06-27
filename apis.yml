@@ -49,115 +49,112 @@ apis:
     url: json-schema/healthimaging-datastore-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/amazon-healthimaging.yaml
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 common:
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-healthimaging/overview
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/amazon-healthimaging-audit-completed-imports-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-audit-completed-imports-workflow.yml
     name: Amazon HealthImaging Audit Completed Imports
-    summary: List completed import jobs, read the most recent job's detail, then search the imported image sets.
-  - url: arazzo/amazon-healthimaging-copy-image-set-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-copy-image-set-workflow.yml
     name: Amazon HealthImaging Copy Image Set
-    summary: Resolve a source image set version, copy it to a destination, then poll until ACTIVE.
-  - url: arazzo/amazon-healthimaging-find-image-set-by-patient-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-find-image-set-by-patient-workflow.yml
     name: Amazon HealthImaging Find Image Set by Patient
-    summary: Search image sets by DICOM patient ID, then read the top match's properties and metadata.
-  - url: arazzo/amazon-healthimaging-import-dicom-and-search-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-import-dicom-and-search-workflow.yml
     name: Amazon HealthImaging Import DICOM and Search
-    summary: Start a DICOM import job, poll until COMPLETED, then search the imported image sets.
-  - url: arazzo/amazon-healthimaging-inspect-image-set-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-inspect-image-set-workflow.yml
     name: Amazon HealthImaging Inspect Image Set
-    summary: Read image set properties, fetch its metadata, then retrieve an image frame.
-  - url: arazzo/amazon-healthimaging-onboard-datastore-and-import-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-onboard-datastore-and-import-workflow.yml
     name: Amazon HealthImaging Onboard Data Store and Import
-    summary: Create a data store, wait until ACTIVE, then start a DICOM import and poll to completion.
-  - url: arazzo/amazon-healthimaging-provision-datastore-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-provision-datastore-workflow.yml
     name: Amazon HealthImaging Provision Data Store
-    summary: Create a data store and poll until it becomes ACTIVE before use.
-  - url: arazzo/amazon-healthimaging-tag-image-set-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-tag-image-set-workflow.yml
     name: Amazon HealthImaging Tag Image Set
-    summary: Resolve an image set's ARN, attach tags to it, then list the tags back.
-  - url: arazzo/amazon-healthimaging-update-image-set-metadata-workflow.yml
+  - type: Arazzo
+    url: arazzo/amazon-healthimaging-update-image-set-metadata-workflow.yml
     name: Amazon HealthImaging Update Image Set Metadata
-    summary: Read an image set's latest version, apply DICOM metadata updates, then list its versions.
-- type: Portal
-  url: https://aws.amazon.com/healthimaging/
-- type: Documentation
-  url: https://docs.aws.amazon.com/healthimaging/
-- type: TermsOfService
-  url: https://aws.amazon.com/service-terms/
-- type: PrivacyPolicy
-  url: https://aws.amazon.com/privacy/
-- type: Support
-  url: https://aws.amazon.com/premiumsupport/
-- type: Blog
-  url: https://aws.amazon.com/blogs/industries/healthcare/
-- type: GitHubOrganization
-  url: https://github.com/aws
-- type: Console
-  url: https://console.aws.amazon.com/healthimaging/
-- type: SignUp
-  url: https://portal.aws.amazon.com/billing/signup
-- type: StatusPage
-  url: https://health.aws.amazon.com/health/status
-- type: Contact
-  url: https://aws.amazon.com/contact-us/
-- type: SDK
-  url: https://aws.amazon.com/developer/tools/
-- type: CLI
-  url: https://awscli.amazonaws.com/v2/documentation/api/latest/reference/medical-imaging/index.html
-- type: Features
-  data:
-  - name: HIPAA-Eligible Storage
-    description: Fully HIPAA-eligible service for storing protected health information including medical images.
-  - name: DICOM Support
-    description: Native support for DICOM format, the standard for medical imaging data exchange and storage.
-  - name: Sub-Second Retrieval
-    description: Optimized storage architecture enabling sub-second retrieval of medical images at any scale.
-  - name: Machine Learning Integration
-    description: Built-in support for applying machine learning models to medical imaging data for analysis.
-  - name: Scalable Datastores
-    description: Create and manage datastores that scale from hundreds to millions of medical images.
-  - name: Image Set Management
-    description: Organize medical images into sets with comprehensive metadata management and versioning.
-  - name: Bulk Import
-    description: DICOM import jobs enable bulk import of medical imaging data from Amazon S3.
-- type: UseCases
-  data:
-  - name: Radiology Workflow
-    description: Streamline radiology workflows by centralizing medical image storage and enabling rapid retrieval.
-  - name: AI-Powered Diagnostics
-    description: Apply machine learning models to medical images for automated diagnostic assistance.
-  - name: Healthcare Data Archiving
-    description: Archive medical imaging data in a HIPAA-eligible, scalable environment with long-term retention.
-  - name: Multi-Site Imaging
-    description: Centralize medical imaging data from multiple healthcare sites for unified access and analysis.
-  - name: Clinical Research
-    description: Support clinical research by providing scalable access to large medical imaging datasets.
-- type: Integrations
-  data:
-  - name: Amazon S3
-    description: Import medical imaging data from S3 buckets using DICOM import jobs.
-  - name: AWS IAM
-    description: Control access to HealthImaging resources using IAM roles and policies.
-  - name: Amazon CloudWatch
-    description: Monitor HealthImaging operations and performance metrics through CloudWatch.
-  - name: AWS HealthLake
-    description: Integrate with HealthLake for combining medical imaging with FHIR health records.
-  - name: Amazon SageMaker
-    description: Apply SageMaker ML models to medical images for AI-powered analysis and diagnostics.
-- type: SpectralRules
-  url: rules/amazon-healthimaging-spectral-rules.yml
-- type: Vocabulary
-  url: vocabulary/amazon-healthimaging-vocabulary.yaml
-- type: Integrations
-  url: https://aws.amazon.com/marketplace
+  - type: Portal
+    url: https://aws.amazon.com/healthimaging/
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthimaging/
+  - type: TermsOfService
+    url: https://aws.amazon.com/service-terms/
+  - type: PrivacyPolicy
+    url: https://aws.amazon.com/privacy/
+  - type: Support
+    url: https://aws.amazon.com/premiumsupport/
+  - type: Blog
+    url: https://aws.amazon.com/blogs/industries/healthcare/
+  - type: GitHubOrganization
+    url: https://github.com/aws
+  - type: Console
+    url: https://console.aws.amazon.com/healthimaging/
+  - type: Signup
+    url: https://portal.aws.amazon.com/billing/signup
+  - type: StatusPage
+    url: https://health.aws.amazon.com/health/status
+  - type: Contact
+    url: https://aws.amazon.com/contact-us/
+  - type: SDKs
+    url: https://aws.amazon.com/developer/tools/
+  - type: CLI
+    url: https://awscli.amazonaws.com/v2/documentation/api/latest/reference/medical-imaging/index.html
+  - type: Features
+    data:
+    - name: HIPAA-Eligible Storage
+      description: Fully HIPAA-eligible service for storing protected health information including medical images.
+    - name: DICOM Support
+      description: Native support for DICOM format, the standard for medical imaging data exchange and storage.
+    - name: Sub-Second Retrieval
+      description: Optimized storage architecture enabling sub-second retrieval of medical images at any scale.
+    - name: Machine Learning Integration
+      description: Built-in support for applying machine learning models to medical imaging data for analysis.
+    - name: Scalable Datastores
+      description: Create and manage datastores that scale from hundreds to millions of medical images.
+    - name: Image Set Management
+      description: Organize medical images into sets with comprehensive metadata management and versioning.
+    - name: Bulk Import
+      description: DICOM import jobs enable bulk import of medical imaging data from Amazon S3.
+  - type: UseCases
+    data:
+    - name: Radiology Workflow
+      description: Streamline radiology workflows by centralizing medical image storage and enabling rapid retrieval.
+    - name: AI-Powered Diagnostics
+      description: Apply machine learning models to medical images for automated diagnostic assistance.
+    - name: Healthcare Data Archiving
+      description: Archive medical imaging data in a HIPAA-eligible, scalable environment with long-term retention.
+    - name: Multi-Site Imaging
+      description: Centralize medical imaging data from multiple healthcare sites for unified access and analysis.
+    - name: Clinical Research
+      description: Support clinical research by providing scalable access to large medical imaging datasets.
+  - type: Integrations
+    data:
+    - name: Amazon S3
+      description: Import medical imaging data from S3 buckets using DICOM import jobs.
+    - name: AWS IAM
+      description: Control access to HealthImaging resources using IAM roles and policies.
+    - name: Amazon CloudWatch
+      description: Monitor HealthImaging operations and performance metrics through CloudWatch.
+    - name: AWS HealthLake
+      description: Integrate with HealthLake for combining medical imaging with FHIR health records.
+    - name: Amazon SageMaker
+      description: Apply SageMaker ML models to medical images for AI-powered analysis and diagnostics.
+  - type: SpectralRules
+    url: rules/amazon-healthimaging-spectral-rules.yml
+  - type: Vocabulary
+    url: vocabulary/amazon-healthimaging-vocabulary.yaml
+  - type: Integrations
+    url: https://aws.amazon.com/marketplace
 integrations:
 - name: Sign in
 - name: Agent Mode
