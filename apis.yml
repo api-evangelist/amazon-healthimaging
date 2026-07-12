@@ -54,6 +54,14 @@ apis:
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 common:
+  - type: TrustCenter
+    url: security/amazon-healthimaging-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-healthimaging-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-healthimaging-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-healthimaging-authentication.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/amazon-healthimaging/overview
   - type: Arazzo
