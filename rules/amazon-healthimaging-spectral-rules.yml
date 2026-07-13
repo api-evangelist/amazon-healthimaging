@@ -1,55 +1,130 @@
+# amazon-healthimaging — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - servers-https-only: 50% of servers already https (warn)
+#   - path-params-casing: camel @ 100% (n=24)
+#   - query-params-casing: camel @ 86% (n=14)
+#   - operationid-casing: pascal @ 100% (n=18)
+#   - schema-names-casing: pascal @ 100% (n=113)
+#   - schema-properties-casing: camel @ 77% (n=150)
+#   - security: global (root) — NOT emitting operation-security-required
+#   - pagination params observed: ['maxResults', 'nextToken']
+#   - merge: kept 8 existing, added 7 measured, upgraded 0
+#   - added: servers-https-only, path-params-casing, query-params-casing, operationid-casing, schema-names-casing, schema-properties-casing, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   healthimaging-operation-summary:
     description: All operations must have a summary
     severity: error
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: summary
       function: truthy
   healthimaging-operation-id:
     description: All operations must have an operationId
     severity: error
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
   healthimaging-operation-tags:
     description: All operations should have tags
     severity: warn
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: tags
       function: truthy
   healthimaging-response-200:
     description: All operations should have a 200 response
     severity: warn
-    given: "$.paths.*[get,post,put,patch,delete].responses"
+    given: $.paths.*[get,post,put,patch,delete].responses
     then:
-      field: "200"
+      field: '200'
       function: truthy
   healthimaging-schema-description:
     description: Schema components should have descriptions
     severity: info
-    given: "$.components.schemas.*"
+    given: $.components.schemas.*
     then:
       field: description
       function: truthy
   healthimaging-datastore-naming:
     description: Datastore operations should have consistent naming
     severity: info
-    given: "$.paths.*[get,post,put,patch,delete]"
+    given: $.paths.*[get,post,put,patch,delete]
     then:
       field: operationId
       function: truthy
   healthimaging-hipaa-security:
     description: HIPAA-eligible service must document security requirements
     severity: error
-    given: "$.components.securitySchemes"
+    given: $.components.securitySchemes
     then:
       function: truthy
   healthimaging-tag-management:
     description: Tag operations should follow consistent patterns
     severity: info
-    given: "$.paths.*[get,post,put,patch,delete][?(@property == 'tags')]"
+    given: $.paths.*[get,post,put,patch,delete][?(@property == 'tags')]
+    then:
+      function: truthy
+  servers-https-only:
+    description: Server URLs must use HTTPS.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: ^https://
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  query-params-casing:
+    description: Query parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].parameters[?(@.in=='query')]
+    then:
+      field: name
+      function: casing
+      functionOptions:
+        type: camel
+  operationid-casing:
+    description: Operation IDs should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[A-Z][A-Za-z0-9]*$
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: ^[a-z][A-Za-z0-9]*$
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
     then:
       function: truthy
