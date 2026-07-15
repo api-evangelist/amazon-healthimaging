@@ -1,0 +1,274 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/amazon-healthimaging-openapi.yaml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 18
+  by_action_class:
+    acting: 13
+    connected: 5
+  by_consequence:
+    write: 13
+    read: 5
+  human_in_the_loop_required: 0
+operations:
+- path: /datastore/{datastoreId}/imageSet/{sourceImageSetId}/copyImageSet
+  method: post
+  operationId: CopyImageSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore
+  method: post
+  operationId: CreateDatastore
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore
+  method: get
+  operationId: ListDatastores
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /datastore/{datastoreId}
+  method: delete
+  operationId: DeleteDatastore
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore/{datastoreId}
+  method: get
+  operationId: GetDatastore
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /datastore/{datastoreId}/imageSet/{imageSetId}/deleteImageSet
+  method: post
+  operationId: DeleteImageSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /getDICOMImportJob/datastore/{datastoreId}/job/{jobId}
+  method: get
+  operationId: GetDICOMImportJob
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageFrame
+  method: post
+  operationId: GetImageFrame
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSet
+  method: post
+  operationId: GetImageSet
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSetMetadata
+  method: post
+  operationId: GetImageSetMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /listDICOMImportJobs/datastore/{datastoreId}
+  method: get
+  operationId: ListDICOMImportJobs
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /datastore/{datastoreId}/imageSet/{imageSetId}/listImageSetVersions
+  method: post
+  operationId: ListImageSetVersions
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tags/{resourceArn}
+  method: get
+  operationId: ListTagsForResource
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /tags/{resourceArn}
+  method: post
+  operationId: TagResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore/{datastoreId}/searchImageSets
+  method: post
+  operationId: SearchImageSets
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /startDICOMImportJob/datastore/{datastoreId}
+  method: post
+  operationId: StartDICOMImportJob
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /tags/{resourceArn}#tagKeys
+  method: delete
+  operationId: UntagResource
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required
+- path: /datastore/{datastoreId}/imageSet/{imageSetId}/updateImageSetMetadata#latestVersion
+  method: post
+  operationId: UpdateImageSetMetadata
+  x-agentic-access:
+    action-class: acting
+    consequence: write
+    subject: required
+    audience: null
+    token:
+      max-ttl: 900
+    escalation:
+      human-in-the-loop: conditional
+      triggers:
+      - abnormal
+      - high-value
+    audit: required

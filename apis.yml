@@ -54,6 +54,8 @@ apis:
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-healthimaging-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-healthimaging-trust-center.yml
   - type: VulnerabilityDisclosure
