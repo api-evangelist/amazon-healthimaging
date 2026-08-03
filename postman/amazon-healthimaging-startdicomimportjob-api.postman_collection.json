@@ -1,0 +1,868 @@
+{
+  "info": {
+    "_postman_id": "2fb1afd1-da2b-494e-b717-9b611e37b7f0",
+    "name": "AWS Health Imaging Datastore StartDICOMImportJob API",
+    "description": "<p>This is the <i>AWS HealthImaging API Reference</i>. AWS HealthImaging is an AWS service for storing, accessing, and analyzing medical images. For an introduction to the service, see the <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide\"> <i>AWS HealthImaging Developer Guide</i> </a>.</p> <note> <p>We recommend using one of the AWS Software Development Kits (SDKs) for your programming language, as they take care of request authentication, serialization, and connection management. For more information, see <a href=\"http://aws.amazon.com/developer/tools\">Tools to build on AWS</a>.</p> <p>For information about using AWS HealthImaging API actions in one of the language-specific AWS SDKs, refer to the <i>See Also</i> link at the end of each section that describes an API action or data type.</p> </note> <p>The following sections list AWS HealthImaging API actions categorized according to functionality. Links are provided to actions within this Reference, along with links back to corresponding sections in the <i>AWS HealthImaging Developer Guide</i> so you can view console procedures and CLI/SDK code examples.</p> <p class=\"title\"> <b>Data store actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_CreateDatastore.html\">CreateDatastore</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/create-data-store.html\">Creating a data store</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetDatastore.html\">GetDatastore</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-data-store.html\">Getting data store properties</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListDatastores.html\">ListDatastores</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-data-stores.html\">Listing data stores</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_DeleteDatastore.html\">DeleteDatastore</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/delete-data-store.html\">Deleting a data store</a>.</p> </li> </ul> <p class=\"title\"> <b>Import job actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_StartDICOMImportJob.html\">StartDICOMImportJob</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/start-dicom-import-job.html\">Starting an import job</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetDICOMImportJob.html\">GetDICOMImportJob</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-dicom-import-job.html\">Getting import job properties</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListDICOMImportJobs.html\">ListDICOMImportJobs</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-dicom-import-jobs.html\">Listing import jobs</a>.</p> </li> </ul> <p class=\"title\"> <b>Image set access actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_SearchImageSets.html\">SearchImageSets</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/search-image-sets.html\">Searching image sets</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageSet.html\">GetImageSet</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-set-properties.html\">Getting image set properties</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageSetMetadata.html\">GetImageSetMetadata</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-set-metadata.html\">Getting image set metadata</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageFrame.html\">GetImageFrame</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-frame.html\">Getting image set pixel data</a>.</p> </li> </ul> <p class=\"title\"> <b>Image set modification actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListImageSetVersions.html\">ListImageSetVersions</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-image-set-versions.html\">Listing image set versions</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_UpdateImageSetMetadata.html\">UpdateImageSetMetadata</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/update-image-set-metadata.html\">Updating image set metadata</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_CopyImageSet.html\">CopyImageSet</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/copy-image-set.html\">Copying an image set</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_DeleteImageSet.html\">DeleteImageSet</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/delete-image-set.html\">Deleting an image set</a>.</p> </li> </ul> <p class=\"title\"> <b>Tagging actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_TagResource.html\">TagResource</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html\">Tagging a data store</a> and <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html\">Tagging an image set</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListTagsForResource.html\">ListTagsForResource</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html\">Tagging a data store</a> and <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html\">Tagging an image set</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_UntagResource.html\">UntagResource</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html\">Tagging a data store</a> and <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html\">Tagging an image set</a>.</p> </li> </ul>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:24:35.000Z",
+    "updatedAt": "2026-07-28T10:24:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2fb1afd1-da2b-494e-b717-9b611e37b7f0"
+  },
+  "item": [
+    {
+      "name": "startDICOMImportJob",
+      "item": [
+        {
+          "name": "datastore",
+          "item": [
+            {
+              "name": "{datastoreId}",
+              "item": [
+                {
+                  "name": "Amazon HealthImaging Start DICOM Import Job",
+                  "id": "fb5bf5fa-3834-496f-a34a-caa5ebdf4e15",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Amz-Content-Sha256",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Date",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Algorithm",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Credential",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Security-Token",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-Signature",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "X-Amz-SignedHeaders",
+                        "value": "<string>"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "startDICOMImportJob",
+                        "datastore",
+                        ":datastoreId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "307671d2-a317-434b-824f-776b45529c8c",
+                          "key": "datastoreId",
+                          "value": "4961iv9novt0wjnv3y8aarkookp3hce7",
+                          "description": "(Required) The data store identifier."
+                        }
+                      ]
+                    },
+                    "description": "Start importing bulk data into an <code>ACTIVE</code> data store. The import job imports DICOM P10 files found in the S3 prefix specified by the <code>inputS3Uri</code> parameter. The import job stores processing results in the file specified by the <code>outputS3Uri</code> parameter."
+                  },
+                  "response": [
+                    {
+                      "id": "f104d6ed-2a8d-4f22-b926-8ee2caa2e508",
+                      "name": "Success",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"datastoreId\": \"rnse7xgkc64srsvk7ez8kv8bzua8dlw2\",\n  \"jobId\": \"6es0d2mgvhr\",\n  \"jobStatus\": \"COMPLETED\",\n  \"submittedAt\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-f104d6ed-2a8d-4f22-b926-8ee2caa2e508"
+                    },
+                    {
+                      "id": "3398a640-47eb-4c10-b3cd-9486eb49f969",
+                      "name": "ThrottlingException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-3398a640-47eb-4c10-b3cd-9486eb49f969"
+                    },
+                    {
+                      "id": "dd0c5b78-0ade-4144-a2ac-fc9e0c1c74a9",
+                      "name": "ConflictException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-dd0c5b78-0ade-4144-a2ac-fc9e0c1c74a9"
+                    },
+                    {
+                      "id": "b20b3a68-be1a-4f77-9b2b-bbab0fcd71b4",
+                      "name": "AccessDeniedException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-b20b3a68-be1a-4f77-9b2b-bbab0fcd71b4"
+                    },
+                    {
+                      "id": "bdf7bb66-4e01-4f9a-a776-839015a127d2",
+                      "name": "ValidationException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-bdf7bb66-4e01-4f9a-a776-839015a127d2"
+                    },
+                    {
+                      "id": "01512104-6c47-46f8-a90c-9c33df8ead3a",
+                      "name": "InternalServerException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-01512104-6c47-46f8-a90c-9c33df8ead3a"
+                    },
+                    {
+                      "id": "0059989c-4c49-4cc4-91eb-1ff539f4d273",
+                      "name": "ResourceNotFoundException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-0059989c-4c49-4cc4-91eb-1ff539f4d273"
+                    },
+                    {
+                      "id": "df83a0ac-8762-4401-8ffe-d201f125e5f6",
+                      "name": "ServiceQuotaExceededException",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "X-Amz-Content-Sha256",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Date",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Algorithm",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Credential",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Security-Token",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-Signature",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "X-Amz-SignedHeaders",
+                            "value": "<string>"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"dataAccessRoleArn\": \"arn:aws:iam::540933254199:role/1_e\",\n  \"clientToken\": \"XO4-_\",\n  \"inputS3Uri\": \"s3://2pi2ugf0.7qdb.u9i38z4m-mnkre9u73ge.csd8cxas83ofr6w-5httpy7hmq/m1R\",\n  \"outputS3Uri\": \"s3://6c1.ti8-n7u4l410xpz8i-i4p.obkksfl7kjn9t16/VGq\",\n  \"jobName\": \"DzI.\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/startDICOMImportJob/datastore/:datastoreId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "startDICOMImportJob",
+                            "datastore",
+                            ":datastoreId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "datastoreId"
+                            }
+                          ]
+                        }
+                      },
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{}",
+                      "createdAt": "2026-07-28T10:24:35.000Z",
+                      "updatedAt": "2026-07-28T10:24:35.000Z",
+                      "uid": "35240-df83a0ac-8762-4401-8ffe-d201f125e5f6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T10:24:35.000Z",
+                  "updatedAt": "2026-07-28T10:24:35.000Z",
+                  "uid": "35240-fb5bf5fa-3834-496f-a34a-caa5ebdf4e15"
+                }
+              ],
+              "id": "3b6b367f-01b6-445c-add0-6ce9cd40230b",
+              "createdAt": "2026-07-28T10:24:35.000Z",
+              "updatedAt": "2026-07-28T10:24:35.000Z",
+              "uid": "35240-3b6b367f-01b6-445c-add0-6ce9cd40230b"
+            }
+          ],
+          "id": "fa16230d-1df7-4535-b3cf-408de1157620",
+          "createdAt": "2026-07-28T10:24:35.000Z",
+          "updatedAt": "2026-07-28T10:24:35.000Z",
+          "uid": "35240-fa16230d-1df7-4535-b3cf-408de1157620"
+        }
+      ],
+      "id": "d7788046-97d8-41e7-954b-4b33dbfad409",
+      "createdAt": "2026-07-28T10:24:35.000Z",
+      "updatedAt": "2026-07-28T10:24:35.000Z",
+      "uid": "35240-d7788046-97d8-41e7-954b-4b33dbfad409"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://medical-imaging.{{region}}.amazonaws.com"
+    }
+  ]
+}

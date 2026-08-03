@@ -1,0 +1,22 @@
+{
+  "provider": "amazon-healthimaging",
+  "sources": [
+    "amazon-healthimaging-datastore-api-openapi.yml",
+    "amazon-healthimaging-getdicomimportjob-api-openapi.yml",
+    "amazon-healthimaging-listdicomimportjobs-api-openapi.yml",
+    "amazon-healthimaging-startdicomimportjob-api-openapi.yml",
+    "amazon-healthimaging-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-healthimaging-datastore-api-openapi.yml",
+    "amazon-healthimaging-getdicomimportjob-api-openapi.yml",
+    "amazon-healthimaging-listdicomimportjobs-api-openapi.yml",
+    "amazon-healthimaging-startdicomimportjob-api-openapi.yml",
+    "amazon-healthimaging-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

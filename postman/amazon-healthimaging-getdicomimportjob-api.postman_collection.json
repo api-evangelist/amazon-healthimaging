@@ -1,0 +1,728 @@
+{
+  "info": {
+    "_postman_id": "fe8809aa-8d8b-4482-95ee-4559b766bf4a",
+    "name": "AWS Health Imaging Datastore GetDICOMImportJob API",
+    "description": "<p>This is the <i>AWS HealthImaging API Reference</i>. AWS HealthImaging is an AWS service for storing, accessing, and analyzing medical images. For an introduction to the service, see the <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide\"> <i>AWS HealthImaging Developer Guide</i> </a>.</p> <note> <p>We recommend using one of the AWS Software Development Kits (SDKs) for your programming language, as they take care of request authentication, serialization, and connection management. For more information, see <a href=\"http://aws.amazon.com/developer/tools\">Tools to build on AWS</a>.</p> <p>For information about using AWS HealthImaging API actions in one of the language-specific AWS SDKs, refer to the <i>See Also</i> link at the end of each section that describes an API action or data type.</p> </note> <p>The following sections list AWS HealthImaging API actions categorized according to functionality. Links are provided to actions within this Reference, along with links back to corresponding sections in the <i>AWS HealthImaging Developer Guide</i> so you can view console procedures and CLI/SDK code examples.</p> <p class=\"title\"> <b>Data store actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_CreateDatastore.html\">CreateDatastore</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/create-data-store.html\">Creating a data store</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetDatastore.html\">GetDatastore</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-data-store.html\">Getting data store properties</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListDatastores.html\">ListDatastores</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-data-stores.html\">Listing data stores</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_DeleteDatastore.html\">DeleteDatastore</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/delete-data-store.html\">Deleting a data store</a>.</p> </li> </ul> <p class=\"title\"> <b>Import job actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_StartDICOMImportJob.html\">StartDICOMImportJob</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/start-dicom-import-job.html\">Starting an import job</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetDICOMImportJob.html\">GetDICOMImportJob</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-dicom-import-job.html\">Getting import job properties</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListDICOMImportJobs.html\">ListDICOMImportJobs</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-dicom-import-jobs.html\">Listing import jobs</a>.</p> </li> </ul> <p class=\"title\"> <b>Image set access actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_SearchImageSets.html\">SearchImageSets</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/search-image-sets.html\">Searching image sets</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageSet.html\">GetImageSet</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-set-properties.html\">Getting image set properties</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageSetMetadata.html\">GetImageSetMetadata</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-set-metadata.html\">Getting image set metadata</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageFrame.html\">GetImageFrame</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-frame.html\">Getting image set pixel data</a>.</p> </li> </ul> <p class=\"title\"> <b>Image set modification actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListImageSetVersions.html\">ListImageSetVersions</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-image-set-versions.html\">Listing image set versions</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_UpdateImageSetMetadata.html\">UpdateImageSetMetadata</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/update-image-set-metadata.html\">Updating image set metadata</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_CopyImageSet.html\">CopyImageSet</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/copy-image-set.html\">Copying an image set</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_DeleteImageSet.html\">DeleteImageSet</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/delete-image-set.html\">Deleting an image set</a>.</p> </li> </ul> <p class=\"title\"> <b>Tagging actions</b> </p> <ul> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_TagResource.html\">TagResource</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html\">Tagging a data store</a> and <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html\">Tagging an image set</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListTagsForResource.html\">ListTagsForResource</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html\">Tagging a data store</a> and <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html\">Tagging an image set</a>.</p> </li> <li> <p> <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_UntagResource.html\">UntagResource</a> \u2013 See <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html\">Tagging a data store</a> and <a href=\"https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html\">Tagging an image set</a>.</p> </li> </ul>\n\nContact Support:\n Name: Mike Ralphson\n Email: mike.ralphson@gmail.com",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T10:24:32.000Z",
+    "updatedAt": "2026-07-28T10:24:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-fe8809aa-8d8b-4482-95ee-4559b766bf4a"
+  },
+  "item": [
+    {
+      "name": "getDICOMImportJob",
+      "item": [
+        {
+          "name": "datastore",
+          "item": [
+            {
+              "name": "{datastoreId}",
+              "item": [
+                {
+                  "name": "job",
+                  "item": [
+                    {
+                      "name": "{jobId}",
+                      "item": [
+                        {
+                          "name": "Amazon HealthImaging Get DICOM Import Job",
+                          "id": "f37d77bd-3dc9-4f0f-a687-0d4ee92cf32a",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "X-Amz-Content-Sha256",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Date",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Algorithm",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Credential",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Security-Token",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-Signature",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "X-Amz-SignedHeaders",
+                                "value": "<string>"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "getDICOMImportJob",
+                                "datastore",
+                                ":datastoreId",
+                                "job",
+                                ":jobId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "e486ff22-0746-4797-ad2b-f502c6dfb887",
+                                  "key": "datastoreId",
+                                  "value": "y9i9yrrzsokx7wmc13tx249zgztsj96q",
+                                  "description": "(Required) The data store identifier."
+                                },
+                                {
+                                  "id": "07ab4b6e-8a6a-455c-aede-a3cfc0d7ff9c",
+                                  "key": "jobId",
+                                  "value": "foduzui7t",
+                                  "description": "(Required) The import job identifier."
+                                }
+                              ]
+                            },
+                            "description": "Get the import job properties to learn more about the job or job progress."
+                          },
+                          "response": [
+                            {
+                              "id": "c3ec4707-ce37-4607-9214-159486bf619e",
+                              "name": "Success",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"jobProperties\": {\n    \"jobId\": \"d5mt8j\",\n    \"jobName\": \"yNI-i\",\n    \"jobStatus\": \"COMPLETED\",\n    \"datastoreId\": \"orzc9c9tpanvtk3qp0tax5d9ps8n4yag\",\n    \"dataAccessRoleArn\": \"arn:aws:iam::473381276966:role/p}K$1q\",\n    \"inputS3Uri\": \"s3://g-i1k.nqs8m8fz12suq2r6g7ggwmb\",\n    \"outputS3Uri\": \"s3://qdfqg81n494kays-u58r0gwjmve6hb8x8lq94pyvrp\",\n    \"endedAt\": \"<dateTime>\",\n    \"submittedAt\": \"<dateTime>\",\n    \"message\": \"_R4QkWD10Wc\"\n  }\n}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-c3ec4707-ce37-4607-9214-159486bf619e"
+                            },
+                            {
+                              "id": "1b2969db-7a76-4950-ab10-41f00b84a962",
+                              "name": "ThrottlingException",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-1b2969db-7a76-4950-ab10-41f00b84a962"
+                            },
+                            {
+                              "id": "0d71174c-04cf-4373-8de2-732c484a19f8",
+                              "name": "ConflictException",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-0d71174c-04cf-4373-8de2-732c484a19f8"
+                            },
+                            {
+                              "id": "23d32d3a-d670-47bd-81a0-ae3a15f3e849",
+                              "name": "AccessDeniedException",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-23d32d3a-d670-47bd-81a0-ae3a15f3e849"
+                            },
+                            {
+                              "id": "2cda059f-c4dc-40c1-b5f1-aeb5befbbe8f",
+                              "name": "ValidationException",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-2cda059f-c4dc-40c1-b5f1-aeb5befbbe8f"
+                            },
+                            {
+                              "id": "02495302-6c22-4997-a8c4-52fd4d78fb42",
+                              "name": "InternalServerException",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-02495302-6c22-4997-a8c4-52fd4d78fb42"
+                            },
+                            {
+                              "id": "ce2c78a1-4b83-465b-8ca9-f5f1fc8ebeef",
+                              "name": "ResourceNotFoundException",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "X-Amz-Content-Sha256",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Date",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Algorithm",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Credential",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Security-Token",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-Signature",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "X-Amz-SignedHeaders",
+                                    "value": "<string>"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "getDICOMImportJob",
+                                    "datastore",
+                                    ":datastoreId",
+                                    "job",
+                                    ":jobId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "datastoreId"
+                                    },
+                                    {
+                                      "key": "jobId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T10:24:32.000Z",
+                              "updatedAt": "2026-07-28T10:24:32.000Z",
+                              "uid": "35240-ce2c78a1-4b83-465b-8ca9-f5f1fc8ebeef"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T10:24:32.000Z",
+                          "updatedAt": "2026-07-28T10:24:32.000Z",
+                          "uid": "35240-f37d77bd-3dc9-4f0f-a687-0d4ee92cf32a"
+                        }
+                      ],
+                      "id": "671562e0-cc2f-4a97-b4d2-c8f5ef7b9edb",
+                      "createdAt": "2026-07-28T10:24:32.000Z",
+                      "updatedAt": "2026-07-28T10:24:32.000Z",
+                      "uid": "35240-671562e0-cc2f-4a97-b4d2-c8f5ef7b9edb"
+                    }
+                  ],
+                  "id": "60fa62f1-c0ea-43fc-860b-df804014a39f",
+                  "createdAt": "2026-07-28T10:24:32.000Z",
+                  "updatedAt": "2026-07-28T10:24:32.000Z",
+                  "uid": "35240-60fa62f1-c0ea-43fc-860b-df804014a39f"
+                }
+              ],
+              "id": "63444de4-d13e-4ec8-a00a-6f3a9ff06345",
+              "createdAt": "2026-07-28T10:24:32.000Z",
+              "updatedAt": "2026-07-28T10:24:32.000Z",
+              "uid": "35240-63444de4-d13e-4ec8-a00a-6f3a9ff06345"
+            }
+          ],
+          "id": "db4213f5-3998-40e5-aaf3-0e71f30e2086",
+          "createdAt": "2026-07-28T10:24:32.000Z",
+          "updatedAt": "2026-07-28T10:24:32.000Z",
+          "uid": "35240-db4213f5-3998-40e5-aaf3-0e71f30e2086"
+        }
+      ],
+      "id": "b1ba193a-4ec9-46fa-af63-115365e160bc",
+      "createdAt": "2026-07-28T10:24:32.000Z",
+      "updatedAt": "2026-07-28T10:24:32.000Z",
+      "uid": "35240-b1ba193a-4ec9-46fa-af63-115365e160bc"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "http://medical-imaging.{{region}}.amazonaws.com"
+    }
+  ]
+}
