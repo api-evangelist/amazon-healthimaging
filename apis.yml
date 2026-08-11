@@ -52,12 +52,8 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
   - type: Authentication
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONSchema
-    url: json-schema/healthimaging-datastore-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthimaging.yaml
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-getdicomimportjob-api
@@ -83,12 +79,8 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
   - type: Authentication
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONSchema
-    url: json-schema/healthimaging-datastore-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthimaging.yaml
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-listdicomimportjobs-api
@@ -114,12 +106,8 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
   - type: Authentication
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONSchema
-    url: json-schema/healthimaging-datastore-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthimaging.yaml
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-startdicomimportjob-api
@@ -145,12 +133,8 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
   - type: Authentication
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONSchema
-    url: json-schema/healthimaging-datastore-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthimaging.yaml
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-tags-api
@@ -175,12 +159,8 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
   - type: Authentication
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONSchema
-    url: json-schema/healthimaging-datastore-schema.json
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: X-NaftikoCapability
-    url: capabilities/amazon-healthimaging.yaml
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 common:
