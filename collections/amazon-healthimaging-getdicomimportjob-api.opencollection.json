@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Health Imaging Datastore GetDICOMImportJob API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GetDICOMImportJob",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon HealthImaging Get DICOM Import Job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://medical-imaging.{region}.amazonaws.com/getDICOMImportJob/datastore/:datastoreId/job/:jobId",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The import job identifier."
+              }
+            ]
+          },
+          "docs": "Get the import job properties to learn more about the job or job progress."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Health Imaging Datastore ListDICOMImportJobs API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ListDICOMImportJobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon HealthImaging List DICOM Import Jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://medical-imaging.{region}.amazonaws.com/listDICOMImportJobs/datastore/:datastoreId",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "jobStatus",
+                "value": "",
+                "type": "query",
+                "description": "The filters for listing import jobs based on status."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The pagination token used to request the list of import jobs on the next page."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The max results count. The upper bound is determined by load testing."
+              }
+            ]
+          },
+          "docs": "List import jobs created by this AWS account for a specific data store."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

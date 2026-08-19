@@ -1,0 +1,722 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AWS Health Imaging Datastore API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Datastore",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon HealthImaging Copy Image Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:sourceImageSetId/copyImageSet",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "sourceImageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The source image set identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy an image set."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging List Datastores",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreStatus",
+                "value": "",
+                "type": "query",
+                "description": "The data store status."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The pagination token used to request the list of data stores on the next page."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Valid Range: Minimum value of 1. Maximum value of 50."
+              }
+            ]
+          },
+          "docs": "List data stores created by this AWS account."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Create Datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a data store."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Get Datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              }
+            ]
+          },
+          "docs": "Get data store properties."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Delete Datastore",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              }
+            ]
+          },
+          "docs": "<p>Delete a data store.</p> <note> <p>Before a data store can be deleted, you must first delete all image sets within it.</p> </note>"
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Delete Image Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:imageSetId/deleteImageSet",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "imageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The image set identifier."
+              }
+            ]
+          },
+          "docs": "Delete an image set."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Get Image Frame",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:imageSetId/getImageFrame",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "imageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The image set identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get an image frame (pixel data) for an image set."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Get Image Set",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:imageSetId/getImageSet",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "imageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The image set identifier."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The image set version identifier."
+              }
+            ]
+          },
+          "docs": "Get image set properties."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Get Image Set Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:imageSetId/getImageSetMetadata",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "imageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The image set identifier."
+              },
+              {
+                "name": "version",
+                "value": "",
+                "type": "query",
+                "description": "The image set version identifier."
+              }
+            ]
+          },
+          "docs": "Get metadata attributes for an image set."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging List Image Set Versions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:imageSetId/listImageSetVersions",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "imageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The image set identifier."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The pagination token used to request the list of image set versions on the next page."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The max results count."
+              }
+            ]
+          },
+          "docs": "List image set versions."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Search Image Sets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/searchImageSets",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the data store where the image sets reside."
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of results that can be returned in a search."
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "The token used for pagination of results returned in the response. Use the token returned from the previous request to continue results where the previous request ended."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search image sets based on defined input attributes."
+        },
+        {
+          "info": {
+            "name": "Amazon HealthImaging Update Image Set Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://medical-imaging.{region}.amazonaws.com/datastore/:datastoreId/imageSet/:imageSetId/updateImageSetMetadata#latestVersion",
+            "headers": [
+              {
+                "name": "X-Amz-Content-Sha256",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Date",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Algorithm",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Credential",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Security-Token",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-Signature",
+                "value": ""
+              },
+              {
+                "name": "X-Amz-SignedHeaders",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "datastoreId",
+                "value": "",
+                "type": "path",
+                "description": "The data store identifier."
+              },
+              {
+                "name": "imageSetId",
+                "value": "",
+                "type": "path",
+                "description": "The image set identifier."
+              },
+              {
+                "name": "latestVersion",
+                "value": "",
+                "type": "query",
+                "description": "The latest image set version identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update image set metadata attributes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
