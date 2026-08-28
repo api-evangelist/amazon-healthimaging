@@ -11,8 +11,14 @@ info:
     opening the underlying OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: healthImagingApi
-  url: ../openapi/amazon-healthimaging-openapi.yaml
+- name: datastoreApi
+  url: ../openapi/amazon-healthimaging-datastore-api-openapi.yml
+  type: openapi
+- name: getdicomimportjobApi
+  url: ../openapi/amazon-healthimaging-getdicomimportjob-api-openapi.yml
+  type: openapi
+- name: startdicomimportjobApi
+  url: ../openapi/amazon-healthimaging-startdicomimportjob-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: onboard-datastore-and-import

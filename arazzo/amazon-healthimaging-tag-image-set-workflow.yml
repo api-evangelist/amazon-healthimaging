@@ -11,8 +11,11 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: healthImagingApi
-  url: ../openapi/amazon-healthimaging-openapi.yaml
+- name: datastoreApi
+  url: ../openapi/amazon-healthimaging-datastore-api-openapi.yml
+  type: openapi
+- name: tagsApi
+  url: ../openapi/amazon-healthimaging-tags-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: tag-image-set
