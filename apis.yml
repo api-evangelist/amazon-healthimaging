@@ -4,6 +4,18 @@ description: AWS HealthImaging is a HIPAA-eligible service that helps healthcare
   transform, and apply machine learning to medical images. It provides sub-second image retrieval and enables scaling from
   hundreds to millions of medical images.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
