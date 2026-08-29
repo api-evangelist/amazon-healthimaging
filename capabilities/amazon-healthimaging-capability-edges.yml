@@ -1,0 +1,43 @@
+slug: amazon-healthimaging
+provider: Amazon HealthImaging
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Healthcare Providers
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Datastore
+  spec_file: amazon-healthimaging-datastore-api-openapi.yml
+  capability_id: BC-2860.30
+  capability_id_l1: BC-2860
+  capability_name: Diagnostic Imaging Services
+  confidence: 0.85
+  evidence: POST /datastore/{datastoreId}/searchImageSets SearchImageSets; schemas DICOMStudyInstanceUID,
+    DICOMPatientBirthDate; "storing, accessing, and analyzing medical images"
+  reason: Operations store, retrieve and search DICOM medical image sets — archival and access for diagnostic
+    imaging services.
+- tag: GetDICOMImportJob
+  spec_file: amazon-healthimaging-getdicomimportjob-api-openapi.yml
+  capability_id: BC-2860.30
+  capability_id_l1: BC-2860
+  capability_name: Diagnostic Imaging Services
+  confidence: 0.7
+  evidence: GET /getDICOMImportJob/datastore/{datastoreId}/job/{jobId}; schema DICOMImportJobProperties
+  reason: Job-status read for DICOM image ingestion into the imaging archive; supports diagnostic imaging
+    archival, though the operation itself is largely job-monitoring plumbing.
+- tag: ListDICOMImportJobs
+  spec_file: amazon-healthimaging-listdicomimportjobs-api-openapi.yml
+  capability_id: BC-2860.30
+  capability_id_l1: BC-2860
+  capability_name: Diagnostic Imaging Services
+  confidence: 0.7
+  evidence: ListDICOMImportJobs, schema DICOMImportJobSummary
+  reason: Listing of DICOM import jobs into the medical image datastore — imaging archival operations,
+    with some job-management plumbing character.

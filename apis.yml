@@ -183,6 +183,9 @@ apis:
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
 common:
+  - type: CapabilityMap
+    url: capabilities/amazon-healthimaging-capability-edges.yml
+    name: Amazon HealthImaging Business Capability Map
   - type: AgenticAccess
     url: agentic-access/amazon-healthimaging-agentic-access.yml
   - type: TrustCenter
