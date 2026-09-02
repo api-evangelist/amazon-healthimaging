@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  version: "1.0.0"
+  version: 1.0.0
   x-release: v4
   title: AWS Health Imaging Datastore API
   description: <p>This is the <i>AWS HealthImaging API Reference</i>. AWS HealthImaging is an AWS service for storing, accessing, and analyzing medical images. For an introduction to the service, see the <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide"> <i>AWS HealthImaging Developer Guide</i> </a>.</p> <note> <p>We recommend using one of the AWS Software Development Kits (SDKs) for your programming language, as they take care of request authentication, serialization, and connection management. For more information, see <a href="http://aws.amazon.com/developer/tools">Tools to build on AWS</a>.</p> <p>For information about using AWS HealthImaging API actions in one of the language-specific AWS SDKs, refer to the <i>See Also</i> link at the end of each section that describes an API action or data type.</p> </note> <p>The following sections list AWS HealthImaging API actions categorized according to functionality. Links are provided to actions within this Reference, along with links back to corresponding sections in the <i>AWS HealthImaging Developer Guide</i> so you can view console procedures and CLI/SDK code examples.</p> <p class="title"> <b>Data store actions</b> </p> <ul> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_CreateDatastore.html">CreateDatastore</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/create-data-store.html">Creating a data store</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetDatastore.html">GetDatastore</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-data-store.html">Getting data store properties</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListDatastores.html">ListDatastores</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-data-stores.html">Listing data stores</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_DeleteDatastore.html">DeleteDatastore</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/delete-data-store.html">Deleting a data store</a>.</p> </li> </ul> <p class="title"> <b>Import job actions</b> </p> <ul> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_StartDICOMImportJob.html">StartDICOMImportJob</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/start-dicom-import-job.html">Starting an import job</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetDICOMImportJob.html">GetDICOMImportJob</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-dicom-import-job.html">Getting import job properties</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListDICOMImportJobs.html">ListDICOMImportJobs</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-dicom-import-jobs.html">Listing import jobs</a>.</p> </li> </ul> <p class="title"> <b>Image set access actions</b> </p> <ul> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_SearchImageSets.html">SearchImageSets</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/search-image-sets.html">Searching image sets</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageSet.html">GetImageSet</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-set-properties.html">Getting image set properties</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageSetMetadata.html">GetImageSetMetadata</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-set-metadata.html">Getting image set metadata</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_GetImageFrame.html">GetImageFrame</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/get-image-frame.html">Getting image set pixel data</a>.</p> </li> </ul> <p class="title"> <b>Image set modification actions</b> </p> <ul> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListImageSetVersions.html">ListImageSetVersions</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/list-image-set-versions.html">Listing image set versions</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_UpdateImageSetMetadata.html">UpdateImageSetMetadata</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/update-image-set-metadata.html">Updating image set metadata</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_CopyImageSet.html">CopyImageSet</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/copy-image-set.html">Copying an image set</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_DeleteImageSet.html">DeleteImageSet</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/delete-image-set.html">Deleting an image set</a>.</p> </li> </ul> <p class="title"> <b>Tagging actions</b> </p> <ul> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_TagResource.html">TagResource</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html">Tagging a data store</a> and <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html">Tagging an image set</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_ListTagsForResource.html">ListTagsForResource</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html">Tagging a data store</a> and <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html">Tagging an image set</a>.</p> </li> <li> <p> <a href="https://docs.aws.amazon.com/medical-imaging/latest/APIReference/API_UntagResource.html">UntagResource</a> – See <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-data-store.html">Tagging a data store</a> and <a href="https://docs.aws.amazon.com/medical-imaging/latest/devguide/tag-list-untag-image-set.html">Tagging an image set</a>.</p> </li> </ul>
@@ -1140,36 +1140,266 @@ paths:
       tags:
       - Datastore
 components:
+  parameters:
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   schemas:
     Arn:
       type: string
       pattern: arn:aws((-us-gov)|(-iso)|(-iso-b)|(-cn))?:medical-imaging:[a-z0-9-]+:[0-9]{12}:datastore/[0-9a-z]{32}(/imageset/[0-9a-z]{32})?
-    SearchFilterValuesList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SearchByAttributeValue'
-      minItems: 1
-      maxItems: 2
-    DICOMStudyDateAndTime:
+    ListImageSetVersionsResponse:
       type: object
       required:
-      - DICOMStudyDate
+      - imageSetPropertiesList
       properties:
-        DICOMStudyDate:
+        imageSetPropertiesList:
           allOf:
-          - $ref: '#/components/schemas/DICOMStudyDate'
-          - description: The DICOM study date provided in <code>yyMMdd</code> format.
-        DICOMStudyTime:
+          - $ref: '#/components/schemas/ImageSetPropertiesList'
+          - description: Lists all properties associated with an image set.
+        nextToken:
           allOf:
-          - $ref: '#/components/schemas/DICOMStudyTime'
-          - description: The DICOM study time provided in <code>HHmmss.FFFFFF</code> format.
-      description: The aggregated structure to store DICOM study date and study time for search capabilities.
+          - $ref: '#/components/schemas/NextToken'
+          - description: The pagination token used to retrieve the list of image set versions on the next page.
+    DICOMAccessionNumber:
+      type: string
+      minLength: 0
+      maxLength: 16
+      format: password
+    ConflictException: {}
+    SearchByAttributeValue:
+      type: object
+      properties:
+        DICOMPatientId:
+          allOf:
+          - $ref: '#/components/schemas/DICOMPatientId'
+          - description: The patient ID input for search.
+        DICOMAccessionNumber:
+          allOf:
+          - $ref: '#/components/schemas/DICOMAccessionNumber'
+          - description: The DICOM accession number for search.
+        DICOMStudyId:
+          allOf:
+          - $ref: '#/components/schemas/DICOMStudyId'
+          - description: The DICOM study ID for search.
+        DICOMStudyInstanceUID:
+          allOf:
+          - $ref: '#/components/schemas/DICOMStudyInstanceUID'
+          - description: The DICOM study instance UID for search.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The created at time of the image set provided for search.
+        DICOMStudyDateAndTime:
+          allOf:
+          - $ref: '#/components/schemas/DICOMStudyDateAndTime'
+          - description: The aggregated structure containing DICOM study date and study time for search.
+      description: The search input attribute value.
+    DICOMNumberOfStudyRelatedSeries:
+      type: integer
+      minimum: 0
+      maximum: 10000
+    DICOMStudyDate:
+      type: string
+      minLength: 0
+      maxLength: 18
+      format: password
+    ThrottlingException: {}
+    SearchImageSetsResponse:
+      type: object
+      required:
+      - imageSetsMetadataSummaries
+      properties:
+        imageSetsMetadataSummaries:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetsMetadataSummaries'
+          - description: The model containing the image set results.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The token for pagination results.
+    ImageSetsMetadataSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/ImageSetsMetadataSummary'
+    ImageSetsMetadataSummary:
+      type: object
+      required:
+      - imageSetId
+      properties:
+        imageSetId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetId'
+          - description: The image set identifier.
+        version:
+          allOf:
+          - $ref: '#/components/schemas/Integer'
+          - description: The image set version.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The time an image set is created in AWS HealthImaging. Sample creation date is provided in <code>1985-04-12T23:20:50.52Z</code> format.
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The time when an image was last updated in AWS HealthImaging.
+        DICOMTags:
+          allOf:
+          - $ref: '#/components/schemas/DICOMTags'
+          - description: The DICOM tags associated with the image set.
+      description: Summary of the image set metadata.
     Operator:
       type: string
       enum:
       - EQUAL
       - BETWEEN
-    ResourceNotFoundException: {}
+    DICOMPatientBirthDate:
+      type: string
+      minLength: 0
+      maxLength: 18
+      format: password
+    CopyDestinationImageSetProperties:
+      type: object
+      required:
+      - imageSetId
+      - latestVersionId
+      properties:
+        imageSetId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetId'
+          - description: The image set identifier of the copied image set properties.
+        latestVersionId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetExternalVersionId'
+          - description: The latest version identifier for the destination image set properties.
+        imageSetState:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetState'
+          - description: The image set state of the destination image set properties.
+        imageSetWorkflowStatus:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetWorkflowStatus'
+          - description: The image set workflow status of the destination image set properties.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the destination image set properties were created.
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the destination image set properties were last updated.
+        imageSetArn:
+          allOf:
+          - $ref: '#/components/schemas/Arn'
+          - description: The Amazon Resource Name (ARN) assigned to the destination image set.
+      description: Copy the image set properties of the destination image set.
+    CreateDatastoreResponse:
+      type: object
+      required:
+      - datastoreId
+      - datastoreStatus
+      properties:
+        datastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The data store identifier.
+        datastoreStatus:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreStatus'
+          - description: The data store status.
+    CopyDestinationImageSet:
+      type: object
+      required:
+      - imageSetId
+      - latestVersionId
+      properties:
+        imageSetId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetId'
+          - description: The image set identifier for the destination image set.
+        latestVersionId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetExternalVersionId'
+          - description: The latest version identifier for the destination image set.
+      description: Copy the destination image set.
+    ServiceQuotaExceededException: {}
+    DatastoreSummary:
+      type: object
+      required:
+      - datastoreId
+      - datastoreName
+      - datastoreStatus
+      properties:
+        datastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The data store identifier.
+        datastoreName:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreName'
+          - description: The data store name.
+        datastoreStatus:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreStatus'
+          - description: The data store status.
+        datastoreArn:
+          allOf:
+          - $ref: '#/components/schemas/Arn'
+          - description: The Amazon Resource Name (ARN) for the data store.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the data store was created.
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the data store was last updated.
+      description: List of summaries of data stores.
+    DICOMStudyInstanceUID:
+      type: string
+      pattern: (?:[1-9][0-9]*|0)(\.(?:[1-9][0-9]*|0))*
+      minLength: 0
+      maxLength: 64
+      format: password
     CopySourceImageSetInformation:
       type: object
       required:
@@ -1180,6 +1410,56 @@ components:
           - $ref: '#/components/schemas/ImageSetExternalVersionId'
           - description: The latest version identifier for the source image set.
       description: Copy source image set information.
+    PayloadBlob:
+      type: string
+    DeleteDatastoreResponse:
+      type: object
+      required:
+      - datastoreId
+      - datastoreStatus
+      properties:
+        datastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The data store identifier.
+        datastoreStatus:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreStatus'
+          - description: The data store status.
+    Message:
+      type: string
+      pattern: '[\w -:]+'
+      minLength: 1
+      maxLength: 2048
+    ListDatastoresResponse:
+      type: object
+      properties:
+        datastoreSummaries:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreSummaries'
+          - description: The list of summaries of data stores.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The pagination token used to retrieve the list of data stores on the next page.
+    KmsKeyArn:
+      type: string
+      pattern: arn:aws[a-zA-Z-]{0,16}:kms:[a-z]{2}(-[a-z]{1,16}){1,3}-\d{1}:\d{12}:((key/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})|(alias/[a-zA-Z0-9:/_-]{1,256}))
+      description: ARN referencing a KMS key or KMS key alias.
+      minLength: 1
+      maxLength: 512
+    ResourceNotFoundException: {}
+    NextToken:
+      type: string
+      pattern: \p{ASCII}{0,8192}
+      minLength: 1
+      maxLength: 8192
+    SearchCriteriaFiltersList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchFilter'
+      minItems: 1
+      maxItems: 2
     ImageSetProperties:
       type: object
       required:
@@ -1220,36 +1500,13 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an image set action fails.
       description: The image set properties.
-    ListDatastoresResponse:
-      type: object
-      properties:
-        datastoreSummaries:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreSummaries'
-          - description: The list of summaries of data stores.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The pagination token used to retrieve the list of data stores on the next page.
-    DICOMUpdates:
-      type: object
-      properties:
-        removableAttributes:
-          allOf:
-          - $ref: '#/components/schemas/DICOMAttribute'
-          - description: The DICOM tags to be removed from <code>ImageSetMetadata</code>.
-        updatableAttributes:
-          allOf:
-          - $ref: '#/components/schemas/DICOMAttribute'
-          - description: The DICOM tags that need to be updated in <code>ImageSetMetadata</code>.
-      description: The object containing <code>removableAttributes</code> and <code>updatableAttributes</code>.
-    UpdateImageSetMetadataResponse:
+    DeleteImageSetResponse:
       type: object
       required:
       - datastoreId
       - imageSetId
-      - latestVersionId
       - imageSetState
+      - imageSetWorkflowStatus
       properties:
         datastoreId:
           allOf:
@@ -1259,10 +1516,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/ImageSetId'
           - description: The image set identifier.
-        latestVersionId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetExternalVersionId'
-          - description: The latest image set version identifier.
         imageSetState:
           allOf:
           - $ref: '#/components/schemas/ImageSetState'
@@ -1271,220 +1524,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/ImageSetWorkflowStatus'
           - description: The image set workflow status.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when image set metadata was created.
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when image set metadata was updated.
-        message:
-          allOf:
-          - $ref: '#/components/schemas/Message'
-          - description: The error message thrown if an update image set metadata action fails.
-    ImageSetsMetadataSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/ImageSetsMetadataSummary'
-    DICOMStudyDate:
-      type: string
-      minLength: 0
-      maxLength: 18
-      format: password
-    NextToken:
-      type: string
-      pattern: \p{ASCII}{0,8192}
-      minLength: 1
-      maxLength: 8192
-    CopySourceImageSetProperties:
-      type: object
-      required:
-      - imageSetId
-      - latestVersionId
-      properties:
-        imageSetId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetId'
-          - description: The image set identifier for the copied source image set.
-        latestVersionId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetExternalVersionId'
-          - description: The latest version identifier for the copied source image set.
-        imageSetState:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetState'
-          - description: The image set state of the copied source image set.
-        imageSetWorkflowStatus:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetWorkflowStatus'
-          - description: The workflow status of the copied source image set.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the source image set properties were created.
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the source image set properties were updated.
-        imageSetArn:
-          allOf:
-          - $ref: '#/components/schemas/Arn'
-          - description: The Amazon Resource Name (ARN) assigned to the source image set.
-      description: Copy source image set properties.
-    DICOMStudyInstanceUID:
-      type: string
-      pattern: (?:[1-9][0-9]*|0)(\.(?:[1-9][0-9]*|0))*
-      minLength: 0
-      maxLength: 64
-      format: password
-    ImageSetWorkflowStatus:
-      type: string
-      enum:
-      - CREATED
-      - COPIED
-      - COPYING
-      - COPYING_WITH_READ_ONLY_ACCESS
-      - COPY_FAILED
-      - UPDATING
-      - UPDATED
-      - UPDATE_FAILED
-      - DELETING
-      - DELETED
-    DICOMAccessionNumber:
-      type: string
-      minLength: 0
-      maxLength: 16
-      format: password
-    ImageSetExternalVersionId:
-      type: string
-      pattern: \d+
-    PayloadBlob:
-      type: string
-    DICOMPatientName:
-      type: string
-      minLength: 0
-      maxLength: 256
-      format: password
-    ConflictException: {}
-    DatastoreSummary:
-      type: object
-      required:
-      - datastoreId
-      - datastoreName
-      - datastoreStatus
-      properties:
-        datastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The data store identifier.
-        datastoreName:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreName'
-          - description: The data store name.
-        datastoreStatus:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreStatus'
-          - description: The data store status.
-        datastoreArn:
-          allOf:
-          - $ref: '#/components/schemas/Arn'
-          - description: The Amazon Resource Name (ARN) for the data store.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the data store was created.
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the data store was last updated.
-      description: List of summaries of data stores.
-    DatastoreId:
-      type: string
-      pattern: '[0-9a-z]{32}'
-    DatastoreProperties:
-      type: object
-      required:
-      - datastoreId
-      - datastoreName
-      - datastoreStatus
-      properties:
-        datastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The data store identifier.
-        datastoreName:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreName'
-          - description: The data store name.
-        datastoreStatus:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreStatus'
-          - description: The data store status.
-        kmsKeyArn:
-          allOf:
-          - $ref: '#/components/schemas/KmsKeyArn'
-          - description: The Amazon Resource Name (ARN) assigned to the AWS Key Management Service (AWS KMS) key for accessing encrypted data.
-        datastoreArn:
-          allOf:
-          - $ref: '#/components/schemas/Arn'
-          - description: The Amazon Resource Name (ARN) for the data store.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the data store was created.
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the data store was last updated.
-      description: The properties associated with the data store.
-    DICOMPatientBirthDate:
-      type: string
-      minLength: 0
-      maxLength: 18
-      format: password
-    KmsKeyArn:
-      type: string
-      pattern: arn:aws[a-zA-Z-]{0,16}:kms:[a-z]{2}(-[a-z]{1,16}){1,3}-\d{1}:\d{12}:((key/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12})|(alias/[a-zA-Z0-9:/_-]{1,256}))
-      description: ARN referencing a KMS key or KMS key alias.
-      minLength: 1
-      maxLength: 512
-    DICOMPatientId:
-      type: string
-      minLength: 0
-      maxLength: 64
-      format: password
-    DICOMStudyTime:
-      type: string
-      minLength: 0
-      maxLength: 28
-      format: password
-    ImageSetsMetadataSummary:
-      type: object
-      required:
-      - imageSetId
-      properties:
-        imageSetId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetId'
-          - description: The image set identifier.
-        version:
-          allOf:
-          - $ref: '#/components/schemas/Integer'
-          - description: The image set version.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The time an image set is created in AWS HealthImaging. Sample creation date is provided in <code>1985-04-12T23:20:50.52Z</code> format.
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The time when an image was last updated in AWS HealthImaging.
-        DICOMTags:
-          allOf:
-          - $ref: '#/components/schemas/DICOMTags'
-          - description: The DICOM tags associated with the image set.
-      description: Summary of the image set metadata.
     DICOMTags:
       type: object
       properties:
@@ -1537,91 +1576,24 @@ components:
           - $ref: '#/components/schemas/DICOMStudyTime'
           - description: The study time.
       description: The DICOM attributes returned as a part of a response. Each image set has these properties as part of a search result.
-    DatastoreSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/DatastoreSummary'
-    ListImageSetVersionsResponse:
-      type: object
-      required:
-      - imageSetPropertiesList
-      properties:
-        imageSetPropertiesList:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetPropertiesList'
-          - description: Lists all properties associated with an image set.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The pagination token used to retrieve the list of image set versions on the next page.
-    ImageSetState:
+    Date:
       type: string
-      enum:
-      - ACTIVE
-      - LOCKED
-      - DELETED
-    DICOMPatientSex:
+      format: date-time
+    DICOMStudyTime:
+      type: string
+      minLength: 0
+      maxLength: 28
+      format: password
+    DICOMStudyId:
       type: string
       minLength: 0
       maxLength: 16
       format: password
-    CopyDestinationImageSet:
-      type: object
-      required:
-      - imageSetId
-      - latestVersionId
-      properties:
-        imageSetId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetId'
-          - description: The image set identifier for the destination image set.
-        latestVersionId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetExternalVersionId'
-          - description: The latest version identifier for the destination image set.
-      description: Copy the destination image set.
-    Integer:
-      type: integer
-    Date:
-      type: string
-      format: date-time
-    TagValue:
+    DICOMPatientName:
       type: string
       minLength: 0
       maxLength: 256
-    Message:
-      type: string
-      pattern: '[\w -:]+'
-      minLength: 1
-      maxLength: 2048
-    SearchByAttributeValue:
-      type: object
-      properties:
-        DICOMPatientId:
-          allOf:
-          - $ref: '#/components/schemas/DICOMPatientId'
-          - description: The patient ID input for search.
-        DICOMAccessionNumber:
-          allOf:
-          - $ref: '#/components/schemas/DICOMAccessionNumber'
-          - description: The DICOM accession number for search.
-        DICOMStudyId:
-          allOf:
-          - $ref: '#/components/schemas/DICOMStudyId'
-          - description: The DICOM study ID for search.
-        DICOMStudyInstanceUID:
-          allOf:
-          - $ref: '#/components/schemas/DICOMStudyInstanceUID'
-          - description: The DICOM study instance UID for search.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The created at time of the image set provided for search.
-        DICOMStudyDateAndTime:
-          allOf:
-          - $ref: '#/components/schemas/DICOMStudyDateAndTime'
-          - description: The aggregated structure containing DICOM study date and study time for search.
-      description: The search input attribute value.
+      format: password
     CopyImageSetResponse:
       type: object
       required:
@@ -1641,12 +1613,15 @@ components:
           allOf:
           - $ref: '#/components/schemas/CopyDestinationImageSetProperties'
           - description: The properties of the destination image set.
-    DatastoreName:
+    Integer:
+      type: integer
+    ImageSetExternalVersionId:
       type: string
-      pattern: '[A-Za-z0-9._/#-]+'
-      minLength: 1
-      maxLength: 256
-    ThrottlingException: {}
+      pattern: \d+
+    DatastoreSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/DatastoreSummary'
     DatastoreStatus:
       type: string
       enum:
@@ -1655,151 +1630,6 @@ components:
       - ACTIVE
       - DELETING
       - DELETED
-    SearchImageSetsResponse:
-      type: object
-      required:
-      - imageSetsMetadataSummaries
-      properties:
-        imageSetsMetadataSummaries:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetsMetadataSummaries'
-          - description: The model containing the image set results.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The token for pagination results.
-    DeleteImageSetResponse:
-      type: object
-      required:
-      - datastoreId
-      - imageSetId
-      - imageSetState
-      - imageSetWorkflowStatus
-      properties:
-        datastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The data store identifier.
-        imageSetId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetId'
-          - description: The image set identifier.
-        imageSetState:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetState'
-          - description: The image set state.
-        imageSetWorkflowStatus:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetWorkflowStatus'
-          - description: The image set workflow status.
-    DICOMAttribute:
-      type: string
-      minLength: 1
-      maxLength: 10000
-      format: password
-    GetDatastoreResponse:
-      type: object
-      required:
-      - datastoreProperties
-      properties:
-        datastoreProperties:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreProperties'
-          - description: The data store properties.
-    DICOMNumberOfStudyRelatedSeries:
-      type: integer
-      minimum: 0
-      maximum: 10000
-    CreateDatastoreResponse:
-      type: object
-      required:
-      - datastoreId
-      - datastoreStatus
-      properties:
-        datastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The data store identifier.
-        datastoreStatus:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreStatus'
-          - description: The data store status.
-    ImageSetPropertiesList:
-      type: array
-      items:
-        $ref: '#/components/schemas/ImageSetProperties'
-    ImageFrameId:
-      type: string
-      pattern: '[0-9a-z]{32}'
-    GetImageSetMetadataResponse:
-      type: object
-      required:
-      - imageSetMetadataBlob
-      properties:
-        imageSetMetadataBlob:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetMetadataBlob'
-          - description: The blob containing the aggregated metadata information for the image set.
-    DeleteDatastoreResponse:
-      type: object
-      required:
-      - datastoreId
-      - datastoreStatus
-      properties:
-        datastoreId:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreId'
-          - description: The data store identifier.
-        datastoreStatus:
-          allOf:
-          - $ref: '#/components/schemas/DatastoreStatus'
-          - description: The data store status.
-    ValidationException: {}
-    DICOMStudyDescription:
-      type: string
-      minLength: 0
-      maxLength: 64
-      format: password
-    ImageSetId:
-      type: string
-      pattern: '[0-9a-z]{32}'
-    CopyDestinationImageSetProperties:
-      type: object
-      required:
-      - imageSetId
-      - latestVersionId
-      properties:
-        imageSetId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetId'
-          - description: The image set identifier of the copied image set properties.
-        latestVersionId:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetExternalVersionId'
-          - description: The latest version identifier for the destination image set properties.
-        imageSetState:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetState'
-          - description: The image set state of the destination image set properties.
-        imageSetWorkflowStatus:
-          allOf:
-          - $ref: '#/components/schemas/ImageSetWorkflowStatus'
-          - description: The image set workflow status of the destination image set properties.
-        createdAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the destination image set properties were created.
-        updatedAt:
-          allOf:
-          - $ref: '#/components/schemas/Date'
-          - description: The timestamp when the destination image set properties were last updated.
-        imageSetArn:
-          allOf:
-          - $ref: '#/components/schemas/Arn'
-          - description: The Amazon Resource Name (ARN) assigned to the destination image set.
-      description: Copy the image set properties of the destination image set.
-    ImageSetMetadataBlob:
-      type: string
     GetImageFrameResponse:
       type: object
       required:
@@ -1809,22 +1639,82 @@ components:
           allOf:
           - $ref: '#/components/schemas/PayloadBlob'
           - description: The blob containing the aggregated image frame information.
-    DICOMNumberOfStudyRelatedInstances:
-      type: integer
-      minimum: 0
-      maximum: 10000
-    DICOMStudyId:
+    CopySourceImageSetProperties:
+      type: object
+      required:
+      - imageSetId
+      - latestVersionId
+      properties:
+        imageSetId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetId'
+          - description: The image set identifier for the copied source image set.
+        latestVersionId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetExternalVersionId'
+          - description: The latest version identifier for the copied source image set.
+        imageSetState:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetState'
+          - description: The image set state of the copied source image set.
+        imageSetWorkflowStatus:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetWorkflowStatus'
+          - description: The workflow status of the copied source image set.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the source image set properties were created.
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the source image set properties were updated.
+        imageSetArn:
+          allOf:
+          - $ref: '#/components/schemas/Arn'
+          - description: The Amazon Resource Name (ARN) assigned to the source image set.
+      description: Copy source image set properties.
+    DICOMPatientId:
       type: string
       minLength: 0
-      maxLength: 16
+      maxLength: 64
       format: password
-    SearchCriteriaFiltersList:
-      type: array
-      items:
-        $ref: '#/components/schemas/SearchFilter'
-      minItems: 1
-      maxItems: 2
-    ServiceQuotaExceededException: {}
+    DatastoreProperties:
+      type: object
+      required:
+      - datastoreId
+      - datastoreName
+      - datastoreStatus
+      properties:
+        datastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The data store identifier.
+        datastoreName:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreName'
+          - description: The data store name.
+        datastoreStatus:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreStatus'
+          - description: The data store status.
+        kmsKeyArn:
+          allOf:
+          - $ref: '#/components/schemas/KmsKeyArn'
+          - description: The Amazon Resource Name (ARN) assigned to the AWS Key Management Service (AWS KMS) key for accessing encrypted data.
+        datastoreArn:
+          allOf:
+          - $ref: '#/components/schemas/Arn'
+          - description: The Amazon Resource Name (ARN) for the data store.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the data store was created.
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when the data store was last updated.
+      description: The properties associated with the data store.
     GetImageSetResponse:
       type: object
       required:
@@ -1873,8 +1763,128 @@ components:
           allOf:
           - $ref: '#/components/schemas/Arn'
           - description: The Amazon Resource Name (ARN) assigned to the image set.
+    UpdateImageSetMetadataResponse:
+      type: object
+      required:
+      - datastoreId
+      - imageSetId
+      - latestVersionId
+      - imageSetState
+      properties:
+        datastoreId:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreId'
+          - description: The data store identifier.
+        imageSetId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetId'
+          - description: The image set identifier.
+        latestVersionId:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetExternalVersionId'
+          - description: The latest image set version identifier.
+        imageSetState:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetState'
+          - description: The image set state.
+        imageSetWorkflowStatus:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetWorkflowStatus'
+          - description: The image set workflow status.
+        createdAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when image set metadata was created.
+        updatedAt:
+          allOf:
+          - $ref: '#/components/schemas/Date'
+          - description: The timestamp when image set metadata was updated.
+        message:
+          allOf:
+          - $ref: '#/components/schemas/Message'
+          - description: The error message thrown if an update image set metadata action fails.
+    ImageSetId:
+      type: string
+      pattern: '[0-9a-z]{32}'
+    DatastoreId:
+      type: string
+      pattern: '[0-9a-z]{32}'
+    ImageSetMetadataBlob:
+      type: string
     AccessDeniedException: {}
-    InternalServerException: {}
+    DICOMStudyDescription:
+      type: string
+      minLength: 0
+      maxLength: 64
+      format: password
+    ValidationException: {}
+    DICOMStudyDateAndTime:
+      type: object
+      required:
+      - DICOMStudyDate
+      properties:
+        DICOMStudyDate:
+          allOf:
+          - $ref: '#/components/schemas/DICOMStudyDate'
+          - description: The DICOM study date provided in <code>yyMMdd</code> format.
+        DICOMStudyTime:
+          allOf:
+          - $ref: '#/components/schemas/DICOMStudyTime'
+          - description: The DICOM study time provided in <code>HHmmss.FFFFFF</code> format.
+      description: The aggregated structure to store DICOM study date and study time for search capabilities.
+    DatastoreName:
+      type: string
+      pattern: '[A-Za-z0-9._/#-]+'
+      minLength: 1
+      maxLength: 256
+    DICOMUpdates:
+      type: object
+      properties:
+        removableAttributes:
+          allOf:
+          - $ref: '#/components/schemas/DICOMAttribute'
+          - description: The DICOM tags to be removed from <code>ImageSetMetadata</code>.
+        updatableAttributes:
+          allOf:
+          - $ref: '#/components/schemas/DICOMAttribute'
+          - description: The DICOM tags that need to be updated in <code>ImageSetMetadata</code>.
+      description: The object containing <code>removableAttributes</code> and <code>updatableAttributes</code>.
+    GetImageSetMetadataResponse:
+      type: object
+      required:
+      - imageSetMetadataBlob
+      properties:
+        imageSetMetadataBlob:
+          allOf:
+          - $ref: '#/components/schemas/ImageSetMetadataBlob'
+          - description: The blob containing the aggregated metadata information for the image set.
+    ImageFrameId:
+      type: string
+      pattern: '[0-9a-z]{32}'
+    ImageSetState:
+      type: string
+      enum:
+      - ACTIVE
+      - LOCKED
+      - DELETED
+    DICOMNumberOfStudyRelatedInstances:
+      type: integer
+      minimum: 0
+      maximum: 10000
+    DICOMAttribute:
+      type: string
+      minLength: 1
+      maxLength: 10000
+      format: password
+    GetDatastoreResponse:
+      type: object
+      required:
+      - datastoreProperties
+      properties:
+        datastoreProperties:
+          allOf:
+          - $ref: '#/components/schemas/DatastoreProperties'
+          - description: The data store properties.
     SearchFilter:
       type: object
       required:
@@ -1890,49 +1900,39 @@ components:
           - $ref: '#/components/schemas/Operator'
           - description: The search filter operator for <code>imageSetDateTime</code>.
       description: The search filter.
-  parameters:
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
+    ImageSetWorkflowStatus:
+      type: string
+      enum:
+      - CREATED
+      - COPIED
+      - COPYING
+      - COPYING_WITH_READ_ONLY_ACCESS
+      - COPY_FAILED
+      - UPDATING
+      - UPDATED
+      - UPDATE_FAILED
+      - DELETING
+      - DELETED
+    SearchFilterValuesList:
+      type: array
+      items:
+        $ref: '#/components/schemas/SearchByAttributeValue'
+      minItems: 1
+      maxItems: 2
+    DICOMPatientSex:
+      type: string
+      minLength: 0
+      maxLength: 16
+      format: password
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    InternalServerException: {}
+    ImageSetPropertiesList:
+      type: array
+      items:
+        $ref: '#/components/schemas/ImageSetProperties'
   securitySchemes:
     hmac:
       type: apiKey
