@@ -76,84 +76,6 @@ apis:
     url: json-ld/amazon-healthimaging-context.jsonld
   - type: GraphQL
     url: graphql/amazon-healthimaging-graphql.md
-- aid: amazon-healthimaging:amazon-healthimaging-getdicomimportjob-api
-  name: Amazon HealthImaging GetDICOMImportJob API
-  description: The GetDICOMImportJob API from Amazon HealthImaging — 1 operation(s) for getdicomimportjob.
-  humanURL: https://aws.amazon.com/healthimaging/
-  baseURL: https://medical-imaging.us-east-1.amazonaws.com
-  tags:
-  - GetDICOMImportJob
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-healthimaging-getdicomimportjob-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
-  - type: GettingStarted
-    url: https://aws.amazon.com/healthimaging/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/healthimaging/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/healthimaging/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONLD
-    url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
-- aid: amazon-healthimaging:amazon-healthimaging-listdicomimportjobs-api
-  name: Amazon HealthImaging ListDICOMImportJobs API
-  description: The ListDICOMImportJobs API from Amazon HealthImaging — 1 operation(s) for listdicomimportjobs.
-  humanURL: https://aws.amazon.com/healthimaging/
-  baseURL: https://medical-imaging.us-east-1.amazonaws.com
-  tags:
-  - ListDICOMImportJobs
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-healthimaging-listdicomimportjobs-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
-  - type: GettingStarted
-    url: https://aws.amazon.com/healthimaging/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/healthimaging/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/healthimaging/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONLD
-    url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
-- aid: amazon-healthimaging:amazon-healthimaging-startdicomimportjob-api
-  name: Amazon HealthImaging StartDICOMImportJob API
-  description: The StartDICOMImportJob API from Amazon HealthImaging — 1 operation(s) for startdicomimportjob.
-  humanURL: https://aws.amazon.com/healthimaging/
-  baseURL: https://medical-imaging.us-east-1.amazonaws.com
-  tags:
-  - StartDICOMImportJob
-  properties:
-  - type: OpenAPI
-    url: openapi/amazon-healthimaging-startdicomimportjob-api-openapi.yml
-  - type: Documentation
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
-  - type: GettingStarted
-    url: https://aws.amazon.com/healthimaging/getting-started/
-  - type: Pricing
-    url: https://aws.amazon.com/healthimaging/pricing/
-  - type: FAQ
-    url: https://aws.amazon.com/healthimaging/faqs/
-  - type: APIReference
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
-  - type: Authentication
-    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
-  - type: JSONLD
-    url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-tags-api
   name: Amazon HealthImaging Tags API
   description: The Tags API from Amazon HealthImaging — 2 operation(s) for tags.
@@ -164,6 +86,87 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/amazon-healthimaging-tags-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthimaging/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthimaging/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthimaging/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
+  - type: JSONLD
+    url: json-ld/amazon-healthimaging-context.jsonld
+  - type: GraphQL
+    url: graphql/amazon-healthimaging-graphql.md
+- aid: amazon-healthimaging:amazon-healthimaging-get-dicom-import-job-api
+  name: Amazon HealthImaging Get DICOM Import Job API
+  description: >-
+    The Get DICOM Import Job API from Amazon HealthImaging — 1 operation(s) for get dicom import job.
+  humanURL: https://aws.amazon.com/healthimaging/
+  baseURL: https://medical-imaging.us-east-1.amazonaws.com
+  tags:
+  - Get DICOM Import Job
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthimaging-get-dicom-import-job-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthimaging/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthimaging/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthimaging/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
+  - type: JSONLD
+    url: json-ld/amazon-healthimaging-context.jsonld
+  - type: GraphQL
+    url: graphql/amazon-healthimaging-graphql.md
+- aid: amazon-healthimaging:amazon-healthimaging-list-dicom-import-jobs-api
+  name: Amazon HealthImaging List DICOM Import Jobs API
+  description: >-
+    The List DICOM Import Jobs API from Amazon HealthImaging — 1 operation(s) for list dicom import jobs.
+  humanURL: https://aws.amazon.com/healthimaging/
+  baseURL: https://medical-imaging.us-east-1.amazonaws.com
+  tags:
+  - List DICOM Import Jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthimaging-list-dicom-import-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
+  - type: GettingStarted
+    url: https://aws.amazon.com/healthimaging/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/healthimaging/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/healthimaging/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
+  - type: Authentication
+    url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
+  - type: JSONLD
+    url: json-ld/amazon-healthimaging-context.jsonld
+  - type: GraphQL
+    url: graphql/amazon-healthimaging-graphql.md
+- aid: amazon-healthimaging:amazon-healthimaging-start-dicom-import-job-api
+  name: Amazon HealthImaging Start DICOM Import Job API
+  description: >-
+    The Start DICOM Import Job API from Amazon HealthImaging — 1 operation(s) for start dicom import job.
+  humanURL: https://aws.amazon.com/healthimaging/
+  baseURL: https://medical-imaging.us-east-1.amazonaws.com
+  tags:
+  - Start DICOM Import Job
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-healthimaging-start-dicom-import-job-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html
   - type: GettingStarted
