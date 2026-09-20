@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 1
+edge_count: 3
 edges:
 - tag: Datastore
   spec_file: amazon-healthimaging-datastore-api-openapi.yml
@@ -25,3 +25,25 @@ edges:
     metadata — i.e. archival and retrieval of diagnostic imaging studies, matching Diagnostic Imaging
     Services (acquisition, reading, archival). Not certain whether the frame intends PACS/archive here,
     hence moderate confidence rather than high.
+- tag: GetDICOMImportJob
+  spec_file: amazon-healthimaging-get-dicom-import-job-api-openapi.yml
+  capability_id: BC-2860.30
+  capability_id_l1: BC-2860
+  capability_name: Diagnostic Imaging Services
+  confidence: 0.7
+  evidence: GET /getDICOMImportJob/datastore/{datastoreId}/job/{jobId}; schema DICOMImportJobProperties
+  reason: Job-status read for DICOM image ingestion into the imaging archive; supports diagnostic imaging
+    archival, though the operation itself is largely job-monitoring plumbing.
+  recovered_from: healthcare-vertical-edges.json
+  reanchored_from: amazon-healthimaging-getdicomimportjob-api-openapi.yml
+- tag: ListDICOMImportJobs
+  spec_file: amazon-healthimaging-list-dicom-import-jobs-api-openapi.yml
+  capability_id: BC-2860.30
+  capability_id_l1: BC-2860
+  capability_name: Diagnostic Imaging Services
+  confidence: 0.7
+  evidence: ListDICOMImportJobs, schema DICOMImportJobSummary
+  reason: Listing of DICOM import jobs into the medical image datastore — imaging archival operations,
+    with some job-management plumbing character.
+  recovered_from: healthcare-vertical-edges.json
+  reanchored_from: amazon-healthimaging-listdicomimportjobs-api-openapi.yml
