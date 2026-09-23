@@ -1,11 +1,7 @@
 {
   "provider": "amazon-healthimaging",
   "sources": [
-    "amazon-healthimaging-datastore-api-openapi.yml",
-    "amazon-healthimaging-getdicomimportjob-api-openapi.yml",
-    "amazon-healthimaging-listdicomimportjobs-api-openapi.yml",
-    "amazon-healthimaging-startdicomimportjob-api-openapi.yml",
-    "amazon-healthimaging-tags-api-openapi.yml"
+    "_original/amazon-healthimaging-openapi.yaml"
   ],
   "outputs": [
     "amazon-healthimaging-datastore-api-openapi.yml",
@@ -14,11 +10,45 @@
     "amazon-healthimaging-startdicomimportjob-api-openapi.yml",
     "amazon-healthimaging-tags-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
-    "apis.yml register: already-registered"
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-healthimaging-openapi.yaml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{sourceImageSetId}/copyImageSet -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths GET /datastore -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths DELETE /datastore/{datastoreId} -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths GET /datastore/{datastoreId} -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{imageSetId}/deleteImageSet -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths GET /getDICOMImportJob/datastore/{datastoreId}/job/{jobId} -> GetDICOMImportJob",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{imageSetId}/getImageFrame -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSet -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{imageSetId}/getImageSetMetadata -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths GET /listDICOMImportJobs/datastore/{datastoreId} -> ListDICOMImportJobs",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{imageSetId}/listImageSetVersions -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths GET /tags/{resourceArn} -> Tags",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /tags/{resourceArn} -> Tags",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/searchImageSets -> Datastore",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /startDICOMImportJob/datastore/{datastoreId} -> StartDICOMImportJob",
+    "amazon-healthimaging-openapi.yaml: tagged paths DELETE /tags/{resourceArn}#tagKeys -> Tags",
+    "amazon-healthimaging-openapi.yaml: tagged paths POST /datastore/{datastoreId}/imageSet/{imageSetId}/updateImageSetMetadata#latestVersion -> Datastore",
+    "amazon-healthimaging-openapi.yaml: declared missing tag: Datastore",
+    "amazon-healthimaging-openapi.yaml: declared missing tag: GetDICOMImportJob",
+    "amazon-healthimaging-openapi.yaml: declared missing tag: ListDICOMImportJobs",
+    "amazon-healthimaging-openapi.yaml: declared missing tag: StartDICOMImportJob",
+    "amazon-healthimaging-openapi.yaml: declared missing tag: Tags",
+    "superseded outputs removed: amazon-healthimaging-get-dicom-import-job-api-openapi.yml, amazon-healthimaging-list-dicom-import-jobs-api-openapi.yml, amazon-healthimaging-start-dicom-import-job-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 5 total)"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-healthimaging-datastore-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthimaging-get-dicom-import-job-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthimaging-list-dicom-import-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthimaging-start-dicom-import-job-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-healthimaging-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
