@@ -35,7 +35,7 @@ tags:
 - AWS
 - Healthcare
 - HIPAA
-- Machine-Learning
+- Machine Learning
 - Medical Imaging
 - DICOM
 tags_raw:
@@ -45,6 +45,7 @@ tags_raw:
 - Machine Learning
 - Medical Imaging
 - DICOM
+- Machine-Learning
 url: https://raw.githubusercontent.com/api-evangelist/amazon-healthimaging/refs/heads/main/apis.yml
 created: '2026-03-16'
 modified: '2026-09-16'
@@ -74,8 +75,6 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-tags-api
   name: Amazon HealthImaging Tags API
   description: The Tags API from Amazon HealthImaging — 2 operation(s) for tags.
@@ -100,8 +99,6 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-get-dicom-import-job-api
   name: Amazon HealthImaging Get DICOM Import Job API
   description: >-
@@ -127,8 +124,6 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-list-dicom-import-jobs-api
   name: Amazon HealthImaging List DICOM Import Jobs API
   description: >-
@@ -154,8 +149,6 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
 - aid: amazon-healthimaging:amazon-healthimaging-start-dicom-import-job-api
   name: Amazon HealthImaging Start DICOM Import Job API
   description: >-
@@ -181,11 +174,9 @@ apis:
     url: https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
-  - type: GraphQL
-    url: graphql/amazon-healthimaging-graphql.md
 common:
 - type: Website
-  url: https://amazon.com
+  url: https://aws.amazon.com/healthimaging/
 - type: CapabilityMap
   url: capabilities/amazon-healthimaging-capability-edges.yml
   name: Amazon HealthImaging Business Capability Map
@@ -318,5 +309,5 @@ integrations:
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product
