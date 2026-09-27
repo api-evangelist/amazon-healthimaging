@@ -194,55 +194,7 @@ paths:
       tags:
       - Get DICOM Import Job
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    RoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
     Message:
       type: string
       pattern: '[\w -:]+'
@@ -253,6 +205,16 @@ components:
       pattern: '[0-9a-z]+'
       minLength: 1
       maxLength: 32
+    GetDICOMImportJobResponse:
+      type: object
+      required:
+      - jobProperties
+      properties:
+        jobProperties:
+          allOf:
+          - $ref: '#/components/schemas/DICOMImportJobProperties'
+          - description: The properties of the import job.
+    AccessDeniedException: {}
     DICOMImportJobProperties:
       type: object
       required:
@@ -305,9 +267,10 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Properties of the import job.
+    ValidationException: {}
+    ThrottlingException: {}
     ConflictException: {}
     InternalServerException: {}
-    ValidationException: {}
     JobStatus:
       type: string
       enum:
@@ -315,26 +278,10 @@ components:
       - IN_PROGRESS
       - COMPLETED
       - FAILED
-    ThrottlingException: {}
-    GetDICOMImportJobResponse:
-      type: object
-      required:
-      - jobProperties
-      properties:
-        jobProperties:
-          allOf:
-          - $ref: '#/components/schemas/DICOMImportJobProperties'
-          - description: The properties of the import job.
-    ResourceNotFoundException: {}
-    JobName:
-      type: string
-      pattern: '[A-Za-z0-9._/#-]+'
-      minLength: 1
-      maxLength: 64
     Date:
       type: string
       format: date-time
-    AccessDeniedException: {}
+    ResourceNotFoundException: {}
     S3Uri:
       type: string
       pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
@@ -343,6 +290,59 @@ components:
     DatastoreId:
       type: string
       pattern: '[0-9a-z]{32}'
+    RoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
+    JobName:
+      type: string
+      pattern: '[A-Za-z0-9._/#-]+'
+      minLength: 1
+      maxLength: 64
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey

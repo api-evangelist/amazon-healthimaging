@@ -213,55 +213,12 @@ paths:
       tags:
       - List DICOM Import Jobs
 components:
-  parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
   schemas:
-    RoleArn:
+    NextToken:
       type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
+      pattern: \p{ASCII}{0,8192}
+      minLength: 1
+      maxLength: 8192
     Message:
       type: string
       pattern: '[\w -:]+'
@@ -272,16 +229,22 @@ components:
       pattern: '[0-9a-z]+'
       minLength: 1
       maxLength: 32
-    ConflictException: {}
-    InternalServerException: {}
+    AccessDeniedException: {}
+    ListDICOMImportJobsResponse:
+      type: object
+      required:
+      - jobSummaries
+      properties:
+        jobSummaries:
+          allOf:
+          - $ref: '#/components/schemas/DICOMImportJobSummaries'
+          - description: A list of job summaries.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The pagination token used to retrieve the list of import jobs on the next page.
     ValidationException: {}
-    JobStatus:
-      type: string
-      enum:
-      - SUBMITTED
-      - IN_PROGRESS
-      - COMPLETED
-      - FAILED
+    ThrottlingException: {}
     DICOMImportJobSummary:
       type: object
       required:
@@ -323,42 +286,79 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Summary of import job.
-    ThrottlingException: {}
+    DICOMImportJobSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/DICOMImportJobSummary'
+    ConflictException: {}
+    InternalServerException: {}
+    JobStatus:
+      type: string
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+    Date:
+      type: string
+      format: date-time
+    ResourceNotFoundException: {}
+    DatastoreId:
+      type: string
+      pattern: '[0-9a-z]{32}'
+    RoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
     JobName:
       type: string
       pattern: '[A-Za-z0-9._/#-]+'
       minLength: 1
       maxLength: 64
-    ResourceNotFoundException: {}
-    Date:
-      type: string
-      format: date-time
-    AccessDeniedException: {}
-    DICOMImportJobSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/DICOMImportJobSummary'
-    ListDICOMImportJobsResponse:
-      type: object
-      required:
-      - jobSummaries
-      properties:
-        jobSummaries:
-          allOf:
-          - $ref: '#/components/schemas/DICOMImportJobSummaries'
-          - description: A list of job summaries.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The pagination token used to retrieve the list of import jobs on the next page.
-    NextToken:
-      type: string
-      pattern: \p{ASCII}{0,8192}
-      minLength: 1
-      maxLength: 8192
-    DatastoreId:
-      type: string
-      pattern: '[0-9a-z]{32}'
+  parameters:
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
