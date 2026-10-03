@@ -214,37 +214,22 @@ paths:
       - List DICOM Import Jobs
 components:
   schemas:
-    NextToken:
+    ConflictException: {}
+    JobStatus:
       type: string
-      pattern: \p{ASCII}{0,8192}
-      minLength: 1
-      maxLength: 8192
-    Message:
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+    Date:
       type: string
-      pattern: '[\w -:]+'
-      minLength: 1
+      format: date-time
+    RoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
       maxLength: 2048
-    JobId:
-      type: string
-      pattern: '[0-9a-z]+'
-      minLength: 1
-      maxLength: 32
-    AccessDeniedException: {}
-    ListDICOMImportJobsResponse:
-      type: object
-      required:
-      - jobSummaries
-      properties:
-        jobSummaries:
-          allOf:
-          - $ref: '#/components/schemas/DICOMImportJobSummaries'
-          - description: A list of job summaries.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The pagination token used to retrieve the list of import jobs on the next page.
-    ValidationException: {}
-    ThrottlingException: {}
     DICOMImportJobSummary:
       type: object
       required:
@@ -286,45 +271,66 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Summary of import job.
-    DICOMImportJobSummaries:
-      type: array
-      items:
-        $ref: '#/components/schemas/DICOMImportJobSummary'
-    ConflictException: {}
-    InternalServerException: {}
-    JobStatus:
-      type: string
-      enum:
-      - SUBMITTED
-      - IN_PROGRESS
-      - COMPLETED
-      - FAILED
-    Date:
-      type: string
-      format: date-time
-    ResourceNotFoundException: {}
     DatastoreId:
       type: string
       pattern: '[0-9a-z]{32}'
-    RoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
+    ValidationException: {}
     JobName:
       type: string
       pattern: '[A-Za-z0-9._/#-]+'
       minLength: 1
       maxLength: 64
+    AccessDeniedException: {}
+    InternalServerException: {}
+    NextToken:
+      type: string
+      pattern: \p{ASCII}{0,8192}
+      minLength: 1
+      maxLength: 8192
+    Message:
+      type: string
+      pattern: '[\w -:]+'
+      minLength: 1
+      maxLength: 2048
+    ResourceNotFoundException: {}
+    DICOMImportJobSummaries:
+      type: array
+      items:
+        $ref: '#/components/schemas/DICOMImportJobSummary'
+    JobId:
+      type: string
+      pattern: '[0-9a-z]+'
+      minLength: 1
+      maxLength: 32
+    ThrottlingException: {}
+    ListDICOMImportJobsResponse:
+      type: object
+      required:
+      - jobSummaries
+      properties:
+        jobSummaries:
+          allOf:
+          - $ref: '#/components/schemas/DICOMImportJobSummaries'
+          - description: A list of job summaries.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The pagination token used to retrieve the list of import jobs on the next page.
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -337,12 +343,6 @@ components:
       required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
       in: header
       schema:
         type: string

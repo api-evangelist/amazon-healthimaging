@@ -195,16 +195,38 @@ paths:
       - Get DICOM Import Job
 components:
   schemas:
+    ConflictException: {}
+    JobStatus:
+      type: string
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+    Date:
+      type: string
+      format: date-time
+    RoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
+    DatastoreId:
+      type: string
+      pattern: '[0-9a-z]{32}'
+    ValidationException: {}
+    JobName:
+      type: string
+      pattern: '[A-Za-z0-9._/#-]+'
+      minLength: 1
+      maxLength: 64
+    AccessDeniedException: {}
+    InternalServerException: {}
     Message:
       type: string
       pattern: '[\w -:]+'
       minLength: 1
       maxLength: 2048
-    JobId:
-      type: string
-      pattern: '[0-9a-z]+'
-      minLength: 1
-      maxLength: 32
     GetDICOMImportJobResponse:
       type: object
       required:
@@ -214,7 +236,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/DICOMImportJobProperties'
           - description: The properties of the import job.
-    AccessDeniedException: {}
+    ResourceNotFoundException: {}
     DICOMImportJobProperties:
       type: object
       required:
@@ -267,48 +289,26 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Properties of the import job.
-    ValidationException: {}
+    JobId:
+      type: string
+      pattern: '[0-9a-z]+'
+      minLength: 1
+      maxLength: 32
     ThrottlingException: {}
-    ConflictException: {}
-    InternalServerException: {}
-    JobStatus:
-      type: string
-      enum:
-      - SUBMITTED
-      - IN_PROGRESS
-      - COMPLETED
-      - FAILED
-    Date:
-      type: string
-      format: date-time
-    ResourceNotFoundException: {}
     S3Uri:
       type: string
       pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
       minLength: 1
       maxLength: 1024
-    DatastoreId:
-      type: string
-      pattern: '[0-9a-z]{32}'
-    RoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
-    JobName:
-      type: string
-      pattern: '[A-Za-z0-9._/#-]+'
-      minLength: 1
-      maxLength: 64
   parameters:
-    X-Amz-Signature:
-      name: X-Amz-Signature
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Date:
-      name: X-Amz-Date
+    X-Amz-Signature:
+      name: X-Amz-Signature
       in: header
       schema:
         type: string
@@ -325,14 +325,14 @@ components:
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
