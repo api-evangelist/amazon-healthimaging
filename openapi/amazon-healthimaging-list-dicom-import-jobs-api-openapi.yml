@@ -214,7 +214,11 @@ paths:
       - List DICOM Import Jobs
 components:
   schemas:
-    ConflictException: {}
+    Message:
+      type: string
+      pattern: '[\w -:]+'
+      minLength: 1
+      maxLength: 2048
     JobStatus:
       type: string
       enum:
@@ -222,14 +226,36 @@ components:
       - IN_PROGRESS
       - COMPLETED
       - FAILED
-    Date:
-      type: string
-      format: date-time
+    ValidationException: {}
     RoleArn:
       type: string
       pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
       minLength: 20
       maxLength: 2048
+    ListDICOMImportJobsResponse:
+      type: object
+      required:
+      - jobSummaries
+      properties:
+        jobSummaries:
+          allOf:
+          - $ref: '#/components/schemas/DICOMImportJobSummaries'
+          - description: A list of job summaries.
+        nextToken:
+          allOf:
+          - $ref: '#/components/schemas/NextToken'
+          - description: The pagination token used to retrieve the list of import jobs on the next page.
+    AccessDeniedException: {}
+    Date:
+      type: string
+      format: date-time
+    NextToken:
+      type: string
+      pattern: \p{ASCII}{0,8192}
+      minLength: 1
+      maxLength: 8192
+    InternalServerException: {}
+    ConflictException: {}
     DICOMImportJobSummary:
       type: object
       required:
@@ -271,60 +297,52 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Summary of import job.
-    DatastoreId:
-      type: string
-      pattern: '[0-9a-z]{32}'
-    ValidationException: {}
     JobName:
       type: string
       pattern: '[A-Za-z0-9._/#-]+'
       minLength: 1
       maxLength: 64
-    AccessDeniedException: {}
-    InternalServerException: {}
-    NextToken:
-      type: string
-      pattern: \p{ASCII}{0,8192}
-      minLength: 1
-      maxLength: 8192
-    Message:
-      type: string
-      pattern: '[\w -:]+'
-      minLength: 1
-      maxLength: 2048
     ResourceNotFoundException: {}
     DICOMImportJobSummaries:
       type: array
       items:
         $ref: '#/components/schemas/DICOMImportJobSummary'
+    DatastoreId:
+      type: string
+      pattern: '[0-9a-z]{32}'
     JobId:
       type: string
       pattern: '[0-9a-z]+'
       minLength: 1
       maxLength: 32
     ThrottlingException: {}
-    ListDICOMImportJobsResponse:
-      type: object
-      required:
-      - jobSummaries
-      properties:
-        jobSummaries:
-          allOf:
-          - $ref: '#/components/schemas/DICOMImportJobSummaries'
-          - description: A list of job summaries.
-        nextToken:
-          allOf:
-          - $ref: '#/components/schemas/NextToken'
-          - description: The pagination token used to retrieve the list of import jobs on the next page.
   parameters:
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
       in: header
       schema:
         type: string
       required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -337,24 +355,6 @@ components:
       required: false
     X-Amz-Credential:
       name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

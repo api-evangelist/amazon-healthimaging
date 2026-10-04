@@ -195,48 +195,6 @@ paths:
       - Get DICOM Import Job
 components:
   schemas:
-    ConflictException: {}
-    JobStatus:
-      type: string
-      enum:
-      - SUBMITTED
-      - IN_PROGRESS
-      - COMPLETED
-      - FAILED
-    Date:
-      type: string
-      format: date-time
-    RoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
-    DatastoreId:
-      type: string
-      pattern: '[0-9a-z]{32}'
-    ValidationException: {}
-    JobName:
-      type: string
-      pattern: '[A-Za-z0-9._/#-]+'
-      minLength: 1
-      maxLength: 64
-    AccessDeniedException: {}
-    InternalServerException: {}
-    Message:
-      type: string
-      pattern: '[\w -:]+'
-      minLength: 1
-      maxLength: 2048
-    GetDICOMImportJobResponse:
-      type: object
-      required:
-      - jobProperties
-      properties:
-        jobProperties:
-          allOf:
-          - $ref: '#/components/schemas/DICOMImportJobProperties'
-          - description: The properties of the import job.
-    ResourceNotFoundException: {}
     DICOMImportJobProperties:
       type: object
       required:
@@ -289,6 +247,48 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Properties of the import job.
+    Message:
+      type: string
+      pattern: '[\w -:]+'
+      minLength: 1
+      maxLength: 2048
+    JobStatus:
+      type: string
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+    ValidationException: {}
+    RoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
+    Date:
+      type: string
+      format: date-time
+    AccessDeniedException: {}
+    InternalServerException: {}
+    GetDICOMImportJobResponse:
+      type: object
+      required:
+      - jobProperties
+      properties:
+        jobProperties:
+          allOf:
+          - $ref: '#/components/schemas/DICOMImportJobProperties'
+          - description: The properties of the import job.
+    ConflictException: {}
+    JobName:
+      type: string
+      pattern: '[A-Za-z0-9._/#-]+'
+      minLength: 1
+      maxLength: 64
+    ResourceNotFoundException: {}
+    DatastoreId:
+      type: string
+      pattern: '[0-9a-z]{32}'
     JobId:
       type: string
       pattern: '[0-9a-z]+'
@@ -301,8 +301,32 @@ components:
       minLength: 1
       maxLength: 1024
   parameters:
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Algorithm:
+      name: X-Amz-Algorithm
       in: header
       schema:
         type: string
@@ -315,30 +339,6 @@ components:
       required: false
     X-Amz-Credential:
       name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Algorithm:
-      name: X-Amz-Algorithm
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string

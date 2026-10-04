@@ -320,31 +320,41 @@ paths:
       tags:
       - Tags
 components:
+  schemas:
+    TagResourceResponse:
+      type: object
+      properties: {}
+    ValidationException: {}
+    TagMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/TagValue'
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
+    AccessDeniedException: {}
+    InternalServerException: {}
+    UntagResourceResponse:
+      type: object
+      properties: {}
+    TagKey:
+      type: string
+      pattern: (?!aws:)[a-zA-Z+-=._:/]+
+      minLength: 1
+      maxLength: 128
+    ThrottlingException: {}
+    ListTagsForResourceResponse:
+      type: object
+      required:
+      - tags
+      properties:
+        tags:
+          allOf:
+          - $ref: '#/components/schemas/TagMap'
+          - description: A list of all tags associated with a medical imaging resource.
+    ResourceNotFoundException: {}
   parameters:
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Signature:
-      name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
       in: header
@@ -357,46 +367,36 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Signature:
+      name: X-Amz-Signature
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Content-Sha256:
       name: X-Amz-Content-Sha256
       in: header
       schema:
         type: string
       required: false
-  schemas:
-    ListTagsForResourceResponse:
-      type: object
-      required:
-      - tags
-      properties:
-        tags:
-          allOf:
-          - $ref: '#/components/schemas/TagMap'
-          - description: A list of all tags associated with a medical imaging resource.
-    TagResourceResponse:
-      type: object
-      properties: {}
-    AccessDeniedException: {}
-    InternalServerException: {}
-    ThrottlingException: {}
-    TagMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/TagValue'
-    TagKey:
-      type: string
-      pattern: (?!aws:)[a-zA-Z+-=._:/]+
-      minLength: 1
-      maxLength: 128
-    ResourceNotFoundException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
-    ValidationException: {}
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
+    X-Amz-Date:
+      name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
   securitySchemes:
     hmac:
       type: apiKey
