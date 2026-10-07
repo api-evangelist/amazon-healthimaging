@@ -175,6 +175,8 @@ apis:
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
 common:
+- type: Plans
+  url: plans/amazon-healthimaging-plans-pricing.yml
 - type: Website
   url: https://aws.amazon.com/healthimaging/
 - type: CapabilityMap
