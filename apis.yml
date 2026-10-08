@@ -175,6 +175,12 @@ apis:
   - type: JSONLD
     url: json-ld/amazon-healthimaging-context.jsonld
 common:
+- type: Pricing
+  url: https://aws.amazon.com/healthimaging/pricing/
+- type: RateLimits
+  url: rate-limits/amazon-healthimaging-rate-limits.yml
+- type: FinOps
+  url: finops/amazon-healthimaging-finops.yml
 - type: Plans
   url: plans/amazon-healthimaging-plans-pricing.yml
 - type: Website
