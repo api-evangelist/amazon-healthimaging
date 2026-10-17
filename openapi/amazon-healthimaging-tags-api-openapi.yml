@@ -321,29 +321,23 @@ paths:
       - Tags
 components:
   schemas:
+    ResourceNotFoundException: {}
+    InternalServerException: {}
+    ThrottlingException: {}
+    ValidationException: {}
     TagResourceResponse:
       type: object
       properties: {}
-    ValidationException: {}
-    TagMap:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/TagValue'
-    TagValue:
-      type: string
-      minLength: 0
-      maxLength: 256
     AccessDeniedException: {}
-    InternalServerException: {}
-    UntagResourceResponse:
-      type: object
-      properties: {}
     TagKey:
       type: string
       pattern: (?!aws:)[a-zA-Z+-=._:/]+
       minLength: 1
       maxLength: 128
-    ThrottlingException: {}
+    TagValue:
+      type: string
+      minLength: 0
+      maxLength: 256
     ListTagsForResourceResponse:
       type: object
       required:
@@ -353,10 +347,40 @@ components:
           allOf:
           - $ref: '#/components/schemas/TagMap'
           - description: A list of all tags associated with a medical imaging resource.
-    ResourceNotFoundException: {}
+    TagMap:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/TagValue'
+    UntagResourceResponse:
+      type: object
+      properties: {}
   parameters:
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Content-Sha256:
+      name: X-Amz-Content-Sha256
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Algorithm:
       name: X-Amz-Algorithm
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-SignedHeaders:
+      name: X-Amz-SignedHeaders
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Date:
+      name: X-Amz-Date
       in: header
       schema:
         type: string
@@ -369,30 +393,6 @@ components:
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Content-Sha256:
-      name: X-Amz-Content-Sha256
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Date:
-      name: X-Amz-Date
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-SignedHeaders:
-      name: X-Amz-SignedHeaders
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
       in: header
       schema:
         type: string

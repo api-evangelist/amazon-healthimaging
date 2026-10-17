@@ -195,6 +195,34 @@ paths:
       - Get DICOM Import Job
 components:
   schemas:
+    ThrottlingException: {}
+    S3Uri:
+      type: string
+      pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
+      minLength: 1
+      maxLength: 1024
+    Date:
+      type: string
+      format: date-time
+    JobStatus:
+      type: string
+      enum:
+      - SUBMITTED
+      - IN_PROGRESS
+      - COMPLETED
+      - FAILED
+    JobId:
+      type: string
+      pattern: '[0-9a-z]+'
+      minLength: 1
+      maxLength: 32
+    RoleArn:
+      type: string
+      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
+      minLength: 20
+      maxLength: 2048
+    ConflictException: {}
+    ResourceNotFoundException: {}
     DICOMImportJobProperties:
       type: object
       required:
@@ -247,29 +275,6 @@ components:
           - $ref: '#/components/schemas/Message'
           - description: The error message thrown if an import job fails.
       description: Properties of the import job.
-    Message:
-      type: string
-      pattern: '[\w -:]+'
-      minLength: 1
-      maxLength: 2048
-    JobStatus:
-      type: string
-      enum:
-      - SUBMITTED
-      - IN_PROGRESS
-      - COMPLETED
-      - FAILED
-    ValidationException: {}
-    RoleArn:
-      type: string
-      pattern: arn:aws(-[^:]+)?:iam::[0-9]{12}:role/.+
-      minLength: 20
-      maxLength: 2048
-    Date:
-      type: string
-      format: date-time
-    AccessDeniedException: {}
-    InternalServerException: {}
     GetDICOMImportJobResponse:
       type: object
       required:
@@ -279,34 +284,23 @@ components:
           allOf:
           - $ref: '#/components/schemas/DICOMImportJobProperties'
           - description: The properties of the import job.
-    ConflictException: {}
+    InternalServerException: {}
+    Message:
+      type: string
+      pattern: '[\w -:]+'
+      minLength: 1
+      maxLength: 2048
     JobName:
       type: string
       pattern: '[A-Za-z0-9._/#-]+'
       minLength: 1
       maxLength: 64
-    ResourceNotFoundException: {}
+    ValidationException: {}
+    AccessDeniedException: {}
     DatastoreId:
       type: string
       pattern: '[0-9a-z]{32}'
-    JobId:
-      type: string
-      pattern: '[0-9a-z]+'
-      minLength: 1
-      maxLength: 32
-    ThrottlingException: {}
-    S3Uri:
-      type: string
-      pattern: s3://[a-z0-9][\.\-a-z0-9]{1,61}[a-z0-9](/.*)?
-      minLength: 1
-      maxLength: 1024
   parameters:
-    X-Amz-Security-Token:
-      name: X-Amz-Security-Token
-      in: header
-      schema:
-        type: string
-      required: false
     X-Amz-SignedHeaders:
       name: X-Amz-SignedHeaders
       in: header
@@ -319,8 +313,20 @@ components:
       schema:
         type: string
       required: false
+    X-Amz-Credential:
+      name: X-Amz-Credential
+      in: header
+      schema:
+        type: string
+      required: false
     X-Amz-Date:
       name: X-Amz-Date
+      in: header
+      schema:
+        type: string
+      required: false
+    X-Amz-Security-Token:
+      name: X-Amz-Security-Token
       in: header
       schema:
         type: string
@@ -333,12 +339,6 @@ components:
       required: false
     X-Amz-Signature:
       name: X-Amz-Signature
-      in: header
-      schema:
-        type: string
-      required: false
-    X-Amz-Credential:
-      name: X-Amz-Credential
       in: header
       schema:
         type: string
