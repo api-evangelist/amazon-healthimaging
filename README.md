@@ -1,4 +1,4 @@
-# Amazon HealthImaging (amazon-healthimaging)
+# Amazon HealthImaging
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,138 +66,270 @@
 
 AWS HealthImaging is a HIPAA-eligible service that helps healthcare providers and their software partners store, transform, and apply machine learning to medical images. It provides sub-second image retrieval and enables scaling from hundreds to millions of medical images.
 
-**URL:** [https://aws.amazon.com/healthimaging/](https://aws.amazon.com/healthimaging/)
+**Areas:** AWS · Healthcare · HIPAA · Machine Learning · Medical Imaging · DICOM
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Amazon HealthImaging on APIs.io
 
-## Tags:
+Everything profiled for Amazon HealthImaging is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-healthimaging/](https://apis.io/providers/amazon-healthimaging/)** — or go straight to one of the APIs or properties below.
 
- - AWS, Healthcare, HIPAA, Machine Learning, Medical Imaging, DICOM
+### APIs (5)
 
-## Timestamps
+- [Amazon HealthImaging Datastore API](https://apis.io/apis/amazon-healthimaging/amazon-healthimaging-datastore-api/) — The Datastore API from Amazon HealthImaging — 10 operation(s) for datastore.
+- [Amazon HealthImaging Tags API](https://apis.io/apis/amazon-healthimaging/amazon-healthimaging-tags-api/) — The Tags API from Amazon HealthImaging — 2 operation(s) for tags.
+- [Amazon HealthImaging Get DICOM Import Job API](https://apis.io/apis/amazon-healthimaging/amazon-healthimaging-get-dicom-import-job-api/) — The Get DICOM Import Job API from Amazon HealthImaging — 1 operation(s) for get dicom import job.
+- [Amazon HealthImaging List DICOM Import Jobs API](https://apis.io/apis/amazon-healthimaging/amazon-healthimaging-list-dicom-import-jobs-api/) — The List DICOM Import Jobs API from Amazon HealthImaging — 1 operation(s) for list dicom import jobs.
+- [Amazon HealthImaging Start DICOM Import Job API](https://apis.io/apis/amazon-healthimaging/amazon-healthimaging-start-dicom-import-job-api/) — The Start DICOM Import Job API from Amazon HealthImaging — 1 operation(s) for start dicom import job.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### AWS HealthImaging API
-The AWS HealthImaging API provides programmatic access to create and manage datastores, image sets, and DICOM import jobs for storing and retrieving medical imaging data at scale. The API is HIPAA-eligible and supports sub-second image retrieval.
+#### Arazzo workflows (9)
 
-**Human URL:** [https://aws.amazon.com/healthimaging/](https://aws.amazon.com/healthimaging/)
+Multi-step workflows that chain operations into a business task.
 
-#### Tags:
+- [Amazon HealthImaging Audit Completed Imports](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-audit-completed-imports-workflow/)
+- [Amazon HealthImaging Copy Image Set](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-copy-image-set-workflow/)
+- [Amazon HealthImaging Find Image Set by Patient](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-find-image-set-by-patient-workflow/)
+- [Amazon HealthImaging Import DICOM and Search](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-import-dicom-and-search-workflow/)
+- [Amazon HealthImaging Inspect Image Set](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-inspect-image-set-workflow/)
+- [Amazon HealthImaging Onboard Data Store and Import](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-onboard-datastore-and-import-workflow/)
+- [Amazon HealthImaging Provision Data Store](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-provision-datastore-workflow/)
+- [Amazon HealthImaging Tag Image Set](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-tag-image-set-workflow/)
+- [Amazon HealthImaging Update Image Set Metadata](https://apis.io/arazzos/amazon-healthimaging/amazon-healthimaging-update-image-set-metadata-workflow/)
 
- - Healthcare, HIPAA, Medical Imaging, DICOM, Datastores
+#### GraphQL (1)
 
-#### Properties
+GraphQL schemas.
 
-- [Documentation](https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html)
-- [OpenAPI](openapi/amazon-healthimaging-openapi.yaml)
-- [GettingStarted](https://aws.amazon.com/healthimaging/getting-started/)
-- [Pricing](https://aws.amazon.com/healthimaging/pricing/)
-- [FAQ](https://aws.amazon.com/healthimaging/faqs/)
-- [APIReference](https://docs.aws.amazon.com/healthimaging/latest/devguide/API_Reference.html)
-- [Authentication](https://docs.aws.amazon.com/healthimaging/latest/devguide/security-iam.html)
-- [JSONSchema](json-schema/healthimaging-datastore-schema.json)
-- [JSONLD](json-ld/amazon-healthimaging-context.jsonld)
+- [Moved to /providers/amazon-healthimaging/](https://apis.io/graphqls/amazon-healthimaging/amazon-healthimaging-graphql/)
 
-## Common Properties
+#### Agentic access (1)
 
-- [Portal](https://aws.amazon.com/healthimaging/)
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Amazon Healthimaging Agentic Access](https://apis.io/agentic-access/amazon-healthimaging/amazon-healthimaging-agentic-access/)
+
+#### JSON Schema (113)
+
+The data models the API reads and writes.
+
+- [AccessDeniedException](https://apis.io/schemas/amazon-healthimaging/healthimaging-access-denied-exception/)
+- [Arn](https://apis.io/schemas/amazon-healthimaging/healthimaging-arn/)
+- [ClientToken](https://apis.io/schemas/amazon-healthimaging/healthimaging-client-token/)
+- [ConflictException](https://apis.io/schemas/amazon-healthimaging/healthimaging-conflict-exception/)
+- [CopyDestinationImageSet](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-destination-image-set/)
+- [CopyDestinationImageSetProperties](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-destination-image-set-properties/)
+- [CopyImageSetInformation](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-image-set-information/)
+- [CopyImageSetRequest](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-image-set-request/)
+- [CopyImageSetResponse](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-image-set-response/)
+- [CopySourceImageSetInformation](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-source-image-set-information/)
+- [CopySourceImageSetProperties](https://apis.io/schemas/amazon-healthimaging/healthimaging-copy-source-image-set-properties/)
+- [CreateDatastoreRequest](https://apis.io/schemas/amazon-healthimaging/healthimaging-create-datastore-request/)
+- [CreateDatastoreResponse](https://apis.io/schemas/amazon-healthimaging/healthimaging-create-datastore-response/)
+- [DatastoreId](https://apis.io/schemas/amazon-healthimaging/healthimaging-datastore-id/)
+- [DatastoreName](https://apis.io/schemas/amazon-healthimaging/healthimaging-datastore-name/)
+- [DatastoreProperties](https://apis.io/schemas/amazon-healthimaging/healthimaging-datastore-properties/)
+- [DatastoreStatus](https://apis.io/schemas/amazon-healthimaging/healthimaging-datastore-status/)
+- [DatastoreSummaries](https://apis.io/schemas/amazon-healthimaging/healthimaging-datastore-summaries/)
+- [DatastoreSummary](https://apis.io/schemas/amazon-healthimaging/healthimaging-datastore-summary/)
+- [Date](https://apis.io/schemas/amazon-healthimaging/healthimaging-date/)
+- [DeleteDatastoreRequest](https://apis.io/schemas/amazon-healthimaging/healthimaging-delete-datastore-request/)
+- [DeleteDatastoreResponse](https://apis.io/schemas/amazon-healthimaging/healthimaging-delete-datastore-response/)
+- [DeleteImageSetRequest](https://apis.io/schemas/amazon-healthimaging/healthimaging-delete-image-set-request/)
+- [DeleteImageSetResponse](https://apis.io/schemas/amazon-healthimaging/healthimaging-delete-image-set-response/)
+- [DICOMAccessionNumber](https://apis.io/schemas/amazon-healthimaging/healthimaging-dicom-accession-number/)
+- …and 88 more published on APIs.io
+
+#### JSON Structure (113)
+
+Data models expressed in JSON Structure.
+
+- [Healthimaging Access Denied Exception Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-access-denied-exception-structure/)
+- [Healthimaging Arn Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-arn-structure/)
+- [Healthimaging Client Token Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-client-token-structure/)
+- [Healthimaging Conflict Exception Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-conflict-exception-structure/)
+- [Healthimaging Copy Destination Image Set Properties Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-destination-image-set-properties-structure/)
+- [Healthimaging Copy Destination Image Set Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-destination-image-set-structure/)
+- [Healthimaging Copy Image Set Information Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-image-set-information-structure/)
+- [Healthimaging Copy Image Set Request Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-image-set-request-structure/)
+- [Healthimaging Copy Image Set Response Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-image-set-response-structure/)
+- [Healthimaging Copy Source Image Set Information Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-source-image-set-information-structure/)
+- [Healthimaging Copy Source Image Set Properties Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-copy-source-image-set-properties-structure/)
+- [Healthimaging Create Datastore Request Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-create-datastore-request-structure/)
+- [Healthimaging Create Datastore Response Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-create-datastore-response-structure/)
+- [Healthimaging Datastore Id Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-datastore-id-structure/)
+- [Healthimaging Datastore Name Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-datastore-name-structure/)
+- [Healthimaging Datastore Properties Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-datastore-properties-structure/)
+- [Healthimaging Datastore Status Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-datastore-status-structure/)
+- [Healthimaging Datastore Summaries Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-datastore-summaries-structure/)
+- [Healthimaging Datastore Summary Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-datastore-summary-structure/)
+- [Healthimaging Date Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-date-structure/)
+- [Healthimaging Delete Datastore Request Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-delete-datastore-request-structure/)
+- [Healthimaging Delete Datastore Response Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-delete-datastore-response-structure/)
+- [Healthimaging Delete Image Set Request Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-delete-image-set-request-structure/)
+- [Healthimaging Delete Image Set Response Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-delete-image-set-response-structure/)
+- [Healthimaging Dicom Accession Number Structure](https://apis.io/json-structure/amazon-healthimaging/healthimaging-dicom-accession-number-structure/)
+- …and 88 more published on APIs.io
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Healthimaging Context](https://apis.io/jsonld/amazon-healthimaging/amazon-healthimaging-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon HealthImaging Vocabulary](https://apis.io/vocabularies/amazon-healthimaging/amazon-healthimaging-vocabulary/)
+
+#### Examples (56)
+
+Example requests and responses.
+
+- [Healthimaging Copy Destination Image Set Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-destination-image-set-example/)
+- [Healthimaging Copy Destination Image Set Properties Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-destination-image-set-properties-example/)
+- [Healthimaging Copy Image Set Information Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-image-set-information-example/)
+- [Healthimaging Copy Image Set Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-image-set-request-example/)
+- [Healthimaging Copy Image Set Response Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-image-set-response-example/)
+- [Healthimaging Copy Source Image Set Information Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-source-image-set-information-example/)
+- [Healthimaging Copy Source Image Set Properties Example](https://apis.io/examples/amazon-healthimaging/healthimaging-copy-source-image-set-properties-example/)
+- [Healthimaging Create Datastore Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-create-datastore-request-example/)
+- [Healthimaging Create Datastore Response Example](https://apis.io/examples/amazon-healthimaging/healthimaging-create-datastore-response-example/)
+- [Healthimaging Datastore Properties Example](https://apis.io/examples/amazon-healthimaging/healthimaging-datastore-properties-example/)
+- [Healthimaging Datastore Summary Example](https://apis.io/examples/amazon-healthimaging/healthimaging-datastore-summary-example/)
+- [Healthimaging Delete Datastore Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-delete-datastore-request-example/)
+- [Healthimaging Delete Datastore Response Example](https://apis.io/examples/amazon-healthimaging/healthimaging-delete-datastore-response-example/)
+- [Healthimaging Delete Image Set Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-delete-image-set-request-example/)
+- [Healthimaging Delete Image Set Response Example](https://apis.io/examples/amazon-healthimaging/healthimaging-delete-image-set-response-example/)
+- [Healthimaging Dicom Import Job Properties Example](https://apis.io/examples/amazon-healthimaging/healthimaging-dicom-import-job-properties-example/)
+- [Healthimaging Dicom Import Job Summary Example](https://apis.io/examples/amazon-healthimaging/healthimaging-dicom-import-job-summary-example/)
+- [Healthimaging Dicom Study Date And Time Example](https://apis.io/examples/amazon-healthimaging/healthimaging-dicom-study-date-and-time-example/)
+- [Healthimaging Dicom Tags Example](https://apis.io/examples/amazon-healthimaging/healthimaging-dicom-tags-example/)
+- [Healthimaging Dicom Updates Example](https://apis.io/examples/amazon-healthimaging/healthimaging-dicom-updates-example/)
+- [Healthimaging Get Datastore Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-get-datastore-request-example/)
+- [Healthimaging Get Datastore Response Example](https://apis.io/examples/amazon-healthimaging/healthimaging-get-datastore-response-example/)
+- [Healthimaging Get Dicom Import Job Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-get-dicom-import-job-request-example/)
+- [Healthimaging Get Dicom Import Job Response Example](https://apis.io/examples/amazon-healthimaging/healthimaging-get-dicom-import-job-response-example/)
+- [Healthimaging Get Image Frame Request Example](https://apis.io/examples/amazon-healthimaging/healthimaging-get-image-frame-request-example/)
+- …and 31 more published on APIs.io
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [AWS Health Imaging Datastore API](https://apis.io/collections/amazon-healthimaging/open-amazon-healthimaging-datastore-api/)
+- [AWS Health Imaging Datastore GetDICOMImportJob API](https://apis.io/collections/amazon-healthimaging/open-amazon-healthimaging-getdicomimportjob-api/)
+- [AWS Health Imaging Datastore ListDICOMImportJobs API](https://apis.io/collections/amazon-healthimaging/open-amazon-healthimaging-listdicomimportjobs-api/)
+- [AWS Health Imaging Datastore StartDICOMImportJob API](https://apis.io/collections/amazon-healthimaging/open-amazon-healthimaging-startdicomimportjob-api/)
+- [AWS Health Imaging Datastore Tags API](https://apis.io/collections/amazon-healthimaging/open-amazon-healthimaging-tags-api/)
+- [AWS Health Imaging](https://apis.io/collections/amazon-healthimaging/postman-amazon-healthimaging/)
+- [AWS Health Imaging Datastore API](https://apis.io/collections/amazon-healthimaging/postman-amazon-healthimaging-datastore-api/)
+- [AWS Health Imaging Datastore GetDICOMImportJob API](https://apis.io/collections/amazon-healthimaging/postman-amazon-healthimaging-getdicomimportjob-api/)
+- [AWS Health Imaging Datastore ListDICOMImportJobs API](https://apis.io/collections/amazon-healthimaging/postman-amazon-healthimaging-listdicomimportjobs-api/)
+- [AWS Health Imaging Datastore StartDICOMImportJob API](https://apis.io/collections/amazon-healthimaging/postman-amazon-healthimaging-startdicomimportjob-api/)
+- [AWS Health Imaging Datastore Tags API](https://apis.io/collections/amazon-healthimaging/postman-amazon-healthimaging-tags-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon HealthImaging — jsonschema rules](https://apis.io/rules/amazon-healthimaging/amazon-healthimaging-jsonschema-spectral-rules/)
+- [Amazon HealthImaging API Rules](https://apis.io/rules/amazon-healthimaging/amazon-healthimaging-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Healthimaging Authentication](https://apis.io/security/amazon-healthimaging/amazon-healthimaging-authentication/)
+- [Amazon Healthimaging Domain Security](https://apis.io/security/amazon-healthimaging/amazon-healthimaging-domain-security/)
+- [Amazon Healthimaging Trust Center](https://apis.io/security/amazon-healthimaging/amazon-healthimaging-trust-center/)
+- [Amazon Healthimaging Vulnerability Disclosure](https://apis.io/security/amazon-healthimaging/amazon-healthimaging-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Healthimaging Plans Pricing](https://apis.io/plans/amazon-healthimaging/amazon-healthimaging-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Healthimaging Rate Limits](https://apis.io/rate-limits/amazon-healthimaging/amazon-healthimaging-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Healthimaging Finops](https://apis.io/finops/amazon-healthimaging/amazon-healthimaging-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://aws.amazon.com/healthimaging/)
 - [Documentation](https://docs.aws.amazon.com/healthimaging/)
-- [TermsOfService](https://aws.amazon.com/service-terms/)
-- [PrivacyPolicy](https://aws.amazon.com/privacy/)
+- [Pricing](https://aws.amazon.com/healthimaging/pricing/)
 - [Support](https://aws.amazon.com/premiumsupport/)
 - [Blog](https://aws.amazon.com/blogs/industries/healthcare/)
-- [GitHubOrganization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/healthimaging/)
-- [SignUp](https://portal.aws.amazon.com/billing/signup)
-- [StatusPage](https://health.aws.amazon.com/health/status)
-- [Contact](https://aws.amazon.com/contact-us/)
-- [SDK](https://aws.amazon.com/developer/tools/)
-- [CLI](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/medical-imaging/index.html)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| HIPAA-Eligible Storage | Fully HIPAA-eligible service for storing protected health information including medical images. |
-| DICOM Support | Native support for DICOM format, the standard for medical imaging data exchange and storage. |
-| Sub-Second Retrieval | Optimized storage architecture enabling sub-second retrieval of medical images at any scale. |
-| Machine Learning Integration | Built-in support for applying machine learning models to medical imaging data for analysis. |
-| Scalable Datastores | Create and manage datastores that scale from hundreds to millions of medical images. |
-| Image Set Management | Organize medical images into sets with comprehensive metadata management and versioning. |
-| Bulk Import | DICOM import jobs enable bulk import of medical imaging data from Amazon S3. |
+**Kin Score 58.4** — strong · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 55.0 |
+| Contract governance | 27.3 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 58.3 |
+| Access clarity | 84.2 |
 
-| Name | Description |
-|------|-------------|
-| Radiology Workflow | Streamline radiology workflows by centralizing medical image storage and enabling rapid retrieval. |
-| AI-Powered Diagnostics | Apply machine learning models to medical images for automated diagnostic assistance. |
-| Healthcare Data Archiving | Archive medical imaging data in a HIPAA-eligible, scalable environment with long-term retention. |
-| Multi-Site Imaging | Centralize medical imaging data from multiple healthcare sites for unified access and analysis. |
-| Clinical Research | Support clinical research by providing scalable access to large medical imaging datasets. |
+**Agent readiness 31.6** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Amazon S3 | Import medical imaging data from S3 buckets using DICOM import jobs. |
-| AWS IAM | Control access to HealthImaging resources using IAM roles and policies. |
-| Amazon CloudWatch | Monitor HealthImaging operations and performance metrics through CloudWatch. |
-| AWS HealthLake | Integrate with HealthLake for combining medical imaging with FHIR health records. |
-| Amazon SageMaker | Apply SageMaker ML models to medical images for AI-powered analysis and diagnostics. |
+**Regulatory alignment 26.5** — Health
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-healthimaging/](https://apis.io/providers/amazon-healthimaging/).
 
-Machine-readable API specifications organized by format.
+## How this profile is made
 
-### OpenAPI
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-- [AWS HealthImaging OpenAPI](openapi/amazon-healthimaging-openapi.yaml)
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon HealthImaging: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-### JSON Schema
+## Open an issue
 
-113 schema files in [json-schema/](json-schema/)
-
-### JSON Structure
-
-113 structure files in [json-structure/](json-structure/)
-
-### JSON-LD
-
-- [Amazon HealthImaging Context](json-ld/amazon-healthimaging-context.jsonld)
-
-### Examples
-
-113 example files in [examples/](examples/)
-
-## Capabilities
-
-Naftiko capabilities organized as shared per-API definitions composed into customer-facing workflows.
-
-### Shared Per-API Definitions
-
-- [AWS HealthImaging](capabilities/shared/amazon-healthimaging.yaml) — 18 operations for medical imaging management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Amazon HealthImaging Medical Imaging Operations](capabilities/amazon-healthimaging-medical-imaging-operations.yaml) | AWS HealthImaging | 12 | Healthcare Developer, Medical Imaging Engineer, HIPAA Compliance Officer |
-
-## Vocabulary
-
-- [Amazon HealthImaging Vocabulary](vocabulary/amazon-healthimaging-vocabulary.yaml) — Unified taxonomy mapping 5 resources, 10 actions, 1 workflow, and 3 personas across operational (OpenAPI) and capability (Naftiko) dimensions
-
-## Rules
-
-- [Amazon HealthImaging Spectral Rules](rules/amazon-healthimaging-spectral-rules.yml) — 8 rules across 4 categories enforcing Amazon HealthImaging API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-healthimaging/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
