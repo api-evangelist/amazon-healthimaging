@@ -1,0 +1,106 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://aws.amazon.com/healthimaging/pricing/
+sources:
+- https://aws.amazon.com/healthimaging/pricing/
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+published: true
+note: Main pricing tables render via unresolved price tokens ({priceOf!...}); concrete numbers appear
+  only in the pricing examples and Free Tier text. Storage tiers, structured data storage, and data transfer
+  tiers listed without visible amounts.
+plan_count: 5
+currency: USD
+plans:
+- name: Frequent Access Tier Storage (example, US East N. Virginia)
+  price_text: $0.105 per GB / month
+  price: 0.105
+  currency: USD
+  period: month
+  unit: GB
+- name: Archive Instant Access Tier Storage (example, US East N. Virginia)
+  price_text: $0.006 per GB / month
+  price: 0.006
+  currency: USD
+  period: month
+  unit: GB
+- name: API requests (example, US East N. Virginia)
+  price_text: $0.005 / 1,000 API calls
+  price: 0.005
+  currency: USD
+  period: per-use
+  unit: 1,000 API calls
+- name: Free Tier
+  price_text: get started with HealthImaging for free
+  period: month
+  included_quota: 20 GB per month of HealthImaging storage—with up to 10 GB in both Frequent Access and
+    Archive Instant Access tiers—and 20,000 API requests each month
+- name: Free Tier credits
+  price_text: up to $200 in AWS Free Tier credits
+  price: 200
+  currency: USD
+  period: one-time
+  unit: credits
+rate_limit_statements:
+- Each image set is billed at a minimum size of 5 MB.
+- All data imported to HealthImaging is charged for a minimum storage duration of 30 days.
+- Contact Us for workloads with a high number of data stores or indexed storage greater than 100 GB per
+  month.
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  units:
+  - credit
+  - data
+  - request
+  plans:
+  - name: Frequent Access Tier Storage (example, US East N. Virginia)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: Archive Instant Access Tier Storage (example, US East N. Virginia)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: API requests (example, US East N. Virginia)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - request
+    periods:
+    - other
+  - name: Free Tier
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Free Tier credits
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - credit
+    periods:
+    - one-time
