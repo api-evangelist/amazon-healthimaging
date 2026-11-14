@@ -38,6 +38,18 @@ artifacts:
   capabilities/amazon-healthimaging-capability-edges.yml:
     method: unknown
     evidence: no authorship recorded
+  certification/observations-2026-11-11.jsonl:
+    method: unknown
+    evidence: no authorship recorded
+  certification/status.yml:
+    method: unknown
+    evidence: no authorship recorded
+  changelog/amazon-healthimaging-changelog.yml:
+    method: searched
+    evidence: declared in the artifact
+  cli/amazon-healthimaging-cli.yml:
+    method: searched
+    evidence: declared in the artifact
   collections/amazon-healthimaging-datastore-api.opencollection.json:
     method: derived
     evidence: openapi/amazon-healthimaging-datastore-api
@@ -68,6 +80,24 @@ artifacts:
   collections/amazon-healthimaging-tags-api.postman_collection.json:
     method: derived
     evidence: openapi/amazon-healthimaging-tags-api
+  compliance/amazon-healthimaging-compliance.yml:
+    method: harvested
+    evidence: declared in the artifact
+  conformance/amazon-healthimaging-conformance.yml:
+    method: derived
+    evidence: declared in the artifact
+  conventions/amazon-healthimaging-conventions.yml:
+    method: derived
+    evidence: declared in the artifact
+  data-model/amazon-healthimaging-data-model.yml:
+    method: derived
+    evidence: declared in the artifact
+  eligibility/amazon-healthimaging-eligibility.yml:
+    method: harvested
+    evidence: declared in the artifact
+  errors/amazon-healthimaging-problem-types.yml:
+    method: derived
+    evidence: declared in the artifact
   examples/healthimaging-access-denied-exception-example.json:
     method: unknown
     evidence: no authorship recorded
@@ -413,6 +443,9 @@ artifacts:
   front-door-ai/2026-09-17.yml:
     method: unknown
     evidence: no authorship recorded
+  hosts/amazon-healthimaging-hosts.yml:
+    method: derived
+    evidence: declared in the artifact
   integrations/_index.yml:
     method: generated
     evidence: carries an API Evangelist house phrase
@@ -420,6 +453,60 @@ artifacts:
     method: unknown
     evidence: no authorship recorded
   json-ld/amazon-healthimaging-context.jsonld:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-copy-image-set-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-create-datastore-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-get-dicomimport-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-get-dicomimport-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-get-image-frame-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-get-image-set-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-list-dicomimport-jobs-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-list-dicomimport-jobs-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-list-tags-for-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-list-tags-for-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-start-dicomimport-job-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-start-dicomimport-job-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-tag-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-tag-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-untag-resource-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-untag-resource-response-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-update-image-set-metadata-request-schema.json:
+    method: unknown
+    evidence: no authorship recorded
+  json-schema/amazon-healthimaging-update-image-set-metadata-response-schema.json:
     method: unknown
     evidence: no authorship recorded
   json-schema/healthimaging-access-denied-exception-schema.json:
@@ -1103,7 +1190,7 @@ artifacts:
   kin/checks-2026-10-23T222754.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  kin/checks-2026-11-02T082323.yml:
+  kin/checks-2026-11-06T143934.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-09-23T000603.yml:
@@ -1172,25 +1259,42 @@ artifacts:
   kin/score-2026-11-02T082323.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
-  openapi/_original/amazon-healthimaging-openapi.yaml:
-    method: harvested
-    evidence: found in openapi/_original/; the fetch URL and bytes were not recorded, so byte-identity
-      to the provider's source is unverified
+  kin/score-2026-11-06T143934.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  lifecycle/amazon-healthimaging-lifecycle.yml:
+    method: searched
+    evidence: declared in the artifact
+  llms/amazon-healthimaging-llms-provenance.yml:
+    method: unknown
+    evidence: no authorship recorded
+  llms/amazon-healthimaging-llms.txt:
+    method: unknown
+    evidence: no authorship recorded
+  mcp/amazon-healthimaging-mcp.yml:
+    method: searched
+    evidence: declared in the artifact
   openapi/amazon-healthimaging-datastore-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-healthimaging-get-dicom-import-job-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-healthimaging-list-dicom-import-jobs-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-healthimaging-start-dicom-import-job-api-openapi.yml:
-    method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    method: unknown
+    evidence: no authorship recorded
   openapi/amazon-healthimaging-tags-api-openapi.yml:
+    method: unknown
+    evidence: no authorship recorded
+  packages/amazon-healthimaging-packages.yml:
+    method: searched
+    evidence: declared in the artifact
+  patterns/amazon-healthimaging-patterns.yml:
     method: derived
-    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
+    evidence: declared in the artifact
   plans/amazon-healthimaging-plans-pricing.yml:
     method: searched
     evidence: declared in the artifact
@@ -1212,10 +1316,19 @@ artifacts:
   postman/amazon-healthimaging.postman_collection.json:
     method: derived
     evidence: openapi/amazon-healthimaging
+  privacy/amazon-healthimaging-privacy-policy.yml:
+    method: harvested
+    evidence: declared in the artifact
   rate-limits/amazon-healthimaging-rate-limits.yml:
+    method: searched
+    evidence: declared in the artifact
+  regulatory/amazon-healthimaging-regulatory-posture.yml:
+    method: unknown
+    evidence: no authorship recorded
+  rules/amazon-healthimaging-jsonschema-spectral-rules.yml:
     method: generated
     evidence: declared in the artifact
-  rules/amazon-healthimaging-jsonschema-spectral-rules.yml:
+  rules/amazon-healthimaging-rules.yml:
     method: generated
     evidence: declared in the artifact
   rules/amazon-healthimaging-spectral-rules.yml:
@@ -1234,8 +1347,27 @@ artifacts:
     method: generated
     evidence: declared in the artifact
   smithy/medical-imaging-2023-07-19.json:
+    method: harvested
+    evidence: byte-identical to https://raw.githubusercontent.com/aws/api-models-aws/3cd98287b471c106254abd89279cc87308d38bfd/models/medical-imaging/service/2023-07-19/medical-imaging-2023-07-19.json
+      (sha256 3d9dc6daa81b, fetched 2026-11-11T21:10:16+00:00)
+  terms/amazon-healthimaging-terms-of-service.yml:
+    method: harvested
+    evidence: declared in the artifact
+  vendors/amazon-healthimaging-vendors.yml:
     method: unknown
     evidence: no authorship recorded
   vocabulary/amazon-healthimaging-vocabulary.yaml:
+    method: unknown
+    evidence: no authorship recorded
+  vocabulary/amazon-healthimaging-vocabulary.yml:
+    method: derived
+    evidence: declared in the artifact
+  well-known/amazon-healthimaging-midway-auth-openid-configuration.json:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-healthimaging-security.txt:
+    method: unknown
+    evidence: no authorship recorded
+  well-known/amazon-healthimaging-well-known.yml:
     method: unknown
     evidence: no authorship recorded
